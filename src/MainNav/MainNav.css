@@ -1,0 +1,4 @@
+.MainNav__nav {
+    display:flex;
+    justify-content: space-between;
+}
