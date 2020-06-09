@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import { categories } from '../dummyStore'
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
+import RecipesContext from '../RecipesContext'
 
 export default function Categories(props) {
+    
+    // useContext(RecipesContext).currentCategory = 2;
+    console.log('RecipesContext', RecipesContext.currentCategory)
 
     function handleClickBack() {
         props.history.push('/')
 
     }
-    function handleAddRecipe() {
-        // go to add recipe page
+    function handleAddCategory() {
+        // go to add Category page
+        console.log('handleAddCategory ran')
+        props.history.push('/add-category')
+        
     }
-
     // change when implement users
     const ownedCategories = categories
     console.log('ownedCategories', ownedCategories)
-
-
 
     return (
         <div>
@@ -38,6 +42,7 @@ export default function Categories(props) {
                     </NavLink>
                 </li>
             })}
+            <button onClick={handleAddCategory}>Add Category</button>
         </div>
     )
 
