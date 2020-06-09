@@ -29,7 +29,8 @@ export default function RecipePageMain(props) {
 
     function handleEditRecipe() {
         // go to edit recipe page
-        // 
+        props.history.push(`/edit-recipe`)
+        
     }
 
     return (

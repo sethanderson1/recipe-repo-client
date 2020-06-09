@@ -1,0 +1,22 @@
+.AddRecipe__add-recipe-container {
+  margin: auto;
+  width: 90%;
+}
+
+#AddRecipe__add-recipe label,
+#AddRecipe__add-recipe input,
+#AddRecipe__add-recipe textarea {
+  display: block;
+  width: 100%;
+}
+
+#AddRecipe__add-recipe textarea {
+  height: 3rem;
+}
+
+#AddRecipe__buttons-wrapper {
+  /* maybe fix 102... */
+  width: 102%;
+  display: flex;
+  justify-content: space-between;
+}

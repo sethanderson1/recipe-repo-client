@@ -9,6 +9,7 @@ import RecipesContext from '../RecipesContext';
 import recipes from "../dummyStore";
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
+import EditRecipe from '../EditRecipe/EditRecipe';
 
 function App() {
 
@@ -47,11 +48,15 @@ function App() {
           <Route
             path={'/add-category'}
             component={AddCategory}
-          />       
-             <Route
-          path={'/add-recipe'}
-          component={AddRecipe}
-        />
+          />
+          <Route
+            path={'/add-recipe'}
+            component={AddRecipe}
+          />
+          <Route
+            path={'/edit-recipe'}
+            component={EditRecipe}
+          />
         </main>
       </div>
     </RecipesContext.Provider>
