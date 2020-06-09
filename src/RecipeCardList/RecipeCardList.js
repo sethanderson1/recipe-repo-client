@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import RecipeCard from '../RecipeCard/RecipeCard'
 import recipes from '../dummyStore';
 import { categories } from '../dummyStore';
-console.log('categories', categories)
+import RecipesContext from '../RecipesContext'
 
 export default function RecipeCardList(props) {
+    console.log('categories', categories)
 
+    const context = useContext(RecipesContext)
+    console.log('context', context)
 
     // change when implement user permissions
     const ownedRecipes = recipes;
@@ -26,13 +29,6 @@ export default function RecipeCardList(props) {
             .filter(recipes => recipes.category_id == category_id)
     // is okay to coerce with '==' or is a better solution?
 
-
-    const handleAddRecipe = () => {
-        console.log('handleAddRecipe ran')
-        const half = Math.random() > 0.5 ? true : false
-        if (half) props.history.push('/add-recipe')
-
-    }
 
     return (
         <section className='RecipeCardList'>

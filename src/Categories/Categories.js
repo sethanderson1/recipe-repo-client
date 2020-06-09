@@ -5,19 +5,17 @@ import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import RecipesContext from '../RecipesContext'
 
 export default function Categories(props) {
-    
-    // useContext(RecipesContext).currentCategory = 2;
-    console.log('RecipesContext', RecipesContext.currentCategory)
+    console.log('props', props)
+
+    const context = useContext(RecipesContext)
+    console.log('context', context)
 
     function handleClickBack() {
         props.history.push('/')
-
     }
     function handleAddCategory() {
-        // go to add Category page
-        console.log('handleAddCategory ran')
         props.history.push('/add-category')
-        
+
     }
     // change when implement users
     const ownedCategories = categories
@@ -29,7 +27,10 @@ export default function Categories(props) {
             <li key={'asdf'}
                 className={'Categories__categories'}
             >
-                <NavLink to={`/categories/all`}>
+                <NavLink
+                    to={`/categories/all`}
+                    onClick={() => context.onChangeCurrCategoryId('all')}
+                >
                     All categories
                 </NavLink>
             </li>
@@ -37,8 +38,12 @@ export default function Categories(props) {
                 return <li key={category.id}
                     className={'Categories__categories'}
                 >
-                    <NavLink to={`/categories/${category.id}`}>
+                    <NavLink
+                        to={`/categories/${category.id}`}
+                        onClick={() => context.onChangeCurrCategoryId(category.id)}
+                    >
                         {category.title}
+
                     </NavLink>
                 </li>
             })}

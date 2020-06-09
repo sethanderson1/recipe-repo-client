@@ -11,9 +11,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 
 function AddRecipe(props) {
-    console.log('props', props)
-
-
+    const context = useContext(RecipesContext)
+    const {currCategoryId} = context
     function handleCancel() {
         // go to specific categories page
         // goBack() doesn't work here for some reason
@@ -24,7 +23,7 @@ function AddRecipe(props) {
         // categories/all not ideal but fuck it and fuck goBack()
         // props.history.goBack()
         // i'll just use state later
-        props.history.push(`/categories/all`)
+        props.history.push(`/categories/${currCategoryId}`)
 
     }
 
