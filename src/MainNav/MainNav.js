@@ -10,7 +10,7 @@ function MainNav() {
             <Link to={'/'}>Recipe Repo</Link>
             <Link to={'/signup'}>SignUp</Link>
             {/* <Link to={'/login'}>Login</Link> */}
-            <Link to={'/dashboard'}>Demo</Link>
+            <Link to={'/categories'}>Demo</Link>
         </nav>
 
     )

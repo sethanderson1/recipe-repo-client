@@ -15,7 +15,8 @@ export default function RecipePageMain(props) {
     // todo: 
 
     function handleClickBack() {
-        props.history.push('/dashboard')
+        const cetegory_id = recipe.category_id
+        props.history.push(`/categories/${cetegory_id}`)
     }
 
     function handleDeleteRecipe() {

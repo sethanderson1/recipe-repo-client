@@ -1,9 +1,11 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
-import Dashboard from '../Dashboard/Dashboard';
+import Recipes from '../Recipes/Recipes';
+import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import SignUp from '../SignUp/SignUp';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
+import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
 import recipes from "../dummyStore";
 
@@ -28,8 +30,14 @@ function App() {
             component={SignUp}
           />
           <Route
-            path={'/dashboard'}
-            component={Dashboard}
+            exact
+            path={'/categories'}
+            component={Categories}
+          />
+          <Route
+            exact
+            path={'/categories/:categoryId'}
+            component={RecipeCardList}
           />
           <Route
             path={'/recipe/:recipeId'}

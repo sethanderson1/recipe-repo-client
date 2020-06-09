@@ -10,7 +10,7 @@ const recipes = [
         date_created: '2019-03-22 16:28:32',
         date_modified: '2020-03-22 16:28:32',
         author_id: null,
-        folder_id: 1
+        category_id: 1
     },
     {
         id: 2,
@@ -21,7 +21,18 @@ const recipes = [
         date_created: '2020-01-22 16:28:32',
         date_modified: '2020-03-23 16:28:32',
         author_id: null,
-        folder_id: 2
+        category_id: 2
+    },
+    {
+        id: 3,
+        title: 'bacon muffin',
+        description: 'like bacon? and muffin? try this!',
+        ingredients: 'bacon, muffin',
+        steps: 'eat bacon and take a nap',
+        date_created: '2020-01-30 16:28:32',
+        date_modified: '2020-03-23 16:28:32',
+        author_id: null,
+        category_id: 2
     },
 ]
 
