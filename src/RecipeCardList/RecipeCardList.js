@@ -2,24 +2,23 @@ import React from 'react'
 import RecipeCard from '../RecipeCard/RecipeCard'
 import recipes from '../dummyStore';
 import { categories } from '../dummyStore';
+console.log('categories', categories)
 
 export default function RecipeCardList(props) {
     console.log('recipes', recipes)
 
-    console.log('categories', categories)
-
     // change when implement user permissions
     const ownedRecipes = recipes;
-
-    // const recipesFromCategory = ownedRecipes.filter()
-
-
-
     const category_id = props.match.params.categoryId
+    
+    const category_name = category_id ==='all' 
+    ? 'all recipes'
+    : categories.filter(category=> category_id==category.id)[0].title
 
     function handleClickBack() {
         props.history.push(`/categories`)
     }
+    console.log('props', props)
 
     const recipesFromCategory = category_id === 'all'
         ? ownedRecipes
@@ -30,7 +29,7 @@ export default function RecipeCardList(props) {
     return (
         <section className='RecipeCardList'>
             <button onClick={handleClickBack}>back</button>
-
+            <h3>{category_name}</h3>
             <ul>
                 {recipesFromCategory.map(recipeCard => {
                     const { id, title, description } = recipeCard
@@ -40,6 +39,7 @@ export default function RecipeCardList(props) {
                             id={id}
                             title={title}
                             description={description}
+                            category_id={category_id}
                         />
                     </li>
                 }

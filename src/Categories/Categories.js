@@ -3,7 +3,6 @@ import { Route, NavLink } from 'react-router-dom';
 import { categories } from '../dummyStore'
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
 
-
 export default function Categories(props) {
 
     function handleClickBack() {
