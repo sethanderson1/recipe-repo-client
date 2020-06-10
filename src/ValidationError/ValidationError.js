@@ -4,8 +4,11 @@ import './ValidationError.css'
 
 export default function ValidationError(props) { 
     if (props.message) {
+        const errorPosition = props.errorPosition === 'absolute' 
+        ? 'error-absolute'
+        : 'error-relative'
         return (
-            <div className="error">{props.message}</div>
+            <div className={errorPosition}>{props.message}</div>
         ) 
     }
     return <></>

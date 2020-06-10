@@ -1,4 +1,9 @@
-.error {
+.error-absolute {
     color: rgb(165, 62, 62); 
-    position: absolute;;
+    position: absolute;
+}
+
+.error-relative {
+    color: rgb(165, 62, 62); 
+    position: relative;
 }

@@ -20,3 +20,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+/* maybe try to get nice looking dropdown if time */
+/* #select-category option::-moz-focus-inner {
+  background-color: bisque;
+} */
