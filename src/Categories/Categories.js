@@ -17,6 +17,10 @@ export default function Categories(props) {
         props.history.push('/add-category')
 
     }
+
+    function handleClickDelete() {
+        // delete
+    }
     // change when implement users
     const ownedCategories = categories
     console.log('ownedCategories', ownedCategories)
@@ -33,6 +37,8 @@ export default function Categories(props) {
                 >
                     All categories
                 </NavLink>
+                <button onClick={handleClickDelete}>delete</button>
+
             </li>
             {ownedCategories.map(category => {
                 return <li key={category.id}
@@ -45,6 +51,8 @@ export default function Categories(props) {
                         {category.title}
 
                     </NavLink>
+                    <button onClick={handleClickDelete}>delete</button>
+
                 </li>
             })}
             <button onClick={handleAddCategory}>Add Category</button>

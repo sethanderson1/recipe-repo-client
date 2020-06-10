@@ -1,0 +1,22 @@
+
+
+.AddCategory__add-category-container {
+    margin: auto;
+    width: 90%;
+  }
+  
+  .AddCategory__add-category-container label,
+  .AddCategory__add-category-container input {
+    display: block;
+    width: 100%;
+  }
+
+  .AddCategory__buttons-wrapper {
+      margin-top:2rem;
+      width: 100%;
+      display:flex;
+      justify-content: space-between;
+  }
+
+
+  

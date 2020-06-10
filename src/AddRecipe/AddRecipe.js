@@ -12,7 +12,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 function AddRecipe(props) {
     const context = useContext(RecipesContext)
-    const {currCategoryId} = context
+    const { currCategoryId } = context
     function handleCancel() {
         // go to specific categories page
         // goBack() doesn't work here for some reason
@@ -36,6 +36,15 @@ function AddRecipe(props) {
             <h2>Add Recipe</h2>
 
             <form id='AddRecipe__add-recipe'>
+            <label htmlFor='select-category'>
+                    Select Category</label>
+                <select 
+                    name='select-category'
+                    id='select-category'>
+                        <option>
+                            categories
+                        </option>
+                    </select>
                 <label htmlFor='recipe-name'>
                     Recipe Name</label>
                 <input type='text'
@@ -49,14 +58,14 @@ function AddRecipe(props) {
                 <label htmlFor='ingredients'>
                     Ingredients</label>
                 <TextareaAutosize
-                    minRows={10}
+                    minRows={7}
                     maxRows={100}
                     name='ingredients'
                     id='ingredients' />
                 <label htmlFor='steps'>
                     Steps</label>
                 <TextareaAutosize
-                    minRows={10}
+                    minRows={7}
                     maxRows={100}
                     name='steps'
                     id='steps' />

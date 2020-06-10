@@ -1,5 +1,5 @@
 .AddRecipe__add-recipe-container {
-  margin: auto;
+  margin: auto; 
   width: 90%;
 }
 
@@ -15,8 +15,8 @@
 }
 
 #AddRecipe__buttons-wrapper {
-  /* maybe fix 102... */
-  width: 102%;
+  margin-top:1rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

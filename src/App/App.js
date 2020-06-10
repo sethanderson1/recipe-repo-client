@@ -7,6 +7,7 @@ import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
 import recipes from "../dummyStore";
+import {categories} from "../dummyStore";
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
@@ -17,6 +18,8 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      categories,
+      recipes,
       currCategoryId: 'all'
     }
   }
@@ -30,6 +33,7 @@ export default class App extends Component {
 
 
     const value = {
+      categories,
       recipes,
       currCategoryId: this.state.currCategoryId,
       onChangeCurrCategoryId: this.handleCurrCategoryId
