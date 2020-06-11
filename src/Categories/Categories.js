@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import { categories } from '../dummyStore'
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
-import RecipesContext from '../RecipesContext'
+import RecipesContext from '../RecipesContext';
+import './Categories.css'
 
 export default function Categories(props) {
     console.log('props', props)

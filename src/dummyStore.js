@@ -40,12 +40,24 @@ const recipes = [
 
     {
         id: 3,
-        title: 'bacon with side of bacon',
-        description: 'like bacon? and bacon? try this!',
-        ingredients: 'bacon, bacon',
-        directions: `Eiusmod aliquip laboris proident sit Lorem enim laboris consequat id. Aliquip amet ut nostrud mollit. Sint nulla esse voluptate irure. Velit ex nulla commodo ad proident deserunt do irure cillum est do quis irure nulla. Id dolor veniam anim consectetur amet laboris officia.
-
-Cupidatat fugiat aliquip labore ipsum consequat dolore nisi. Anim laborum aliqua aute dolor cillum voluptate commodo. Non et laborum esse dolore ipsum velit pariatur.`,
+        title: `Virgina's Tuna Salad`,
+        description: `This was always a summer Saturday favorite for my grandparents and I. Great served on a large lettuce leaf. You may also add grapes or chopped apples if you wish.`,
+        ingredients: `1 egg
+ 
+        1 (5 ounce) can tuna, drained and flaked
+         
+        3 tablespoons mayonnaise
+         
+        2 stalks celery, chopped
+         
+        2 tablespoons sweet pickle relish
+         
+        1 pinch ground black pepper`,
+        directions: `Step 1
+        Place egg in a saucepan and cover with cold water. Bring water to a boil and immediately remove from heat. Cover and let egg stand in hot water for 10 to 12 minutes. Remove from hot water; cool for 5 minutes. Peel and chop into bite-sized pieces.
+        
+         Step 2
+        In a medium bowl, mix together tuna and mayonnaise. Mix in egg, celery, relish, and black pepper.`,
         date_created: '2020-01-30 16:28:32',
         date_modified: '2020-03-23 16:28:32',
         author_id: null,
@@ -92,25 +104,164 @@ Cupidatat fugiat aliquip labore ipsum consequat dolore nisi. Anim laborum aliqua
         author_id: null,
         category_id: 3
     },
+    {
+        id: 5,
+        title: `Grilled Marinated Shrimp`,
+        description: `This makes the best shrimp! Remove from skewers and serve on a bed of pasta with sauce for a great meal.`,
+        ingredients:`1 cup olive oil
+ 
+        ¼ cup chopped fresh parsley
+         
+        1 lemon, juiced
+         
+        2 tablespoons hot pepper sauce
+         
+        3 cloves garlic, minced
+         
+        1 tablespoon tomato paste
+         
+        2 teaspoons dried oregano
+         
+        1 teaspoon salt
+         
+        1 teaspoon ground black pepper
+         
+        2 pounds large shrimp, peeled and deveined with tails attached
+         
+        6 eaches skewers`,
+        directions: `Step 1
+        In a mixing bowl, mix together olive oil, parsley, lemon juice, hot sauce, garlic, tomato paste, oregano, salt, and black pepper. Reserve a small amount for basting later. Pour remaining marinade into a large resealable plastic bag with shrimp. Seal, and marinate in the refrigerator for 2 hours.
+        
+         Step 2
+        Preheat grill for medium-low heat. Thread shrimp onto skewers, piercing once near the tail and once near the head. Discard marinade.
+        
+         Step 3
+        Lightly oil grill grate. Cook shrimp for 5 minutes per side, or until opaque, basting frequently with reserved marinade.`,
+        date_created: '2019-03-22 16:28:32',
+        date_modified: '2020-03-22 16:28:32',
+        author_id: null,
+        category_id: 3
+    },
+    {
+        id: 6,
+        title: `Chicago-Inspired Italian Beef Sandwich`,
+        description: `I tried to combine the traditional Italian beef sandwich with the French dip sandwich with a little nod to the pulled pork sandwich. Instead of using thinly sliced roast beef, I used stew beef, with apologies to my friends from Chicago.`,
+        ingredients:`1 ½ pounds boneless beef chuck, cut into 2-inch pieces
+ 
+        salt and ground black pepper to taste
+         
+        1 tablespoon vegetable oil
+         
+        6 cloves garlic, sliced
+         
+        2 tablespoons white vinegar
+         
+        1 tablespoon dried oregano
+         
+        1 ½ teaspoons salt, or to taste
+         
+        1 teaspoon dried thyme
+         
+        1 teaspoon dried rosemary
+         
+        1 teaspoon freshly ground black pepper
+         
+        1 bay leaf
+         
+        ¼ teaspoon red pepper flakes, or to taste
+         
+        3 cups chicken broth, or as needed
+         
+        4 ciabatta rolls, sliced in half
+         
+        1 cup chopped giardiniera (pickled Italian vegetables)
+         
+        2 teaspoons chopped fresh flat-leaf parsley`,
+        directions: `Step 1
+        Season beef with a pinch of salt and black pepper. Heat vegetable oil in a heavy pot over high heat. Cook and stir beef in hot oil until browned, 5 to 8 minutes.
+        
+         Step 2
+        Stir garlic, vinegar, oregano, 1 1/2 teaspoons salt, thyme, rosemary, 1 teaspoon black pepper, bay leaf, and red pepper flakes into beef. Pour enough chicken broth into beef mixture to cover the meat by 1 inch and bring to a simmer.
+        
+         Step 3
+        Cover pot with a lid, reduce heat to low, and simmer until meat is fork-tender, 1 to 1 1/2 hours.
+        
+         Step 4
+        Transfer meat with a strainer or slotted spoon to a separate pot; pour about 1/4 cup of meat broth into pot. Use a wooden spoon to gently break meat into smaller chunks. Cover pot with a lid or aluminum foil and keep warm.
+        
+         Step 5
+        Skim excess grease from top of broth remaining in the first pot; season with salt and pepper to taste. Cover pot with a lid or aluminum foil and keep broth warm.
+        
+         Step 6
+        Lay halves of a roll out on a work surface and spoon 2 to 3 tablespoons meat broth over each half. Top bottom half of roll with a generous portion of meat and a spoonful of pickled vegetables. Place tops on sandwich. Repeat with remaining buns, broth, meat, and pickled vegetables to make 3 more sandwiches.
+        
+         Step 7
+        Spoon hot meat broth into ramekins and top each ramekin with 1/2 teaspoon parsley. Serve sandwiches with hot broth for dipping.`,
+        date_created: '2019-03-22 16:28:32',
+        date_modified: '2020-03-22 16:28:32',
+        author_id: null,
+        category_id: 2
+    },
+    {
+        id: 7,
+        title: `Yogurt Parfait`,
+        description: `This is delicious for breakfast, snack, even for a dessert! It looks great in a glass, but can also be made in a bowl. Use your favorite fruit, or whatever is in season.`,
+        ingredients:`2 cups vanilla yogurt
+ 
+        1 cup granola
+         
+        8 blackberries`,
+        directions: `Step 1
+        In a large glass, layer 1 cup yogurt, 1/2 cup granola and 4 blackberries. Repeat layers.`,
+        date_created: '2019-03-22 16:28:32',
+        date_modified: '2020-03-22 16:28:32',
+        author_id: null,
+        category_id: 1
+    },
+    {
+        id: 8,
+        title: `Fudge`,
+        description: `I double the recipe and put in a glass baking dish (9x13 inches). Nice for holidays . . . Keep it for a secret and family and friends will think you worked forever on it . . . (smiles). You can also use peanut butter chips and make peanut butter fudge.`,
+        ingredients:`3 cups semisweet chocolate chips
+ 
+        1 (14 ounce) can sweetened condensed milk
+         
+        ¼ cup butter
+         
+        1 cup chopped walnuts (optional)`,
+        directions: `Step 1
+        Place chocolate chips, sweetened condensed milk, and butter or margarine in large microwaveable bowl. Zap in microwave on medium until chips are melted, about 3-5 minute, stirring once or twice during cooking. Stir in nuts, if desired.
+        
+         Step 2
+        Pour into well-greased 8x8-inch glass baking dish. Refrigerate until set.`,
+        date_created: '2019-03-22 16:28:32',
+        date_modified: '2020-03-22 16:28:32',
+        author_id: null,
+        category_id: 4
+    },
 ]
 
 export const categories = [
     {
         id: 1,
-        title: 'breakfast',
+        title: 'Breakfast',
         author_id: null
     },
     {
         id: 2,
-        title: 'lunch',
+        title: 'Lunch',
         author_id: null
     },
     {
         id: 3,
-        title: 'dinner',
+        title: 'Dinner',
         author_id: null
     },
-
+    {
+        id: 4,
+        title: 'Desserts',
+        author_id: null
+    },
 ]
 
 export default recipes

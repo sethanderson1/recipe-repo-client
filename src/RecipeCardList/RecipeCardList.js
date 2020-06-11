@@ -3,6 +3,7 @@ import RecipeCard from '../RecipeCard/RecipeCard'
 import recipes from '../dummyStore';
 import { categories } from '../dummyStore';
 import RecipesContext from '../RecipesContext'
+import './RecipeCardList.css'
 
 export default function RecipeCardList(props) {
     console.log('categories', categories)
