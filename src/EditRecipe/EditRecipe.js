@@ -14,7 +14,7 @@ function EditRecipe(props) {
 
     const recipe_id = props.match.params.recipeId
     const recipe = recipes.filter(recipe=>recipe.id==recipe_id)[0]
-    const {id, title,description,ingredients,steps} = recipe
+    const {id, title,description,ingredients,directions} = recipe
     
     console.log('recipe', recipe)
  
@@ -55,14 +55,14 @@ function EditRecipe(props) {
                     id='ingredients' 
                     value={ingredients}
                     />
-                <label htmlFor='steps'>
-                    Steps</label>
+                <label htmlFor='directions'>
+                    Directions</label>
                 <TextareaAutosize
                     minRows={10}
                     maxRows={100}
-                    name='steps'
-                    id='steps' 
-                    value={steps}
+                    name='directions'
+                    id='directions' 
+                    value={directions}
                     />
                 <div id='AddRecipe__buttons-wrapper'>
                     <button onClick={handleCancel}>Cancel</button>

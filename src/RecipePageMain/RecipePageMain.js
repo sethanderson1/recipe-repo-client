@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
 import RecipesContext from '../RecipesContext'
+import './RecipePageMain.css'
 
 export default function RecipePageMain(props) {
     const recipe_id = props.match.params.recipeId
     console.log('props', props)
     const recipes = useContext(RecipesContext).recipes
+    console.log('recipes', recipes)
     // todo: need to account for if recipe not found?
     const recipe = recipes.filter(recipe => recipe.id == recipe_id)[0]
+    console.log('recipe', recipe)
     const currCategoryId = useContext(RecipesContext).currCategoryId
     console.log('currCategoryId', currCategoryId)
     // todo: add edit button. make sure hard to accidentally press
@@ -37,14 +40,14 @@ export default function RecipePageMain(props) {
     }
 
     return (
-        <div>
+        <div className='RecipePageMain__container'>
             <button onClick={handleClickBack}>Back</button>
             <h1>{recipe.title}</h1>
-            <p>{recipe.description}</p>
+            <p className='RecipePageMain__description-content-container'>{recipe.description}</p>
             <h3>Ingredients</h3>
-            <p>{recipe.ingredients}</p>
-            <h3>Steps</h3>
-            <p>{recipe.steps}</p>
+            <p className='RecipePageMain__ingedients-content'>{recipe.ingredients}</p>
+            <h3>Directions</h3>
+            <p className='RecipePageMain__directions-content'>{recipe.directions}</p>
             <button onClick={handleDeleteRecipe}>Delete</button>
             <button onClick={handleEditRecipe}>Edit</button>
         </div>

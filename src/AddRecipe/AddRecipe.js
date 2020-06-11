@@ -97,13 +97,13 @@ function AddRecipe(props) {
                     maxRows={100}
                     name='ingredients'
                     id='ingredients' />
-                <label htmlFor='steps'>
-                    Steps</label>
+                <label htmlFor='directions'>
+                    Directions</label>
                 <TextareaAutosize
                     minRows={7}
                     maxRows={100}
-                    name='steps'
-                    id='steps' />
+                    name='directions'
+                    id='directions' />
                 <div id='AddRecipe__buttons-wrapper'>
                     <button onClick={handleCancel}>Cancel</button>
                     <button onClick={handleSave}>Save</button>

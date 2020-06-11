@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './RecipeCard.css';
 
 function RecipeCard(props) {
 
@@ -18,7 +19,7 @@ function RecipeCard(props) {
             >
                 <h1>{props.title}</h1>
             </Link>
-            <p>{props.description}</p>
+            <p className='RecipeCard__description'>{props.description}</p>
         </div>
     )
 }

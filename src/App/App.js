@@ -64,7 +64,7 @@ export default class App extends Component {
 
     const value = {
       categories:this.state.categories,
-      recipes:this.state.categories,
+      recipes:this.state.recipes,
       currCategoryId: this.state.currCategoryId,
       onChangeCurrCategoryId: this.handleCurrCategoryId,
       onAddCategory: this.handleAddCategory
