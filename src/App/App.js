@@ -7,7 +7,7 @@ import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
 import recipes from "../dummyStore";
-// import { categories } from "../dummyStore";
+import { categories } from "../dummyStore";
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
@@ -17,18 +17,7 @@ export default class App extends Component {
 
   
   constructor(props) {
-    const categories = [
-      {
-          id: 1,
-          title: 'desserts',
-          author_id: null
-      },
-      {
-          id: 2,
-          title: 'lunch',
-          author_id: null
-      }
-  ]
+
 
     super(props)
     this.state = {

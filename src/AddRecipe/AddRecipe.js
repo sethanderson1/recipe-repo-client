@@ -16,6 +16,7 @@ function AddRecipe(props) {
 
 
     const { recipes, categories, currCategoryId } = useContext(RecipesContext)
+    console.log('useContext(RecipesContext)', useContext(RecipesContext))
 
     const [name, setName] = useState('');
 
@@ -29,11 +30,15 @@ function AddRecipe(props) {
     // todo: find css responsible for ugly select colors
     //doesnt happen in mozilla..
     function renderOptions() {
-        return categories.map(category =>
+        return categories.map(category => (
+            console.log('category', category),
+
             <option
                 key={category.id}>
                 {category.title}
             </option>
+        )
+
         )
     }
 
@@ -52,10 +57,10 @@ function AddRecipe(props) {
     function handleSubmit(e) {
         e.preventDefault()
         postRecipe()
-        
+
     }
 
-    function postRecipe () {
+    function postRecipe() {
         // POST fetch
         // then push history to posted recipe
         // 
