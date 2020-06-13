@@ -1,7 +1,14 @@
 import React from 'react';
-import './SignUp.css'
+import './SignUp.css';
 
-export default function SignUp() {
+
+
+
+export default function SignUp(props) {
+    
+function handleCancel() {
+    props.history.push(`/`)
+}
     return (
         <div className='SignUp__signup-form-container'>
             <form className='SignUp__signup-form'>
@@ -11,7 +18,7 @@ export default function SignUp() {
                 <input />
                 <label>Confirm Password</label>
                 <input />
-                <button>Cancel</button>
+                <button onClick={handleCancel}>Cancel</button>
                 <button>Submit</button>
             </form>
         </div>
