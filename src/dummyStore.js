@@ -2,17 +2,6 @@
 
 const recipes = [
     {
-        id: 1,
-        title: 'bacon',
-        description: 'bacon is good',
-        ingredients: 'bacon',
-        directions: `fry the bacon and eat it`,
-        date_created: '2019-03-22 16:28:32',
-        date_modified: '2020-03-22 16:28:32',
-        author_id: null,
-        category_id: 1
-    },
-    {
         id: 2,
         title: `Lorraine's Club Sandwich`,
         description: `An easy, quick, and delicious sandwich to eat anytime.`,

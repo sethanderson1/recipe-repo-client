@@ -9,7 +9,7 @@ function LandingPage() {
                 <MainNav />
             </header>
             <h2>Info about the app</h2>
-            <p>blah blah its a good app heres what it does</p>
+            <p>description of app here</p>
             <h2>Screenshots</h2>
             <p>cool screenshots and maybe animated gif of site in action</p>
         </div>

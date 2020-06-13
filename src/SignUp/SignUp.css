@@ -1,0 +1,14 @@
+
+
+
+.SignUp__signup-form-container {
+    margin: auto;
+    width: 90%;
+}
+
+.SignUp__signup-form-container label,
+.SignUp__signup-form-container input
+{
+    display: block;
+    /* width: 100%; */
+}
