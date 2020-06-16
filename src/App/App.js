@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import SignUp from '../SignUp/SignUp';
+import Login from '../Login/Login';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
@@ -15,13 +16,13 @@ import EditRecipe from '../EditRecipe/EditRecipe';
 
 export default class App extends Component {
 
-  
+
   constructor(props) {
 
 
     super(props)
     this.state = {
-      categories:categories,
+      categories: categories,
       recipes,
       currCategoryId: 'all'
     }
@@ -52,8 +53,8 @@ export default class App extends Component {
 
 
     const value = {
-      categories:this.state.categories,
-      recipes:this.state.recipes,
+      categories: this.state.categories,
+      recipes: this.state.recipes,
       currCategoryId: this.state.currCategoryId,
       onChangeCurrCategoryId: this.handleCurrCategoryId,
       onAddCategory: this.handleAddCategory
@@ -70,6 +71,10 @@ export default class App extends Component {
             <Route
               path={'/signup'}
               component={SignUp}
+            />
+            <Route
+              path={'/login'}
+              component={Login}
             />
             <Route
               exact
