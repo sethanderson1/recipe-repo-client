@@ -40,7 +40,7 @@ export default function SignUp(props) {
             .then(res => {
                 const { authToken } = res
                 storeToken(authToken)
-                console.log('res.authToken', authToken)
+                props.history.push('/categories')
             })
             .catch(err => {
                 // todo: show error on page

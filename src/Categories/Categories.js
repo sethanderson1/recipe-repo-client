@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import { categories } from '../dummyStore'
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
@@ -23,8 +23,34 @@ export default function Categories(props) {
         // delete
     }
     // change when implement users
-    const ownedCategories = categories
-    console.log('ownedCategories', ownedCategories)
+
+    let ownedCategories;
+    useEffect(() => {
+        const authToken = localStorage.getItem('authToken')
+        console.log('authToken', authToken)
+        fetch(`http://localhost:8000/api/categories`, {
+            method: "GET",
+            headers: {
+                "content-type": "application/json",
+                "authorization": `bearer ${authToken}`
+            },
+        })
+        .then((res) => {
+            return !res.ok
+                ? res.json().then((e) => Promise.reject(e))
+                : res.json();
+        })
+        .then(res => {
+            console.log('res', res)
+        })
+        .catch(err => {
+            console.log('err', err)
+        })
+    }
+        , [])
+
+        ownedCategories = categories
+        console.log('ownedCategories', ownedCategories)
 
     return (
         <div>
