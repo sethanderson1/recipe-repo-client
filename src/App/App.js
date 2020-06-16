@@ -7,27 +7,27 @@ import Login from '../Login/Login';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
-import recipes from "../dummyStore";
-import { categories } from "../dummyStore";
+// import recipes from "../dummyStore";
+// import { categories } from "../dummyStore";
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
-
-
 export default class App extends Component {
 
-
   constructor(props) {
-
-
     super(props)
     this.state = {
-      categories: categories,
-      recipes,
+      categories: [],
+      recipes: [],
       currCategoryId: 'all'
     }
   }
 
+  componentDidMount() {
+
+    this.handleGetCategories()
+    this.handleGetRecipes()
+  }
 
   handleCurrCategoryId = (currCategoryId) => {
     this.setState({
@@ -36,18 +36,53 @@ export default class App extends Component {
   }
 
   handleAddCategory = (categoryTitle) => {
-    // // fix this horror show
-    // const newCategory = {
-    //   id: 234234,
-    //   title: categoryTitle,
-    //   author_id: null
-    // }
-    // this.setState({
-    //   categories: [newCategory,...this.state.categories]
-    // })
-
 
   }
+
+
+  async handleGetCategories() {
+    try {
+      const authToken = localStorage.getItem('authToken')
+      console.log('authToken', authToken)
+      const res = await fetch(`http://localhost:8000/api/categories`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          "authorization": `bearer ${authToken}`
+        },
+      })
+      const ownedCategories = await res.json()
+      this.setState({
+        categories: ownedCategories
+      })
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+  async handleGetRecipes() {
+    try {
+      const authToken = localStorage.getItem('authToken')
+      console.log('authToken', authToken)
+      const res = await fetch(`http://localhost:8000/api/recipes`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          "authorization": `bearer ${authToken}`
+        },
+      })
+      const ownedRecipes = await res.json()
+      this.setState({
+        recipes: ownedRecipes
+      })
+    } catch (err) {
+      console.log('err', err)
+    }
+  }
+
+
+
+
 
   render() {
 
@@ -59,8 +94,10 @@ export default class App extends Component {
       onChangeCurrCategoryId: this.handleCurrCategoryId,
       onAddCategory: this.handleAddCategory
     }
+    
     return (
       <RecipesContext.Provider value={value}>
+        {console.log('value', value)}
         <div className="App">
           <main>
             <Route

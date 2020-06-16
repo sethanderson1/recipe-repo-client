@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Route, NavLink } from 'react-router-dom';
-import { categories } from '../dummyStore'
+// import { categories } from '../dummyStore'
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import RecipesContext from '../RecipesContext';
 import './Categories.css'
@@ -10,48 +10,21 @@ export default function Categories(props) {
 
     const context = useContext(RecipesContext)
     console.log('context', context)
+    const {categories} = context
 
     function handleClickBack() {
         props.history.push('/')
     }
+
     function handleAddCategory() {
         props.history.push('/add-category')
-
     }
 
     function handleClickDelete() {
         // delete
     }
-    // change when implement users
 
-    let ownedCategories;
-    useEffect(() => {
-        const authToken = localStorage.getItem('authToken')
-        console.log('authToken', authToken)
-        fetch(`http://localhost:8000/api/categories`, {
-            method: "GET",
-            headers: {
-                "content-type": "application/json",
-                "authorization": `bearer ${authToken}`
-            },
-        })
-        .then((res) => {
-            return !res.ok
-                ? res.json().then((e) => Promise.reject(e))
-                : res.json();
-        })
-        .then(res => {
-            console.log('res', res)
-        })
-        .catch(err => {
-            console.log('err', err)
-        })
-    }
-        , [])
-
-        ownedCategories = categories
-        console.log('ownedCategories', ownedCategories)
-
+    console.log('categories', categories)
     return (
         <div>
             <button onClick={handleClickBack}>back</button>
@@ -67,7 +40,9 @@ export default function Categories(props) {
                 <button onClick={handleClickDelete}>delete</button>
 
             </li>
-            {ownedCategories.map(category => {
+            {categories.map(category => {
+                console.log('category', category)
+                
                 return <li key={category.id}
                     className={'Categories__categories'}
                 >
@@ -75,7 +50,7 @@ export default function Categories(props) {
                         to={`/categories/${category.id}`}
                         onClick={() => context.onChangeCurrCategoryId(category.id)}
                     >
-                        {category.title}
+                        {category.category_name}
 
                     </NavLink>
                     <button onClick={handleClickDelete}>delete</button>
