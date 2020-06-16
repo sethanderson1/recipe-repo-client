@@ -8,7 +8,6 @@ export default function SignUp(props) {
         props.history.push(`/`)
     }
 
-
     const handleSubmit = e => {
         e.preventDefault()
         // todo: i have to set error to null?
@@ -39,8 +38,9 @@ export default function SignUp(props) {
                     : res.json();
             })
             .then(res => {
-                // todo: store authToken in local storage
-                console.log('res.authToken', res.authToken)
+                const { authToken } = res
+                storeToken(authToken)
+                console.log('res.authToken', authToken)
             })
             .catch(err => {
                 // todo: show error on page
@@ -48,6 +48,9 @@ export default function SignUp(props) {
             })
     }
 
+    function storeToken(authToken) {
+        localStorage.setItem('authToken',authToken);
+    }
 
     return (
         <div className='SignUp__signup-form-container'>
