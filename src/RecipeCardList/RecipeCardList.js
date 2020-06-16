@@ -1,23 +1,25 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import RecipeCard from '../RecipeCard/RecipeCard'
-import recipes from '../dummyStore';
-import { categories } from '../dummyStore';
+// import recipes from '../dummyStore';
+// import { categories } from '../dummyStore';
 import RecipesContext from '../RecipesContext'
 import './RecipeCardList.css'
 
 export default function RecipeCardList(props) {
-    console.log('categories', categories)
-
     const context = useContext(RecipesContext)
     console.log('context', context)
+    const { recipes, categories } = context
 
-    // change when implement user permissions
-    const ownedRecipes = recipes;
+    console.log('recipes', recipes)
     const category_id = props.match.params.categoryId
 
+
+    const selectedCategory = categories.filter(category => category_id == category.id)[0]
     const category_name = category_id === 'all'
         ? 'all recipes'
-        : categories.filter(category => category_id == category.id)[0].title
+        : selectedCategory
+        && selectedCategory.category_name
+
 
     function handleClickBack() {
         props.history.push(`/categories`)
@@ -25,11 +27,13 @@ export default function RecipeCardList(props) {
 
 
     const recipesFromCategory = category_id === 'all'
-        ? ownedRecipes
-        : ownedRecipes
-            .filter(recipes => recipes.category_id == category_id)
+    ? recipes
+    : recipes
+    .filter(recipe => recipe.category_id == category_id)
+    
     // is okay to coerce with '==' or is a better solution?
-
+    
+    console.log('recipesFromCategory', recipesFromCategory)
 
     return (
         <section className='RecipeCardList'>
@@ -51,7 +55,6 @@ export default function RecipeCardList(props) {
                 )}
             </ul>
             <button onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
-
         </section>
 
     )
