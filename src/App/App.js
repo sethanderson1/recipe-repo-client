@@ -12,6 +12,7 @@ import RecipesContext from '../RecipesContext';
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
+import config from '../config'
 export default class App extends Component {
 
   constructor(props) {
@@ -44,7 +45,7 @@ export default class App extends Component {
     try {
       const authToken = localStorage.getItem('authToken')
       console.log('authToken', authToken)
-      const res = await fetch(`http://localhost:8000/api/categories`, {
+      const res = await fetch(`${config.API_ENDPOINT}/categories`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -64,7 +65,7 @@ export default class App extends Component {
     try {
       const authToken = localStorage.getItem('authToken')
       console.log('authToken', authToken)
-      const res = await fetch(`http://localhost:8000/api/recipes`, {
+      const res = await fetch(`${config.API_ENDPOINT}/recipes`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
