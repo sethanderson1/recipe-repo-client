@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.css';
+import config from '../config'
 // import config from './'
 
 export default function SignUp(props) {
@@ -25,7 +26,7 @@ export default function SignUp(props) {
     function postLoginUser(credentials) {
         // todo: change to config....
         // return fetch(`${config.API_ENDPOINT}/auth/login`, {
-        return fetch(`http://localhost:8000/api/auth/login`, {
+        return fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
