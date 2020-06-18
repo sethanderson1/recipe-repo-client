@@ -41,7 +41,7 @@ export default class App extends Component {
   }
 
 
-  async handleGetCategories() {
+  handleGetCategories = async () => {
     try {
       const authToken = localStorage.getItem('authToken')
       // console.log('authToken', authToken)
@@ -61,7 +61,7 @@ export default class App extends Component {
     }
   }
 
-  handleGetRecipes = async () =>{
+  handleGetRecipes = async () => {
     try {
       const authToken = localStorage.getItem('authToken')
       // console.log('authToken', authToken)
@@ -85,7 +85,7 @@ export default class App extends Component {
   render() {
 
     const value = {
-      state:this.state,
+      state: this.state,
       categories: this.state.categories,
       recipes: this.state.recipes,
       currCategoryId: this.state.currCategoryId,
@@ -94,7 +94,7 @@ export default class App extends Component {
       // make fetch recipes available here
       handleGetRecipes: this.handleGetRecipes
     }
-    
+
     return (
       <RecipesContext.Provider value={value}>
         {console.log('value', value)}

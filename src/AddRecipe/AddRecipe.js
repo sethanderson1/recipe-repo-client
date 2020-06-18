@@ -55,9 +55,6 @@ function AddRecipe(props) {
         })
     }
 
-    //next steps: figure out why getting 400 bad request when
-    // dont fill in all fields even though set postgres recipe table
-    // to accept nulls
     async function postRecipe(fields) {
         console.log('fields', fields)
         try {
@@ -78,7 +75,6 @@ function AddRecipe(props) {
             console.log('err', err)
         }
     }
-
 
     function renderOptions() {
         return categories.map(category => (
