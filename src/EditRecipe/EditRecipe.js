@@ -1,43 +1,38 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Route, NavLink } from 'react-router-dom';
-// import { categories } from '../dummyStore'
-// import  recipes  from '../dummyStore'
 import RecipesContext from '../RecipesContext'
 // import './AddRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
 // make sure TextareaAutosize behaves properly
 
-
 function EditRecipe(props) {
     const context = useContext(RecipesContext)
 
-    
     const { recipes } = context
     const recipe_id = props.match.params.recipeId
     const recipe = recipes.filter(recipe => recipe.id == recipe_id)
     && recipes.filter(recipe => recipe.id == recipe_id)[0]
-    const titleInitialState = recipe && recipe.title
-    const descriptionInitialState = recipe && recipe.description
+
+    const titleInitialValue = recipe && recipe.title
+    const descriptionInitialValue = recipe && recipe.description
+    const ingredientsInitialValue = recipe && recipe.ingredients
+    const directionsInitialValue = recipe && recipe.directions
+
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    useEffect(() => { setTitle(titleInitialState) }, [titleInitialState])
-    // FINALLY figured out how to set initial values in edit forms
-    console.log('title', title)
-    // index.js:1 Warning: A component is changing a controlled input of type text to be uncontrolled. Input elements should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components
-    // in input (at EditRecipe.js:62)
+    const [ingredients, setIngredients] = useState('')
+    const [directions, setDirections] = useState('')
     
-    // didnt realize that user cant delete entire entry
-    // it will just re initialize when back to no letters....
-    // implement wasTouched for the fields?? this getting complicated
-    // useEffect(() => {
-        //     if (!title) {
-            //         setTitle(titleInitialState)
-    //     }
-    //     if (!description) {
-        //         setDescription(descriptionInitialState)
-    //     }
-    // }, [title, titleInitialState, description, descriptionInitialState])
+    useEffect(() => { setTitle(titleInitialValue) }, [titleInitialValue])
+    useEffect(() => { setDescription(descriptionInitialValue) }, [descriptionInitialValue])
+    useEffect(() => { setIngredients(ingredientsInitialValue) }, [ingredientsInitialValue])
+    useEffect(() => { setDirections(directionsInitialValue) }, [directionsInitialValue])
 
+    // TODO: fix this error if i must
+    // only get error when refresh, not when navigate to there
+    // index.js:1 Warning: A component is changing a controlled input of type text to be uncontrolled. Input elements should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components
+    // in input (at EditRecipe.js:65)
+    
     function handleCancel() {
         props.history.push(`/recipe/${recipe_id}`)
     }
@@ -59,10 +54,8 @@ function EditRecipe(props) {
     console.log('recipes', recipes)
 
     return (
-
         <div className='AddRecipe__add-recipe-container'>
             <h2>Edit Recipe</h2>
-
             <form
                 onSubmit={handleSubmit}
                 id='AddRecipe__add-recipe'>
@@ -81,7 +74,6 @@ function EditRecipe(props) {
                     id='description'
                     value={description}
                     onChange={e => setDescription(e.target.value)}
-
                 />
                 <label htmlFor='ingredients'>
                     Ingredients</label>
@@ -90,16 +82,18 @@ function EditRecipe(props) {
                     maxRows={100}
                     name='ingredients'
                     id='ingredients'
-                // value={ingredients}
+                value={ingredients}
+                onChange={e => setIngredients(e.target.value)}
                 />
-                <label htmlFor='instructions'>
+                <label htmlFor='directions'>
                     Instructions</label>
                 <TextareaAutosize
                     minRows={10}
                     maxRows={100}
-                    name='instructions'
-                    id='instructions'
-                // value={instructions}
+                    name='directions'
+                    id='directions'
+                value={directions}
+                onChange={e => setDirections(e.target.value)}
                 />
                 <div id='AddRecipe__buttons-wrapper'>
                     <button onClick={handleCancel}>Cancel</button>
