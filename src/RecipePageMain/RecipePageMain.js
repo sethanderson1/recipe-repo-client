@@ -4,11 +4,10 @@ import './RecipePageMain.css'
 
 export default function RecipePageMain(props) {
     const recipe_id = props.match.params.recipeId
-    console.log('props', props)
     const recipes = useContext(RecipesContext).recipes
-    console.log('recipes', recipes)
-    // todo: need to account for if recipe not found?
-    const recipe = recipes.filter(recipe => recipe.id == recipe_id)[0]
+    const selectedRecipe = recipes.filter(recipe => recipe.id == recipe_id)
+    const recipe = selectedRecipe
+        && selectedRecipe[0]
     console.log('recipe', recipe)
     const currCategoryId = useContext(RecipesContext).currCategoryId
     console.log('currCategoryId', currCategoryId)
@@ -17,20 +16,19 @@ export default function RecipePageMain(props) {
     // todo: add delete button. can be out of the way
     // todo: add folder hamburger menu
     // todo: keep the all categories folder even if no folders to prefvent issues
-
+    // todo: make forbidden when try to go to forbidden recipe
+    // todo: general question how to wait for second render to display page so isnt jerky?
 
 
     function handleClickBack() {
-        // todo: change to category it came from if have time
         props.history.push(`/categories/${currCategoryId}`)
-        // seems like goBack() does what I need. any pitfalls of using goback?
-        // goback not doing what i want
-        // props.history.goBack()
     }
 
     function handleDeleteRecipe() {
-        // delete api request 
+        // todo: delete api request 
         // go back to recipes list
+        props.history.push(`/categories/${currCategoryId}`)
+
     }
 
     function handleEditRecipe() {
@@ -39,17 +37,26 @@ export default function RecipePageMain(props) {
 
     }
 
+    function recipeNotEmpty(recipe) {
+        if (recipe) {
+            return (
+                <div className='RecipePageMain__container'>
+                <button onClick={handleClickBack}>Back</button>
+                <h1>{recipe && recipe.title}</h1>
+                <p className='RecipePageMain__description-content-container'>{recipe && recipe.description}</p>
+                <h3>Ingredients</h3>
+                <p className='RecipePageMain__ingedients-content'>{recipe && recipe.ingredients}</p>
+                <h3>Directions</h3>
+                <p className='RecipePageMain__directions-content'>{recipe && recipe.directions}</p>
+                <button onClick={handleDeleteRecipe}>Delete</button>
+                <button onClick={handleEditRecipe}>Edit</button>
+            </div>
+            )
+        }
+        return null
+    }
+
     return (
-        <div className='RecipePageMain__container'>
-            <button onClick={handleClickBack}>Back</button>
-            <h1>{recipe.title}</h1>
-            <p className='RecipePageMain__description-content-container'>{recipe.description}</p>
-            <h3>Ingredients</h3>
-            <p className='RecipePageMain__ingedients-content'>{recipe.ingredients}</p>
-            <h3>Directions</h3>
-            <p className='RecipePageMain__directions-content'>{recipe.directions}</p>
-            <button onClick={handleDeleteRecipe}>Delete</button>
-            <button onClick={handleEditRecipe}>Edit</button>
-        </div>
+        recipeNotEmpty(recipe)
     )
 }

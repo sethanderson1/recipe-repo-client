@@ -5,5 +5,6 @@ export default React.createContext({
   recipes: [],
   currentCategoryId: 'all',
   onChangeCurrCategoryId: () => { },
-  onAddCategory: () => {}
+  onAddCategory: () => {},
+  handleGetRecipes: () => {}
 })

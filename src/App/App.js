@@ -12,7 +12,7 @@ import RecipesContext from '../RecipesContext';
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
-import config from '../config'
+import config from '../config';
 export default class App extends Component {
 
   constructor(props) {
@@ -25,7 +25,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-
+    console.log('componentDidMount ran')
     this.handleGetCategories()
     this.handleGetRecipes()
   }
@@ -44,7 +44,7 @@ export default class App extends Component {
   async handleGetCategories() {
     try {
       const authToken = localStorage.getItem('authToken')
-      console.log('authToken', authToken)
+      // console.log('authToken', authToken)
       const res = await fetch(`${config.API_ENDPOINT}/categories`, {
         method: "GET",
         headers: {
@@ -61,10 +61,10 @@ export default class App extends Component {
     }
   }
 
-  async handleGetRecipes() {
+  handleGetRecipes = async () =>{
     try {
       const authToken = localStorage.getItem('authToken')
-      console.log('authToken', authToken)
+      // console.log('authToken', authToken)
       const res = await fetch(`${config.API_ENDPOINT}/recipes`, {
         method: "GET",
         headers: {
@@ -73,6 +73,7 @@ export default class App extends Component {
         },
       })
       const ownedRecipes = await res.json()
+      console.log('ownedRecipes', ownedRecipes)
       this.setState({
         recipes: ownedRecipes
       })
@@ -81,19 +82,17 @@ export default class App extends Component {
     }
   }
 
-
-
-
-
   render() {
 
-
     const value = {
+      state:this.state,
       categories: this.state.categories,
       recipes: this.state.recipes,
       currCategoryId: this.state.currCategoryId,
       onChangeCurrCategoryId: this.handleCurrCategoryId,
-      onAddCategory: this.handleAddCategory
+      onAddCategory: this.handleAddCategory,
+      // make fetch recipes available here
+      handleGetRecipes: this.handleGetRecipes
     }
     
     return (
@@ -146,9 +145,3 @@ export default class App extends Component {
     );
   }
 }
-
-
-
-
-
-

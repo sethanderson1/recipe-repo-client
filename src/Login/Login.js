@@ -13,8 +13,8 @@ export default function SignUp(props) {
         e.preventDefault()
         // todo: i have to set error to null?
         const { user_name, password } = e.target;
-        console.log('user_name.value', user_name.value)
-        console.log('password.value', password.value)
+        // console.log('user_name.value', user_name.value)
+        // console.log('password.value', password.value)
 
         postLoginUser({
             user_name: user_name.value,
@@ -50,7 +50,7 @@ export default function SignUp(props) {
     }
 
     function storeToken(authToken) {
-        localStorage.setItem('authToken',authToken);
+        localStorage.setItem('authToken', authToken);
     }
 
     return (
@@ -58,11 +58,13 @@ export default function SignUp(props) {
             <form className='login-form' onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="user_name">Username: </label>
-                    <input placeholder='username' type="text" name='user_name' id='user_name' required />
+                    <input placeholder='username' type="text"
+                        name='user_name' id='user_name' required />
                 </div>
                 <div>
                     <label htmlFor="password">Password: </label>
-                    <input placeholder='password' type="password" name='password' id='password' required />
+                    <input placeholder='password' type="password"
+                        name='password' id='password' required />
                 </div>
                 <button type='button' onClick={handleCancel}>Cancel</button>
                 <button type='submit'>Log In</button>

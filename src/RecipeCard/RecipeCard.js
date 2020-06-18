@@ -4,7 +4,6 @@ import './RecipeCard.css';
 
 function RecipeCard(props) {
 
-    
     console.log('props', props)
     return (
         <div>
