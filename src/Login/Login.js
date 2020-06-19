@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import RecipesContext from '../RecipesContext'
 import './Login.css';
 import config from '../config'
 // import config from './'
 
 export default function SignUp(props) {
+    const [error, setError] = useState(null)
     const context = useContext(RecipesContext)
 
     function handleCancel() {
@@ -13,17 +14,13 @@ export default function SignUp(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        // todo: i have to set error to null?
         const { user_name, password } = e.target;
-        // console.log('user_name.value', user_name.value)
-        // console.log('password.value', password.value)
 
         postLoginUser({
             user_name: user_name.value,
             password: password.value,
         })
     }
-
 
     function postLoginUser(credentials) {
         // todo: change to config....
@@ -48,10 +45,14 @@ export default function SignUp(props) {
                 props.history.push('/categories')
             })
             .catch(err => {
-                // todo: show error on page
+                setError(
+                    <div className="login-error">
+                        Incorrect username or password</div>
+                )
                 console.log('err', err)
             })
     }
+
 
     async function storeToken(authToken) {
         await localStorage.setItem('authToken', authToken);
@@ -71,6 +72,7 @@ export default function SignUp(props) {
                     <input placeholder='password' type="password"
                         name='password' id='password' required />
                 </div>
+                {error}
                 <button type='button' onClick={handleCancel}>Cancel</button>
                 <button type='submit'>Log In</button>
             </form>
