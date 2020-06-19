@@ -55,6 +55,7 @@ export default function SignUp(props) {
 
     async function storeToken(authToken) {
         await localStorage.setItem('authToken', authToken);
+        context.handleChangeIsLoggedIn(true)
     }
 
     return (

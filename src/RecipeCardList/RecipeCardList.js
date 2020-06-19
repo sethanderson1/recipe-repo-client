@@ -13,20 +13,16 @@ export default function RecipeCardList(props) {
     console.log('recipes', recipes)
     const category_id = props.match.params.categoryId
 
-
-
     const selectedCategory = categories.filter(category => category_id == category.id)[0]
     console.log('selectedCategory', selectedCategory)
-    const category_name = category_id === 0
+    const category_name = category_id == 0
         ? 'all recipes'
         : selectedCategory
         && selectedCategory.category_name
 
-
     function handleClickBack() {
         props.history.push(`/categories`)
     }
-
 
     const recipesFromCategory = category_id == 0
     ? recipes

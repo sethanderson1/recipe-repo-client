@@ -36,6 +36,12 @@ export default class App extends Component {
     })
   }
 
+  handleChangeIsLoggedIn = (status) =>{
+    this.setState({
+      isLoggedIn: status
+    })
+  }
+
   componentDidMount() {
     console.log('componentDidMount ran')
     this.handleGetCategories()
@@ -100,7 +106,8 @@ export default class App extends Component {
       onChangeCurrentCategoryId: this.handleCurrentCategoryId,
       handleGetRecipes: this.handleGetRecipes,
       handleGetCategories: this.handleGetCategories,
-      handleLogout: this.handleLogout
+      handleLogout: this.handleLogout,
+      handleChangeIsLoggedIn: this.handleChangeIsLoggedIn
     }
 
     return (

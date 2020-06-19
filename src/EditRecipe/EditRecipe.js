@@ -12,8 +12,8 @@ function EditRecipe(props) {
     const { recipes } = context
     const recipe_id = props.match.params.recipeId
     const recipe = recipes.filter(recipe => recipe.id == recipe_id)
-    && recipes.filter(recipe => recipe.id == recipe_id)[0]
-    
+        && recipes.filter(recipe => recipe.id == recipe_id)[0]
+
     console.log('recipe', recipe)
     const titleInitialValue = recipe && recipe.title
     const descriptionInitialValue = recipe && recipe.description
@@ -56,10 +56,10 @@ function EditRecipe(props) {
             directions: directions.value,
         })
     }
-    
+
     // next steps: when refresh page, shouldnt lose currentCategoryId
     // now, it seems to be getting set back to category id = 0
- 
+
     async function patchRecipe(fields) {
         console.log('fields', fields)
         console.log('recipe.category_id', recipe.category_id)
@@ -129,7 +129,9 @@ function EditRecipe(props) {
                     onChange={e => setDirections(e.target.value)}
                 />
                 <div id='AddRecipe__buttons-wrapper'>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <button
+                        type="button"
+                        onClick={handleCancel}>Cancel</button>
                     <button
                         type="submit"
                     >Save</button>

@@ -20,8 +20,6 @@ function AddRecipe(props) {
 
 
     function handleCancel() {
-
-        // PRESSING CANCEL TRIGGERS handleSubmit() !!????
         props.history.goBack()
 
 
@@ -140,7 +138,9 @@ function AddRecipe(props) {
                     onChange={e => setDirections(e.target.value)}
                 />
                 <div id='AddRecipe__buttons-wrapper'>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <button 
+                    type="button"
+                    onClick={handleCancel}>Cancel</button>
                     <button
                         type="submit"
                         disabled={name.length === 0}
