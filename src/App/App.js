@@ -20,19 +20,19 @@ export default class App extends Component {
     this.state = {
       categories: [],
       recipes: [],
-      currCategoryId: 0
+      currentCategoryId: 0
     }
   }
 
   componentDidMount() {
-    console.log('componentDidMount ran')
+    // console.log('componentDidMount ran')
     this.handleGetCategories()
     this.handleGetRecipes()
   }
 
-  handleCurrCategoryId = (currCategoryId) => {
+  handlecurrentCategoryId = (currentCategoryId) => {
     this.setState({
-      currCategoryId: currCategoryId
+      currentCategoryId: currentCategoryId
     })
   }
 
@@ -73,7 +73,7 @@ export default class App extends Component {
         },
       })
       const ownedRecipes = await res.json()
-      console.log('ownedRecipes', ownedRecipes)
+      // console.log('ownedRecipes', ownedRecipes)
       this.setState({
         recipes: ownedRecipes
       })
@@ -88,16 +88,15 @@ export default class App extends Component {
       state: this.state,
       categories: this.state.categories,
       recipes: this.state.recipes,
-      currCategoryId: this.state.currCategoryId,
-      onChangeCurrCategoryId: this.handleCurrCategoryId,
+      currentCategoryId: this.state.currentCategoryId,
+      onChangecurrentCategoryId: this.handlecurrentCategoryId,
       onAddCategory: this.handleAddCategory,
-      // make fetch recipes available here
       handleGetRecipes: this.handleGetRecipes
     }
 
     return (
       <RecipesContext.Provider value={value}>
-        {console.log('value', value)}
+        {/* {console.log('value', value)} */}
         <div className="App">
           <main>
             <Route

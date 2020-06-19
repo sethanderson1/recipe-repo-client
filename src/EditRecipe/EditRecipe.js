@@ -57,11 +57,9 @@ function EditRecipe(props) {
         })
     }
     
-    // next steps: when refresh page, shouldnt lose currCategoryId
-    // now, it seems to be getting set back to all
-    // for now tho, lets just set sql database to accept non integer or 
-    // change all to 0 
-
+    // next steps: when refresh page, shouldnt lose currentCategoryId
+    // now, it seems to be getting set back to category id = 0
+ 
     async function patchRecipe(fields) {
         console.log('fields', fields)
         console.log('recipe.category_id', recipe.category_id)

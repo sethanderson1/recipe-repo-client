@@ -13,17 +13,12 @@ export default function RecipePageMain(props) {
     const recipe = selectedRecipe
         && selectedRecipe[0]
     console.log('recipe', recipe)
-    let currCategoryId = recipe && recipe.category_id 
-    // if (currCategoryId === 0) {
-    //     currCategoryId = 'all';
-    // }
+    let currentCategoryId = recipe && recipe.category_id 
 
-    console.log('currCategoryId', currCategoryId)
+    console.log('currentCategoryId', currentCategoryId)
 
 
-    // todo: add edit button. make sure hard to accidentally press
     // todo: add folder name that can be clicked to go back to folder (or should make a back button to go back to folder??)
-    // todo: add delete button. can be out of the way
     // todo: add folder hamburger menu
     // todo: keep the all categories folder even if no folders to prefvent issues
     // todo: make forbidden when try to go to forbidden recipe
@@ -32,8 +27,7 @@ export default function RecipePageMain(props) {
 
     function handleClickBack() {
         
-        // props.history.push(`/categories/${currCategoryId}`)
-        // goback seems to work now. wasnt working before
+        // props.history.push(`/categories/${currentCategoryId}`)
         props.history.goBack()
     }
 
@@ -53,7 +47,7 @@ export default function RecipePageMain(props) {
 
             // todo: ensure category page not displayed until recipes fetched 
             context.handleGetRecipes()
-            props.history.push(`/categories/${currCategoryId}`)
+            props.history.push(`/categories/${currentCategoryId}`)
 
 
         } catch (err) {

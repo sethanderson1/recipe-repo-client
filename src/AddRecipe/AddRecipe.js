@@ -1,41 +1,34 @@
 import React, { useContext, useState } from 'react';
 import config from '../config';
-
-// import { Route, NavLink } from 'react-router-dom';
-// import { categories } from '../dummyStore'
 import RecipesContext from '../RecipesContext'
 import './AddRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
 import ValidationError from '../ValidationError/ValidationError';
-// make sure TextareaAutosize behaves properly
-
-
-// i will allow option to leave all but name blank
-// todo: make sure code handles blank fields
-// TODO: gray out save button if name is blank
 
 function AddRecipe(props) {
-
     const { categories } = useContext(RecipesContext)
     console.log('useContext(RecipesContext)', useContext(RecipesContext))
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [directions, setDirections] = useState('');
-
     const context = useContext(RecipesContext)
+    console.log('context', context)
+
+    // category user came from to get here
+    // const currentCategoryId = context.
+
 
     function handleCancel() {
-        // props.history.push(`/categories/${currCategoryId}`)
-        props.history.goBack()
-        // debugger
-        // props.history.push(`/categories/all`)
 
+        // PRESSING CANCEL TRIGGERS handleSubmit() !!????
+        props.history.goBack()
+
+
+
+        // props.history.push(`/categories/${currentCategoryId}`)
     }
     console.log('props.history', props.history)
-
-    // todo: find css responsible for ugly select colors
-    //doesnt happen in mozilla..
 
     function validateName() {
         const recipeName = name.trim()
@@ -85,7 +78,6 @@ function AddRecipe(props) {
         return categories.map(category => (
             <option
                 key={category.id}
-                // how do i reference the below ?
                 id={category.id}
                 value={category.id}
             >
@@ -97,7 +89,8 @@ function AddRecipe(props) {
     return (
         <div className='AddRecipe__add-recipe-container'>
             <h2>Add Recipe</h2>
-            <form onSubmit={handleSubmit}
+            <form 
+            onSubmit={handleSubmit}
                 id='AddRecipe__add-recipe'>
                 <label htmlFor='select_category'>
                     Select Category</label>
