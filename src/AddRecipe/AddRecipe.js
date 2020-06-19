@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import config from '../config';
 
-import { Route, NavLink } from 'react-router-dom';
+// import { Route, NavLink } from 'react-router-dom';
 // import { categories } from '../dummyStore'
 import RecipesContext from '../RecipesContext'
 import './AddRecipe.css';
@@ -16,7 +16,7 @@ import ValidationError from '../ValidationError/ValidationError';
 
 function AddRecipe(props) {
 
-    const { recipes, categories, currCategoryId } = useContext(RecipesContext)
+    const { categories } = useContext(RecipesContext)
     console.log('useContext(RecipesContext)', useContext(RecipesContext))
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -26,8 +26,13 @@ function AddRecipe(props) {
     const context = useContext(RecipesContext)
 
     function handleCancel() {
-        props.history.push(`/categories/${currCategoryId}`)
+        // props.history.push(`/categories/${currCategoryId}`)
+        props.history.goBack()
+        // debugger
+        // props.history.push(`/categories/all`)
+
     }
+    console.log('props.history', props.history)
 
     // todo: find css responsible for ugly select colors
     //doesnt happen in mozilla..

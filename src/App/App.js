@@ -20,7 +20,7 @@ export default class App extends Component {
     this.state = {
       categories: [],
       recipes: [],
-      currCategoryId: 'all'
+      currCategoryId: 0
     }
   }
 

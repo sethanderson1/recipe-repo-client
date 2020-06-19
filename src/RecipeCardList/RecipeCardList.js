@@ -14,8 +14,10 @@ export default function RecipeCardList(props) {
     const category_id = props.match.params.categoryId
 
 
+
     const selectedCategory = categories.filter(category => category_id == category.id)[0]
-    const category_name = category_id === 'all'
+    console.log('selectedCategory', selectedCategory)
+    const category_name = category_id === 0
         ? 'all recipes'
         : selectedCategory
         && selectedCategory.category_name
@@ -26,7 +28,7 @@ export default function RecipeCardList(props) {
     }
 
 
-    const recipesFromCategory = category_id === 'all'
+    const recipesFromCategory = category_id == 0
     ? recipes
     : recipes
     .filter(recipe => recipe.category_id == category_id)

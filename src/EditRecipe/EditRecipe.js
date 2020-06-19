@@ -1,18 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import RecipesContext from '../RecipesContext'
+import config from '../config';
+
 // import './AddRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
 // make sure TextareaAutosize behaves properly
 
 function EditRecipe(props) {
     const context = useContext(RecipesContext)
-
     const { recipes } = context
     const recipe_id = props.match.params.recipeId
     const recipe = recipes.filter(recipe => recipe.id == recipe_id)
     && recipes.filter(recipe => recipe.id == recipe_id)[0]
-
+    
+    console.log('recipe', recipe)
     const titleInitialValue = recipe && recipe.title
     const descriptionInitialValue = recipe && recipe.description
     const ingredientsInitialValue = recipe && recipe.ingredients
@@ -22,7 +24,7 @@ function EditRecipe(props) {
     const [description, setDescription] = useState('')
     const [ingredients, setIngredients] = useState('')
     const [directions, setDirections] = useState('')
-    
+
     useEffect(() => { setTitle(titleInitialValue) }, [titleInitialValue])
     useEffect(() => { setDescription(descriptionInitialValue) }, [descriptionInitialValue])
     useEffect(() => { setIngredients(ingredientsInitialValue) }, [ingredientsInitialValue])
@@ -32,24 +34,57 @@ function EditRecipe(props) {
     // only get error when refresh, not when navigate to there
     // index.js:1 Warning: A component is changing a controlled input of type text to be uncontrolled. Input elements should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://fb.me/react-controlled-components
     // in input (at EditRecipe.js:65)
-    
+
     function handleCancel() {
-        props.history.push(`/recipe/${recipe_id}`)
+        // props.history.push(`/recipe/${recipe_id}`)
+        props.history.goBack()
     }
+
 
     function handleSubmit(e) {
         e.preventDefault()
-        // POST data
-        postRecipe(e.target)
-        console.log('e.target', e.target.title.value)
-        // go back to recipes page
-        // props.history.push(`/recipe/${recipe_id}`)
+        const { recipe_title } = e.target
+        console.log('e.target', e.target)
+        const { description } = e.target
+        const { ingredients } = e.target
+        const { directions } = e.target
+        patchRecipe({
+            category_id: recipe.category_id,
+            title: recipe_title.value,
+            description: description.value,
+            ingredients: ingredients.value,
+            directions: directions.value,
+        })
     }
     
-    function postRecipe(recipeFields) {
-        
+    // next steps: when refresh page, shouldnt lose currCategoryId
+    // now, it seems to be getting set back to all
+    // for now tho, lets just set sql database to accept non integer or 
+    // change all to 0 
+
+    async function patchRecipe(fields) {
+        console.log('fields', fields)
+        console.log('recipe.category_id', recipe.category_id)
+        try {
+            const authToken = localStorage.getItem('authToken')
+            console.log('authToken', authToken)
+            const res = await fetch(`${config.API_ENDPOINT}/recipes/${recipe_id}`, {
+                method: "PATCH",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": `bearer ${authToken}`
+                },
+                body: JSON.stringify(fields)
+            })
+            // const postedRecipe = await res.json()
+            // console.log('postedRecipe', postedRecipe)
+            context.handleGetRecipes()
+            props.history.push(`/categories/${recipe.category_id}`)
+        } catch (err) {
+            console.log('err', err)
+        }
     }
-    
+
     // todo: maybe change css names
     console.log('recipes', recipes)
 
@@ -82,8 +117,8 @@ function EditRecipe(props) {
                     maxRows={100}
                     name='ingredients'
                     id='ingredients'
-                value={ingredients}
-                onChange={e => setIngredients(e.target.value)}
+                    value={ingredients}
+                    onChange={e => setIngredients(e.target.value)}
                 />
                 <label htmlFor='directions'>
                     Instructions</label>
@@ -92,8 +127,8 @@ function EditRecipe(props) {
                     maxRows={100}
                     name='directions'
                     id='directions'
-                value={directions}
-                onChange={e => setDirections(e.target.value)}
+                    value={directions}
+                    onChange={e => setDirections(e.target.value)}
                 />
                 <div id='AddRecipe__buttons-wrapper'>
                     <button onClick={handleCancel}>Cancel</button>

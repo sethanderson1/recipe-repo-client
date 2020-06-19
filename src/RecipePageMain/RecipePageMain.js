@@ -1,16 +1,26 @@
 import React, { useContext } from 'react'
 import RecipesContext from '../RecipesContext'
+import config from '../config';
+
 import './RecipePageMain.css'
 
 export default function RecipePageMain(props) {
-    const recipe_id = props.match.params.recipeId
+
+    const recipeId = props.match.params.recipeId
+    const context = useContext(RecipesContext)
     const recipes = useContext(RecipesContext).recipes
-    const selectedRecipe = recipes.filter(recipe => recipe.id == recipe_id)
+    const selectedRecipe = recipes.filter(recipe => recipe.id == recipeId)
     const recipe = selectedRecipe
         && selectedRecipe[0]
     console.log('recipe', recipe)
-    const currCategoryId = useContext(RecipesContext).currCategoryId
+    let currCategoryId = recipe && recipe.category_id 
+    // if (currCategoryId === 0) {
+    //     currCategoryId = 'all';
+    // }
+
     console.log('currCategoryId', currCategoryId)
+
+
     // todo: add edit button. make sure hard to accidentally press
     // todo: add folder name that can be clicked to go back to folder (or should make a back button to go back to folder??)
     // todo: add delete button. can be out of the way
@@ -21,15 +31,36 @@ export default function RecipePageMain(props) {
 
 
     function handleClickBack() {
-        props.history.push(`/categories/${currCategoryId}`)
+        
+        // props.history.push(`/categories/${currCategoryId}`)
+        // goback seems to work now. wasnt working before
+        props.history.goBack()
     }
 
-    function handleDeleteRecipe() {
-        // todo: delete api request 
-        // go back to recipes list
-        props.history.push(`/categories/${currCategoryId}`)
+    async function handleDeleteRecipe() {
+        console.log('recipeId', recipeId)
+        try {
+            const authToken = localStorage.getItem('authToken')
+            console.log('authToken', authToken)
+            const res = await fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
+                method: "DELETE",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": `bearer ${authToken}`
+                },
+            })
 
+
+            // todo: ensure category page not displayed until recipes fetched 
+            context.handleGetRecipes()
+            props.history.push(`/categories/${currCategoryId}`)
+
+
+        } catch (err) {
+            console.log('err', err)
+        }
     }
+
 
     function handleEditRecipe() {
         // go to edit recipe page
@@ -41,16 +72,16 @@ export default function RecipePageMain(props) {
         if (recipe) {
             return (
                 <div className='RecipePageMain__container'>
-                <button onClick={handleClickBack}>Back</button>
-                <h1>{recipe && recipe.title}</h1>
-                <p className='RecipePageMain__description-content-container'>{recipe && recipe.description}</p>
-                <h3>Ingredients</h3>
-                <p className='RecipePageMain__ingedients-content'>{recipe && recipe.ingredients}</p>
-                <h3>Directions</h3>
-                <p className='RecipePageMain__directions-content'>{recipe && recipe.directions}</p>
-                <button onClick={handleDeleteRecipe}>Delete</button>
-                <button onClick={handleEditRecipe}>Edit</button>
-            </div>
+                    <button onClick={handleClickBack}>Back</button>
+                    <h1>{recipe && recipe.title}</h1>
+                    <p className='RecipePageMain__description-content-container'>{recipe && recipe.description}</p>
+                    <h3>Ingredients</h3>
+                    <p className='RecipePageMain__ingedients-content'>{recipe && recipe.ingredients}</p>
+                    <h3>Directions</h3>
+                    <p className='RecipePageMain__directions-content'>{recipe && recipe.directions}</p>
+                    <button onClick={handleDeleteRecipe}>Delete</button>
+                    <button onClick={handleEditRecipe}>Edit</button>
+                </div>
             )
         }
         return null

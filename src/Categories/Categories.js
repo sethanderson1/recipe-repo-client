@@ -32,8 +32,8 @@ export default function Categories(props) {
                 className={'Categories__categories'}
             >
                 <NavLink
-                    to={`/categories/all`}
-                    onClick={() => context.onChangeCurrCategoryId('all')}
+                    to={`/categories/0`}
+                    onClick={() => context.onChangeCurrCategoryId(0)}
                 >
                     All categories
                 </NavLink>
