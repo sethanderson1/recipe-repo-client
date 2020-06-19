@@ -89,7 +89,8 @@ export default class App extends Component {
       currentCategoryId: this.state.currentCategoryId,
       onChangeCurrentCategoryId: this.handleCurrentCategoryId,
       onAddCategory: this.handleAddCategory,
-      handleGetRecipes: this.handleGetRecipes
+      handleGetRecipes: this.handleGetRecipes,
+      handleGetCategories: this.handleGetCategories
     }
 
     return (

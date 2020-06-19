@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 // import { categories } from '../dummyStore'
-import RecipeCardList from '../RecipeCardList/RecipeCardList';
+// import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import RecipesContext from '../RecipesContext';
 import './Categories.css'
 
@@ -53,42 +53,12 @@ export default function Categories(props) {
                         {category.category_name}
 
                     </NavLink>
-                    <button onClick={handleClickDelete}>delete</button>
+                    <button onClick={handleClickDelete}>Delete</button>
 
                 </li>
             })}
-            <button onClick={handleAddCategory}>Add Category</button>
+            <button 
+            onClick={handleAddCategory}>Add Category</button>
         </div>
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // return (
-    //     <div>
-    //         <button onClick={handleClickBack}>
-    //             Back
-    //             </button>
-    //         <ul>
-    //             {categories.map(category =>
-    //                 <li key={category.id}>
-    //                     <NavLink to={`/categories/${category.id}`}>
-    //                         {category.title}
-    //                     </NavLink>
-    //                 </li>)}
-    //         </ul>
-    //     </div>
-    // )
 }
