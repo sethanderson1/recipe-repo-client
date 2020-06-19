@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import SignUp from '../SignUp/SignUp';
@@ -7,8 +7,6 @@ import Login from '../Login/Login';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
 import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
-// import recipes from "../dummyStore";
-// import { categories } from "../dummyStore";
 import AddCategory from '../AddCategory/AddCategory';
 import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
@@ -30,7 +28,7 @@ export default class App extends Component {
     this.handleGetRecipes()
   }
 
-  handlecurrentCategoryId = (currentCategoryId) => {
+  handleCurrentCategoryId = (currentCategoryId) => {
     this.setState({
       currentCategoryId: currentCategoryId
     })
@@ -89,7 +87,7 @@ export default class App extends Component {
       categories: this.state.categories,
       recipes: this.state.recipes,
       currentCategoryId: this.state.currentCategoryId,
-      onChangecurrentCategoryId: this.handlecurrentCategoryId,
+      onChangeCurrentCategoryId: this.handleCurrentCategoryId,
       onAddCategory: this.handleAddCategory,
       handleGetRecipes: this.handleGetRecipes
     }

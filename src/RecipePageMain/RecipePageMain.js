@@ -13,6 +13,7 @@ export default function RecipePageMain(props) {
     const recipe = selectedRecipe
         && selectedRecipe[0]
     console.log('recipe', recipe)
+    // refresh resets category id to 0 .....
     let currentCategoryId = recipe && recipe.category_id 
 
     console.log('currentCategoryId', currentCategoryId)

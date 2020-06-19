@@ -33,7 +33,7 @@ export default function Categories(props) {
             >
                 <NavLink
                     to={`/categories/0`}
-                    onClick={() => context.onChangeCurrCategoryId(0)}
+                    onClick={() => context.onChangeCurrentCategoryId(0)}
                 >
                     All categories
                 </NavLink>
@@ -48,7 +48,7 @@ export default function Categories(props) {
                 >
                     <NavLink
                         to={`/categories/${category.id}`}
-                        onClick={() => context.onChangeCurrCategoryId(category.id)}
+                        onClick={() => context.onChangeCurrentCategoryId(category.id)}
                     >
                         {category.category_name}
 
