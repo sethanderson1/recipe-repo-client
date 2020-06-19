@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import config from '../config';
 
-import {  NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 // import { categories } from '../dummyStore'
 // import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import RecipesContext from '../RecipesContext';
@@ -12,7 +12,7 @@ export default function Categories(props) {
 
     const context = useContext(RecipesContext)
     console.log('context', context)
-    const {categories} = context
+    const { categories } = context
 
     function handleClickBack() {
         props.history.push('/')
@@ -26,18 +26,14 @@ export default function Categories(props) {
         try {
             const authToken = localStorage.getItem('authToken')
             // console.log('authToken', authToken)
-            const res = await fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
+            await fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",
                     "authorization": `bearer ${authToken}`
                 },
             })
-
             context.handleGetCategories()
-            // props.history.push(`/categories/${currentCategoryId}`)
-
-
         } catch (err) {
             console.log('err', err)
         }
@@ -63,7 +59,7 @@ export default function Categories(props) {
             </li>
             {categories.map(category => {
                 console.log('category', category)
-                
+
                 return <li key={category.id}
                     className={'Categories__categories'}
                 >
@@ -72,14 +68,14 @@ export default function Categories(props) {
                         onClick={() => context.onChangeCurrentCategoryId(category.id)}
                     >
                         {category.category_name}
-
                     </NavLink>
-                    <button onClick={()=>handleDeleteCategory(category.id)}>Delete</button>
-
+                    <button
+                        onClick={() => handleDeleteCategory(category.id)}>
+                        Delete</button>
                 </li>
             })}
-            <button 
-            onClick={handleAddCategory}>Add Category</button>
+            <button
+                onClick={handleAddCategory}>Add Category</button>
         </div>
     )
 }

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react'
+import RecipesContext from '../RecipesContext'
 import './Login.css';
 import config from '../config'
 // import config from './'
 
 export default function SignUp(props) {
+    const context = useContext(RecipesContext)
 
     function handleCancel() {
         props.history.push(`/`)
@@ -38,9 +40,11 @@ export default function SignUp(props) {
                     ? res.json().then((e) => Promise.reject(e))
                     : res.json();
             })
-            .then(res => {
+            .then(async (res) => {
                 const { authToken } = res
-                storeToken(authToken)
+                await storeToken(authToken)
+                await context.handleGetCategories()
+                await context.handleGetRecipes()
                 props.history.push('/categories')
             })
             .catch(err => {
@@ -49,8 +53,8 @@ export default function SignUp(props) {
             })
     }
 
-    function storeToken(authToken) {
-        localStorage.setItem('authToken', authToken);
+    async function storeToken(authToken) {
+        await localStorage.setItem('authToken', authToken);
     }
 
     return (

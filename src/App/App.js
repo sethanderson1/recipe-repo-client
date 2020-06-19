@@ -18,12 +18,26 @@ export default class App extends Component {
     this.state = {
       categories: [],
       recipes: [],
-      currentCategoryId: 0
+      currentCategoryId: 0,
+      isLoggedIn: true
+      // isLoggedIn: this.checkLoggedInStatus
     }
   }
 
+  // checkLoggedInStatus() {
+
+  // }
+
+  handleLogout = () => {
+    console.log('handleLogout ran')
+    localStorage.setItem('authToken', null)
+    this.setState({
+      isLoggedIn:false
+    })
+  }
+
   componentDidMount() {
-    // console.log('componentDidMount ran')
+    console.log('componentDidMount ran')
     this.handleGetCategories()
     this.handleGetRecipes()
   }
@@ -33,11 +47,6 @@ export default class App extends Component {
       currentCategoryId: currentCategoryId
     })
   }
-
-  handleAddCategory = (categoryTitle) => {
-
-  }
-
 
   handleGetCategories = async () => {
     try {
@@ -87,10 +96,11 @@ export default class App extends Component {
       categories: this.state.categories,
       recipes: this.state.recipes,
       currentCategoryId: this.state.currentCategoryId,
+      isLoggedIn: this.state.isLoggedIn,
       onChangeCurrentCategoryId: this.handleCurrentCategoryId,
-      onAddCategory: this.handleAddCategory,
       handleGetRecipes: this.handleGetRecipes,
-      handleGetCategories: this.handleGetCategories
+      handleGetCategories: this.handleGetCategories,
+      handleLogout: this.handleLogout
     }
 
     return (

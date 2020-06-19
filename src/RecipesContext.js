@@ -7,5 +7,6 @@ export default React.createContext({
   onChangeCurrentCategoryId: () => { },
   onAddCategory: () => {},
   handleGetRecipes: () => {},
-  handleGetCategories: () => {}
+  handleGetCategories: () => {},
+  handleLogout: () => {}
 })
