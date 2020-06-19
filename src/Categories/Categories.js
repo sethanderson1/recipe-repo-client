@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import config from '../config';
+
 import {  NavLink } from 'react-router-dom';
 // import { categories } from '../dummyStore'
 // import RecipeCardList from '../RecipeCardList/RecipeCardList';
@@ -20,8 +22,25 @@ export default function Categories(props) {
         props.history.push('/add-category')
     }
 
-    function handleClickDelete() {
-        // delete
+    async function handleDeleteCategory(categoryId) {
+        try {
+            const authToken = localStorage.getItem('authToken')
+            // console.log('authToken', authToken)
+            const res = await fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
+                method: "DELETE",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": `bearer ${authToken}`
+                },
+            })
+
+            context.handleGetCategories()
+            // props.history.push(`/categories/${currentCategoryId}`)
+
+
+        } catch (err) {
+            console.log('err', err)
+        }
     }
 
     console.log('categories', categories)
@@ -37,7 +56,9 @@ export default function Categories(props) {
                 >
                     All categories
                 </NavLink>
-                <button onClick={handleClickDelete}>delete</button>
+                {/* maybe can make delete button invisible so 
+                css is easier to deal with */}
+                {/* <button onClick={handleClickDelete}>Delete</button> */}
 
             </li>
             {categories.map(category => {
@@ -53,7 +74,7 @@ export default function Categories(props) {
                         {category.category_name}
 
                     </NavLink>
-                    <button onClick={handleClickDelete}>Delete</button>
+                    <button onClick={()=>handleDeleteCategory(category.id)}>Delete</button>
 
                 </li>
             })}
