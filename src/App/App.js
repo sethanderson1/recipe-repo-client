@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import SignUp from '../SignUp/SignUp';
 import Login from '../Login/Login';
 import RecipePageMain from '../RecipePageMain/RecipePageMain';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Categories from '../Categories/Categories';
 import RecipesContext from '../RecipesContext';
 import AddCategory from '../AddCategory/AddCategory';
@@ -20,23 +21,20 @@ export default class App extends Component {
       recipes: [],
       currentCategoryId: 0,
       isLoggedIn: true
-      // isLoggedIn: this.checkLoggedInStatus
     }
   }
 
-  // checkLoggedInStatus() {
 
-  // }
 
   handleLogout = () => {
     console.log('handleLogout ran')
-    localStorage.setItem('authToken', null)
+    localStorage.removeItem('authToken')
     this.setState({
-      isLoggedIn:false
+      isLoggedIn: false
     })
   }
 
-  handleChangeIsLoggedIn = (status) =>{
+  handleChangeIsLoggedIn = (status) => {
     this.setState({
       isLoggedIn: status
     })
@@ -44,13 +42,36 @@ export default class App extends Component {
 
   componentDidMount() {
     console.log('componentDidMount ran')
+    this.checkLoggedInStatus()
     this.handleGetCategories()
     this.handleGetRecipes()
   }
 
-  handleCurrentCategoryId = (currentCategoryId) => {
+
+  // next steps fiugre o  ut how to prevent red scary error when 
+  // user not logged in but goes to /categories or /recipe
+  checkBeforeAnything = () => {
+    console.log('checkBeforeAnything ran')
+    const authToken = localStorage.getItem('authToken')
+    if (!authToken) {
+      return (
+        <Redirect to={'/'} />
+      )
+    }
+  }
+
+  checkLoggedInStatus = () => {
+    const authToken = localStorage.getItem('authToken')
+    const loggedInStatus = authToken ? true : false
     this.setState({
-      currentCategoryId: currentCategoryId
+      isLoggedIn: loggedInStatus
+    })
+  }
+
+  handleCurrentCategoryId = (currentCategoryId) => {
+    sessionStorage.setItem('currentCategoryId', `${currentCategoryId}`)
+    this.setState({
+      currentCategoryId
     })
   }
 
@@ -107,7 +128,8 @@ export default class App extends Component {
       handleGetRecipes: this.handleGetRecipes,
       handleGetCategories: this.handleGetCategories,
       handleLogout: this.handleLogout,
-      handleChangeIsLoggedIn: this.handleChangeIsLoggedIn
+      handleChangeIsLoggedIn: this.handleChangeIsLoggedIn,
+      checkBeforeAnything: this.checkBeforeAnything
     }
 
     return (
@@ -128,11 +150,13 @@ export default class App extends Component {
               path={'/login'}
               component={Login}
             />
-            <Route
-              exact
-              path={'/categories'}
-              component={Categories}
-            />
+            <PrivateRoute>
+              <Route
+                exact
+                path={'/categories'}
+                component={Categories}
+              />
+            </PrivateRoute>
             <Route
               exact
               path={'/categories/:categoryId'}

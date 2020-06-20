@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext  } from 'react';
 import config from '../config';
-
 import { NavLink } from 'react-router-dom';
-// import { categories } from '../dummyStore'
-// import RecipeCardList from '../RecipeCardList/RecipeCardList';
 import RecipesContext from '../RecipesContext';
 import './Categories.css'
 
 export default function Categories(props) {
-    console.log('props', props)
+
 
     const context = useContext(RecipesContext)
-    console.log('context', context)
+
     const { categories } = context
 
     function handleClickBack() {

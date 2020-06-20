@@ -1,11 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Route, NavLink } from 'react-router-dom';
 import RecipesContext from '../RecipesContext'
 import config from '../config';
 
 // import './AddRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
-// make sure TextareaAutosize behaves properly
+
+//TO FIX: refresh edit page causes error
+// ×
+// TypeError: Cannot read property 'category_id' of undefined
+// EditRecipe
+// C:/Users/me/projects/recipe-repo-client/src/EditRecipe/EditRecipe.js:14
 
 function EditRecipe(props) {
     const context = useContext(RecipesContext)
@@ -13,7 +17,7 @@ function EditRecipe(props) {
     const recipe_id = props.match.params.recipeId
     const recipe = recipes.filter(recipe => recipe.id == recipe_id)
         && recipes.filter(recipe => recipe.id == recipe_id)[0]
-
+    const category_id = recipe && recipe.category_id
     console.log('recipe', recipe)
     const titleInitialValue = recipe && recipe.title
     const descriptionInitialValue = recipe && recipe.description
@@ -40,25 +44,16 @@ function EditRecipe(props) {
         props.history.goBack()
     }
 
-
     function handleSubmit(e) {
         e.preventDefault()
-        const { recipe_title } = e.target
-        console.log('e.target', e.target)
-        const { description } = e.target
-        const { ingredients } = e.target
-        const { directions } = e.target
         patchRecipe({
-            category_id: recipe.category_id,
-            title: recipe_title.value,
-            description: description.value,
-            ingredients: ingredients.value,
-            directions: directions.value,
+            category_id,
+            title,
+            description,
+            ingredients,
+            directions,
         })
     }
-
-    // next steps: when refresh page, shouldnt lose currentCategoryId
-    // now, it seems to be getting set back to category id = 0
 
     async function patchRecipe(fields) {
         console.log('fields', fields)
@@ -66,7 +61,7 @@ function EditRecipe(props) {
         try {
             const authToken = localStorage.getItem('authToken')
             console.log('authToken', authToken)
-            const res = await fetch(`${config.API_ENDPOINT}/recipes/${recipe_id}`, {
+            await fetch(`${config.API_ENDPOINT}/recipes/${recipe_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",
@@ -77,7 +72,8 @@ function EditRecipe(props) {
             // const postedRecipe = await res.json()
             // console.log('postedRecipe', postedRecipe)
             context.handleGetRecipes()
-            props.history.push(`/categories/${recipe.category_id}`)
+            props.history.goBack()
+            // props.history.push(`/categories/${recipe.category_id}`)
         } catch (err) {
             console.log('err', err)
         }

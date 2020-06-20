@@ -6,7 +6,6 @@ import TextareaAutosize from 'react-textarea-autosize';
 import ValidationError from '../ValidationError/ValidationError';
 
 function AddRecipe(props) {
-    const { categories } = useContext(RecipesContext)
     console.log('useContext(RecipesContext)', useContext(RecipesContext))
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -14,16 +13,10 @@ function AddRecipe(props) {
     const [directions, setDirections] = useState('');
     const context = useContext(RecipesContext)
     console.log('context', context)
-
-    // category user came from to get here
-    // const currentCategoryId = context.
-
+    const { categories } = context
 
     function handleCancel() {
         props.history.goBack()
-
-
-
         // props.history.push(`/categories/${currentCategoryId}`)
     }
     console.log('props.history', props.history)
@@ -38,16 +31,12 @@ function AddRecipe(props) {
     function handleSubmit(e) {
         e.preventDefault()
         const { select_category } = e.target
-        const { recipe_name } = e.target
-        const { description } = e.target
-        const { ingredients } = e.target
-        const { directions } = e.target
         postRecipe({
             category_id: select_category.value,
-            title: recipe_name.value,
-            description: description.value,
-            ingredients: ingredients.value,
-            directions: directions.value,
+            title: name,
+            description,
+            ingredients,
+            directions,
         })
     }
 
@@ -66,7 +55,8 @@ function AddRecipe(props) {
             })
             const postedRecipe = await res.json()
             context.handleGetRecipes()
-            props.history.push(`/categories/${postedRecipe.category_id}`)
+            // props.history.push(`/categories/${postedRecipe.category_id}`)
+            props.history.goBack()
         } catch (err) {
             console.log('err', err)
         }

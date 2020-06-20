@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react'
 import RecipesContext from '../RecipesContext'
 import './Login.css';
 import config from '../config'
-// import config from './'
 
 export default function SignUp(props) {
     const [error, setError] = useState(null)
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const context = useContext(RecipesContext)
 
     function handleCancel() {
@@ -14,11 +15,9 @@ export default function SignUp(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        const { user_name, password } = e.target;
-
         postLoginUser({
-            user_name: user_name.value,
-            password: password.value,
+            user_name:username,
+            password,
         })
     }
 
@@ -65,12 +64,18 @@ export default function SignUp(props) {
                 <div>
                     <label htmlFor="user_name">Username: </label>
                     <input placeholder='username' type="text"
-                        name='user_name' id='user_name' required />
+                        name='user_name' id='user_name' 
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                        required />
                 </div>
                 <div>
                     <label htmlFor="password">Password: </label>
                     <input placeholder='password' type="password"
-                        name='password' id='password' required />
+                        name='password' id='password' 
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        required />
                 </div>
                 {error}
                 <button type='button' onClick={handleCancel}>Cancel</button>
