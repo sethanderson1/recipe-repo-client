@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react'
 import RecipesContext from '../RecipesContext'
 import './Login.css';
 import config from '../config'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function SignUp(props) {
     const [error, setError] = useState(null)
@@ -16,7 +19,7 @@ export default function SignUp(props) {
     const handleSubmit = e => {
         e.preventDefault()
         postLoginUser({
-            user_name:username,
+            user_name: username,
             password,
         })
     }
@@ -64,7 +67,7 @@ export default function SignUp(props) {
                 <div>
                     <label htmlFor="user_name">Username: </label>
                     <input placeholder='username' type="text"
-                        name='user_name' id='user_name' 
+                        name='user_name' id='user_name'
                         value={username}
                         onChange={e => setUsername(e.target.value)}
                         required />
@@ -72,7 +75,7 @@ export default function SignUp(props) {
                 <div>
                     <label htmlFor="password">Password: </label>
                     <input placeholder='password' type="password"
-                        name='password' id='password' 
+                        name='password' id='password'
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         required />
@@ -81,6 +84,21 @@ export default function SignUp(props) {
                 <button type='button' onClick={handleCancel}>Cancel</button>
                 <button type='submit'>Log In</button>
             </form>
+            Demo:
+            Username: user1@gmail.com
+            <button
+                onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
+                
+            >
+                <FontAwesomeIcon icon={faClipboardList} size="2x"/>
+            </button>
+
+            Password: Password1!
+            <button
+                onClick={() => navigator.clipboard.writeText(`Password1!`)}
+            >
+                Copy
+            </button>
         </div>
     )
 }
