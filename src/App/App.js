@@ -79,6 +79,7 @@ export default class App extends Component {
     try {
       const authToken = localStorage.getItem('authToken')
       // console.log('authToken', authToken)
+      console.log('config.API_ENDPOINT', config.API_ENDPOINT)
       const res = await fetch(`${config.API_ENDPOINT}/categories`, {
         method: "GET",
         headers: {
