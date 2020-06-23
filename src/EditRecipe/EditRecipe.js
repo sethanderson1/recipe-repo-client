@@ -18,7 +18,7 @@ function EditRecipe(props) {
     const recipe = recipes.filter(recipe => recipe.id == recipe_id)
         && recipes.filter(recipe => recipe.id == recipe_id)[0]
     const category_id = recipe && recipe.category_id
-    console.log('recipe', recipe)
+    // console.log('recipe', recipe)
     const titleInitialValue = recipe && recipe.title
     const descriptionInitialValue = recipe && recipe.description
     const ingredientsInitialValue = recipe && recipe.ingredients
@@ -56,11 +56,11 @@ function EditRecipe(props) {
     }
 
     async function patchRecipe(fields) {
-        console.log('fields', fields)
-        console.log('recipe.category_id', recipe.category_id)
+        // console.log('fields', fields)
+        // console.log('recipe.category_id', recipe.category_id)
         try {
             const authToken = localStorage.getItem('authToken')
-            console.log('authToken', authToken)
+            // console.log('authToken', authToken)
             await fetch(`${config.API_ENDPOINT}/recipes/${recipe_id}`, {
                 method: "PATCH",
                 headers: {
@@ -80,7 +80,7 @@ function EditRecipe(props) {
     }
 
     // todo: maybe change css names
-    console.log('recipes', recipes)
+    // console.log('recipes', recipes)
 
     return (
         <div className='AddRecipe__add-recipe-container'>

@@ -36,7 +36,7 @@ export default function Categories(props) {
         }
     }
 
-    console.log('categories', categories)
+    // console.log('categories', categories)
     return (
         <div>
             <button onClick={handleClickBack}>back</button>
@@ -55,7 +55,7 @@ export default function Categories(props) {
 
             </li>
             {categories.map(category => {
-                console.log('category', category)
+                // console.log('category', category)
 
                 return <li key={category.id}
                     className={'Categories__categories'}

@@ -12,11 +12,11 @@ export default function RecipePageMain(props) {
     const selectedRecipe = recipes.filter(recipe => recipe.id == recipeId)
     const recipe = selectedRecipe
         && selectedRecipe[0]
-    console.log('recipe', recipe)
+    // console.log('recipe', recipe)
     // refresh resets category id to 0 .....
     let currentCategoryId = recipe && recipe.category_id 
 
-    console.log('currentCategoryId', currentCategoryId)
+    // console.log('currentCategoryId', currentCategoryId)
 
 
     // todo: add folder name that can be clicked to go back to folder (or should make a back button to go back to folder??)
@@ -33,10 +33,10 @@ export default function RecipePageMain(props) {
     }
 
     async function handleDeleteRecipe() {
-        console.log('recipeId', recipeId)
+        // console.log('recipeId', recipeId)
         try {
             const authToken = localStorage.getItem('authToken')
-            console.log('authToken', authToken)
+            // console.log('authToken', authToken)
             const res = await fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
                 method: "DELETE",
                 headers: {

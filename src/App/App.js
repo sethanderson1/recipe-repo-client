@@ -27,7 +27,7 @@ export default class App extends Component {
 
 
   handleLogout = () => {
-    console.log('handleLogout ran')
+    // console.log('handleLogout ran')
     localStorage.removeItem('authToken')
     this.setState({
       isLoggedIn: false
@@ -41,7 +41,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount ran')
+    // console.log('componentDidMount ran')
     this.checkLoggedInStatus()
     this.handleGetCategories()
     this.handleGetRecipes()
@@ -51,7 +51,7 @@ export default class App extends Component {
   // next steps fiugre o  ut how to prevent red scary error when 
   // user not logged in but goes to /categories or /recipe
   checkBeforeAnything = () => {
-    console.log('checkBeforeAnything ran')
+    // console.log('checkBeforeAnything ran')
     const authToken = localStorage.getItem('authToken')
     if (!authToken) {
       return (
@@ -79,7 +79,7 @@ export default class App extends Component {
     try {
       const authToken = localStorage.getItem('authToken')
       // console.log('authToken', authToken)
-      console.log('config.API_ENDPOINT', config.API_ENDPOINT)
+      // console.log('config.API_ENDPOINT', config.API_ENDPOINT)
       const res = await fetch(`${config.API_ENDPOINT}/categories`, {
         method: "GET",
         headers: {

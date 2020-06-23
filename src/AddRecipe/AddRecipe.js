@@ -6,20 +6,20 @@ import TextareaAutosize from 'react-textarea-autosize';
 import ValidationError from '../ValidationError/ValidationError';
 
 function AddRecipe(props) {
-    console.log('useContext(RecipesContext)', useContext(RecipesContext))
+    // console.log('useContext(RecipesContext)', useContext(RecipesContext))
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [directions, setDirections] = useState('');
     const context = useContext(RecipesContext)
-    console.log('context', context)
+    // console.log('context', context)
     const { categories } = context
 
     function handleCancel() {
         props.history.goBack()
         // props.history.push(`/categories/${currentCategoryId}`)
     }
-    console.log('props.history', props.history)
+    // console.log('props.history', props.history)
 
     function validateName() {
         const recipeName = name.trim()
@@ -41,10 +41,10 @@ function AddRecipe(props) {
     }
 
     async function postRecipe(fields) {
-        console.log('fields', fields)
+        // console.log('fields', fields)
         try {
             const authToken = localStorage.getItem('authToken')
-            console.log('authToken', authToken)
+            // console.log('authToken', authToken)
             const res = await fetch(`${config.API_ENDPOINT}/recipes`, {
                 method: "POST",
                 headers: {

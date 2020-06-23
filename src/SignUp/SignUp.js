@@ -104,9 +104,9 @@ export default function SignUp(props) {
     }
 
     function checkIfValid() {
-        console.log('validatePassword()', validatePassword())
-        console.log('validateConfirmPassword()', validateConfirmPassword())
-        console.log('validateUsername()', validateUsername())
+        // console.log('validatePassword()', validatePassword())
+        // console.log('validateConfirmPassword()', validateConfirmPassword())
+        // console.log('validateUsername()', validateUsername())
         if (
             validatePassword() === true
             && validateConfirmPassword() === true

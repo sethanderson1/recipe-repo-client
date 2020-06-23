@@ -10,11 +10,11 @@ import config from '../config';
 // account for when user enters already taken username
 
 export default function AddCategory(props) {
-    console.log('props', props)
+    // console.log('props', props)
     const [name, setName] = useState('');
 
     const context = useContext(RecipesContext)
-    console.log('context', context)
+    // console.log('context', context)
 
 
     function handleCancel() {
@@ -32,7 +32,7 @@ export default function AddCategory(props) {
     function handleSubmit(e) {
         e.preventDefault()
         const {category_name}= e.target
-        console.log('category_name.value', category_name.value)
+        // console.log('category_name.value', category_name.value)
         postCategory({
             category_name: category_name.value,
             
@@ -48,10 +48,10 @@ export default function AddCategory(props) {
     // }
 
     async function postCategory(categoryName) {
-        console.log('categoryName', categoryName.cate)
+        // console.log('categoryName', categoryName.cate)
         try {
             const authToken = localStorage.getItem('authToken')
-            console.log('authToken', authToken)
+            // console.log('authToken', authToken)
             const res = await fetch(`${config.API_ENDPOINT}/categories`, {
                 method: "POST",
                 headers: {
@@ -61,7 +61,7 @@ export default function AddCategory(props) {
                 body: JSON.stringify(categoryName)
             })
             const postedCategory = await res.json()
-            console.log('postedCategory', postedCategory)
+            // console.log('postedCategory', postedCategory)
             context.handleGetCategories()
             props.history.push(`/categories`)
         } catch (err) {

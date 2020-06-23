@@ -7,14 +7,14 @@ import './RecipeCardList.css'
 
 export default function RecipeCardList(props) {
     const context = useContext(RecipesContext)
-    console.log('context', context)
+    // console.log('context', context)
     const { recipes, categories } = context
 
-    console.log('recipes', recipes)
+    // console.log('recipes', recipes)
     const category_id = props.match.params.categoryId
 
     const selectedCategory = categories.filter(category => category_id == category.id)[0]
-    console.log('selectedCategory', selectedCategory)
+    // console.log('selectedCategory', selectedCategory)
     const category_name = category_id == 0
         ? 'all recipes'
         : selectedCategory
@@ -31,7 +31,7 @@ export default function RecipeCardList(props) {
     
     // is okay to coerce with '==' or is a better solution?
     
-    console.log('recipesFromCategory', recipesFromCategory)
+    // console.log('recipesFromCategory', recipesFromCategory)
 
     return (
         <section className='RecipeCardList'>
