@@ -62,8 +62,8 @@ export default function SignUp(props) {
     }
 
     return (
-        <div className='SignUp__signup-form-container'>
-            <form className='login-form' onSubmit={handleSubmit}>
+        <div className='Login__login-form-container'>
+            <form id='login-form' onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="user_name">Username: </label>
                     <input placeholder='username' type="text"
@@ -81,24 +81,33 @@ export default function SignUp(props) {
                         required />
                 </div>
                 {error}
-                <button type='button' onClick={handleCancel}>Cancel</button>
-                <button type='submit'>Log In</button>
+                <div className='login-form-buttons-wrapper'>
+                    <button type='button' onClick={handleCancel}>Cancel</button>
+                    <button type='submit'>Log In</button>
+                </div>
             </form>
-            Demo:
-            Username: user1@gmail.com
-            <button
-                onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
-                
-            >
-                <FontAwesomeIcon icon={faClipboardList} size="2x"/>
-            </button>
+            <div className='demo-credentials'>
+                Demo:
+                <div className='credential-wrapper'>
+                    <p>Username: user1@gmail.com</p>
+                    <button className="copy-to-clipboard"
+                        onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
 
-            Password: Password1!
-            <button
-                onClick={() => navigator.clipboard.writeText(`Password1!`)}
-            >
-                Copy
-            </button>
+                    >
+                        <FontAwesomeIcon icon={faClipboardList} size="2x" />
+                    </button>
+                </div>
+                <div className='credential-wrapper'>
+
+                    <p>Password: Password1!  </p>
+                    <button className="copy-to-clipboard"
+                        onClick={() => navigator.clipboard.writeText(`Password1!`)}
+                    >
+                        <FontAwesomeIcon icon={faClipboardList} size="2x" />
+                    </button>
+                </div>
+            </div>
+
         </div>
     )
 }
