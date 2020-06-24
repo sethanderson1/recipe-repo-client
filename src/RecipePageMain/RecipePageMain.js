@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import RecipesContext from '../RecipesContext'
 import config from '../config';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import './RecipePageMain.css'
 
@@ -14,7 +16,7 @@ export default function RecipePageMain(props) {
         && selectedRecipe[0]
     // console.log('recipe', recipe)
     // refresh resets category id to 0 .....
-    let currentCategoryId = recipe && recipe.category_id 
+    let currentCategoryId = recipe && recipe.category_id
 
     // console.log('currentCategoryId', currentCategoryId)
 
@@ -27,7 +29,7 @@ export default function RecipePageMain(props) {
 
 
     function handleClickBack() {
-        
+
         // props.history.push(`/categories/${currentCategoryId}`)
         props.history.goBack()
     }
@@ -37,7 +39,7 @@ export default function RecipePageMain(props) {
         try {
             const authToken = localStorage.getItem('authToken')
             // console.log('authToken', authToken)
-            const res = await fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
+            await fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",
@@ -67,7 +69,16 @@ export default function RecipePageMain(props) {
         if (recipe) {
             return (
                 <div className='RecipePageMain__container'>
-                    <button onClick={handleClickBack}>Back</button>
+
+                    <button 
+                    className='btn back-button'
+                    onClick={handleClickBack}>
+                    <FontAwesomeIcon
+                    // onClick={handleClickBack}
+                    className='fontawesome-back'
+                    icon={faChevronLeft} size="2x" />
+
+                    </button>
                     <h1>{recipe && recipe.title}</h1>
                     <p className='RecipePageMain__description-content-container'>{recipe && recipe.description}</p>
                     <h3>Ingredients</h3>
