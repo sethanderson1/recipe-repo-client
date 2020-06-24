@@ -5,32 +5,32 @@
 } */
 
 .back-button {
-    margin:5px 0px 0px 0px;
-    height:30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 0;
-    position: absolute;
-    background: rgba(161, 161, 161, 0);
-    color: rgb(44, 34, 87);
-    transition-duration: 0.3s;
+  margin: 5px 0px 0px 0px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 0;
+  position: absolute;
+  background: rgba(161, 161, 161, 0);
+  /* color: rgb(44, 34, 87); */
+
+  transition-duration: 0.3s;
 }
 
 .back-button:hover {
-    background: rgba(161, 161, 161, 0);
-    color: rgba(44, 34, 87, 0.568);
-    cursor: pointer;
+  background: rgba(161, 161, 161, 0);
+
+  color: #212121;
+  cursor: pointer;
 }
 
 .back-button:focus {
-    border:0;
+  border: 0;
 }
 
 .fontawesome-back {
-    font-size: 1.4rem;
-    /* position: absolute;
+  font-size: 1.4rem;
+  /* position: absolute;
     left:8px;
     top:4px; */
 }
-
-

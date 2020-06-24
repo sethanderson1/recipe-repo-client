@@ -55,28 +55,42 @@ export default function RecipePageMain(props) {
     function recipeNotEmpty(recipe) {
         if (recipe) {
             return (
-                <div className='RecipePageMain__container'>
+                <div className='RecipePageMain__container 
+                                primary-text-color'>
                     <BackButton handleClickBack={handleClickBack} />
                     <div className='RecipePageMain__header
                     default-primary-color'>
                         <h1 className='RecipePageMain__recipe-title
-                        text-primary-color'>
-                            {recipe && recipe.title}</h1>
+                                           text-primary-color'>
+                            {recipe && recipe.title}
+                        </h1>
                         <p className='RecipePageMain__description-content
                         light-primary-color '>
                             {recipe && recipe.description}</p>
                     </div>
+                    <div className='RecipePageMain__content-container'>
+                        <h2 className='RecipePageMain__ingredients-title'>
+                            Ingredients</h2>
+                        <p className='RecipePageMain__ingedients-content'>
+                            {recipe && recipe.ingredients}</p>
+                        <h2 className='RecipePageMain__directions-title'>
+                            Directions</h2>
+                        <p className='RecipePageMain__directions-content'>
+                            {recipe && recipe.directions}</p>
+                        <button
+                            className='btn delete-button'
+                            onClick={() => {
+                                if (window.confirm('Are you sure you wish to delete this item?')) {
+                                    handleDeleteRecipe()
+                                }
+                            }} 
+                        >
+                            Delete
+                        </button>
 
-                    <h2 className='RecipePageMain__ingredients-title'>
-                        Ingredients</h2>
-                    <p className='RecipePageMain__ingedients-content'>
-                        {recipe && recipe.ingredients}</p>
-                    <h2 className='RecipePageMain__ingedients-content'>
-                        Directions</h2>
-                    <p className='RecipePageMain__directions-content'>
-                        {recipe && recipe.directions}</p>
-                    <button onClick={handleDeleteRecipe}>Delete</button>
-                    <button onClick={handleEditRecipe}>Edit</button>
+                        {/* window.confirm('Are you sure you wish to delete this item?') ? onConfirm("confirm") : onCancel("cancel") */}
+                        <button onClick={handleEditRecipe}>Edit</button>
+                    </div>
                 </div>
             )
         }

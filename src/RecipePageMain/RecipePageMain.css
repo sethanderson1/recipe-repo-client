@@ -1,22 +1,73 @@
 .RecipePageMain__container {
     /* margin:auto; */
     white-space: pre-line;
+    /* font-family: 'Fira Sans', sans-serif !important; */
+
+}
+.delete-button{
+/* height:50px;
+width:50px; */
 }
 
 .RecipePageMain__header {
-    padding: 65px 30px 20px 55px;
+    padding: 55px 30px 20px 30px;
     box-shadow: 0px 3px 6px rgba(0,0,0,.4)
+}
+
+.RecipePageMain__recipe-title {
+    /* text-align: center; */
+}
+
+.RecipePageMain__description-content {
+    max-width: 400px;
 }
 
 
 .RecipePageMain__container h1 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 100;
     margin:0;
+    
 }
 
 .RecipePageMain__container h2 {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.RecipePageMain__container p {
+    margin-bottom: 40px;
+    
+}
+
+.RecipePageMain__content-container {
+    margin:0 16px;
+    max-width: 640px;
+
+}
+
+
+
+
+.RecipePageMain__ingredients-title {
+    margin-top: 0;
+    padding-top:20px;
+}
+
+.RecipePageMain__directions-title {
+    border-top: 2px solid rgba(0,0,0,0.15);
+    margin-top: 0;
+    padding-top:20px;
+
+}
+
+.RecipePageMain__directions-content,
+.RecipePageMain__ingedients-content {
+    /* font-family: "Source Sans Pro",Times,serif; */
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    letter-spacing: 0;
 }
 
 

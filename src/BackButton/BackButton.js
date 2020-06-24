@@ -6,7 +6,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 function BackButton(props) {
     return (
         <button
-            className='btn back-button'
+            className='btn back-button light-primary-color'
             onClick={props.handleClickBack}
             >
             <FontAwesomeIcon

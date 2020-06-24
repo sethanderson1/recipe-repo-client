@@ -41,7 +41,7 @@ export default function Categories(props) {
         <div>
             <BackButton handleClickBack={handleClickBack} />
             <li key={'asdf'}
-                className={'Categories__categories'}
+                className={'Categories__categories heading'}
             >
                 <NavLink
                     to={`/categories/0`}
@@ -58,7 +58,7 @@ export default function Categories(props) {
                 // console.log('category', category)
 
                 return <li key={category.id}
-                    className={'Categories__categories'}
+                    className={'Categories__categories heading'}
                 >
                     <NavLink
                         to={`/categories/${category.id}`}
@@ -67,7 +67,13 @@ export default function Categories(props) {
                         {category.category_name}
                     </NavLink>
                     <button
-                        onClick={() => handleDeleteCategory(category.id)}>
+                        className='btn delete-button'
+                        onClick={() => {
+                            if (window.confirm('Are you sure you wish to delete this item?')) {
+                                handleDeleteCategory(category.id)
+                            }
+                        }}
+                    >
                         Delete</button>
                 </li>
             })}
