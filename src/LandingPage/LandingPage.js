@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+// import { Route, Link } from 'react-router-dom';
 import MainNav from '../MainNav/MainNav';
 
 function LandingPage() {

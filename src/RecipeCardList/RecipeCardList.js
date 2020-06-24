@@ -4,6 +4,10 @@ import RecipeCard from '../RecipeCard/RecipeCard'
 // import { categories } from '../dummyStore';
 import RecipesContext from '../RecipesContext'
 import './RecipeCardList.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import BackButton from '../BackButton/BackButton';
+
 
 export default function RecipeCardList(props) {
     const context = useContext(RecipesContext)
@@ -25,17 +29,17 @@ export default function RecipeCardList(props) {
     }
 
     const recipesFromCategory = category_id == 0
-    ? recipes
-    : recipes
-    .filter(recipe => recipe.category_id == category_id)
-    
+        ? recipes
+        : recipes
+            .filter(recipe => recipe.category_id == category_id)
+
     // is okay to coerce with '==' or is a better solution?
-    
+
     // console.log('recipesFromCategory', recipesFromCategory)
 
     return (
         <section className='RecipeCardList'>
-            <button onClick={handleClickBack}>back</button>
+            <BackButton handleClickBack={handleClickBack} />
             <h3>{category_name}</h3>
             <ul>
                 {recipesFromCategory.map(recipeCard => {

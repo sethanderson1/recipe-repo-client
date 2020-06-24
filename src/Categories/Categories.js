@@ -1,8 +1,9 @@
-import React, { useContext  } from 'react';
+import React, { useContext } from 'react';
 import config from '../config';
 import { NavLink } from 'react-router-dom';
 import RecipesContext from '../RecipesContext';
 import './Categories.css'
+import BackButton from '../BackButton/BackButton';
 
 export default function Categories(props) {
 
@@ -36,10 +37,9 @@ export default function Categories(props) {
         }
     }
 
-    // console.log('categories', categories)
     return (
         <div>
-            <button onClick={handleClickBack}>back</button>
+            <BackButton handleClickBack={handleClickBack} />
             <li key={'asdf'}
                 className={'Categories__categories'}
             >

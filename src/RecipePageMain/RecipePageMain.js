@@ -3,8 +3,8 @@ import RecipesContext from '../RecipesContext'
 import config from '../config';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
 import './RecipePageMain.css'
+import BackButton from '../BackButton/BackButton';
 
 export default function RecipePageMain(props) {
 
@@ -69,16 +69,7 @@ export default function RecipePageMain(props) {
         if (recipe) {
             return (
                 <div className='RecipePageMain__container'>
-
-                    <button 
-                    className='btn back-button'
-                    onClick={handleClickBack}>
-                    <FontAwesomeIcon
-                    // onClick={handleClickBack}
-                    className='fontawesome-back'
-                    icon={faChevronLeft} size="2x" />
-
-                    </button>
+                    <BackButton handleClickBack={handleClickBack} />
                     <h1>{recipe && recipe.title}</h1>
                     <p className='RecipePageMain__description-content-container'>{recipe && recipe.description}</p>
                     <h3>Ingredients</h3>
