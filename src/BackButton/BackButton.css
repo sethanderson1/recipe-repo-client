@@ -1,24 +1,24 @@
-.RecipePageMain__container {
+/* .RecipePageMain__container {
     margin:auto;
     width:95%;
     white-space: pre-line;
-}
+} */
 
 .back-button {
     margin:5px 0px 0px 0px;
-    height:40px;
-    width: 40px;
+    height:30px;
+    width: 30px;
     border-radius: 50%;
     border: 0;
-    position: relative;
-    background: rgba(161, 161, 161, 1);
-    color: rgba(44, 34, 87, 0.568);
+    position: absolute;
+    background: rgba(161, 161, 161, 0);
+    color: rgb(44, 34, 87);
     transition-duration: 0.3s;
 }
 
 .back-button:hover {
-    background: rgba(161, 161, 161, 0.8);
-    color: rgb(44, 34, 87);
+    background: rgba(161, 161, 161, 0);
+    color: rgba(44, 34, 87, 0.568);
     cursor: pointer;
 }
 
@@ -27,10 +27,10 @@
 }
 
 .fontawesome-back {
-    font-size: 2rem;
-    position: absolute;
+    font-size: 1.4rem;
+    /* position: absolute;
     left:8px;
-    top:4px;
+    top:4px; */
 }
 
 
