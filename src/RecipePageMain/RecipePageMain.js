@@ -77,19 +77,27 @@ export default function RecipePageMain(props) {
                             Directions</h2>
                         <p className='RecipePageMain__directions-content'>
                             {recipe && recipe.directions}</p>
-                        <button
-                            className='btn delete-button'
-                            onClick={() => {
-                                if (window.confirm('Are you sure you wish to delete this item?')) {
-                                    handleDeleteRecipe()
-                                }
-                            }} 
-                        >
-                            Delete
+                        <div className='RecipePageMain__flex-wrapper'>
+                            <div className='RecipePageMain__btn-container'>
+                                <button
+                                    className='btn edit-button
+                                text-primary-color '
+                                    onClick={handleEditRecipe}>
+                                    Edit
+                                </button>
+                                <button
+                                    className='btn delete-button'
+                                    onClick={() => {
+                                        if (window.confirm('Are you sure you wish to delete this item?')) {
+                                            handleDeleteRecipe()
+                                        }
+                                    }}
+                                >
+                                    Delete Recipe
                         </button>
 
-                        {/* window.confirm('Are you sure you wish to delete this item?') ? onConfirm("confirm") : onCancel("cancel") */}
-                        <button onClick={handleEditRecipe}>Edit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )

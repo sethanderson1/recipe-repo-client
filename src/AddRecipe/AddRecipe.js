@@ -24,7 +24,7 @@ function AddRecipe(props) {
     function validateName() {
         const recipeName = name.trim()
         if (recipeName.length === 0) {
-            return '*name is required'
+            return ` *name is required `
         }
     }
 
@@ -53,7 +53,7 @@ function AddRecipe(props) {
                 },
                 body: JSON.stringify(fields)
             })
-            const postedRecipe = await res.json()
+            await res.json()
             context.handleGetRecipes()
             // props.history.push(`/categories/${postedRecipe.category_id}`)
             props.history.goBack()
@@ -73,21 +73,37 @@ function AddRecipe(props) {
             </option>
         ))
     }
-    // todo: maybe change css names
+
+    console.log('toggleHoverClass()', toggleHoverClass())
+    function toggleHoverClass() {
+        if (name.length !== 0) {
+            return ['AddRecipe__submit', 'allowHover'].join(' ')
+        } else {
+            return 'AddRecipe__submit'
+
+        }
+    }
+
     return (
-        <div className='AddRecipe__add-recipe-container'>
-            <h2>Add Recipe</h2>
-            <form 
-            onSubmit={handleSubmit}
-                id='AddRecipe__add-recipe'>
-                <label htmlFor='select_category'>
+        <div className='AddRecipe__add-recipe-container
+        default-primary-color'>
+            <h2 className='AddRecipe__heading 
+            text-primary-color'>Add Recipe</h2>
+            <form
+                onSubmit={handleSubmit}
+                className='AddRecipe__add-recipe'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='select_category'>
                     Select Category</label>
                 <select
                     name='select_category'
                     id='select_category'>
                     {renderOptions()}
                 </select>
-                <label htmlFor='recipe_name'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='recipe_name'>
                     Recipe Name</label>
                 <input type='text'
                     name='recipe_name'
@@ -96,10 +112,13 @@ function AddRecipe(props) {
                     onChange={e => setName(e.target.value)}
                 />
                 <ValidationError
+                    className='accent-color'
                     message={validateName()}
                     errorPosition={'relative'}
                 />
-                <label htmlFor='description'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='description'>
                     Description</label>
                 <textarea
                     name='description'
@@ -107,7 +126,9 @@ function AddRecipe(props) {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                 />
-                <label htmlFor='ingredients'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='ingredients'>
                     Ingredients</label>
                 <TextareaAutosize
                     minRows={7}
@@ -117,7 +138,9 @@ function AddRecipe(props) {
                     value={ingredients}
                     onChange={e => setIngredients(e.target.value)}
                 />
-                <label htmlFor='directions'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='directions'>
                     Directions</label>
                 <TextareaAutosize
                     minRows={7}
@@ -127,11 +150,14 @@ function AddRecipe(props) {
                     value={directions}
                     onChange={e => setDirections(e.target.value)}
                 />
-                <div id='AddRecipe__buttons-wrapper'>
-                    <button 
-                    type="button"
-                    onClick={handleCancel}>Cancel</button>
+                <div className='AddRecipe__buttons-wrapper'>
                     <button
+                        className='AddRecipe__cancel-button 
+                        allowHover'
+                        type="button"
+                        onClick={handleCancel}>Cancel</button>
+                    <button
+                        className={toggleHoverClass()}
                         type="submit"
                         disabled={name.length === 0}
                     >Save</button>

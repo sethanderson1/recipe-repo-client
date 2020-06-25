@@ -1,9 +1,18 @@
 .error-absolute {
-    color: rgb(165, 62, 62); 
-    position: absolute;
+  position: absolute;
+  background-color: lightgray;
+  color: #cb2431;
+  white-space: pre-wrap;
 }
 
 .error-relative {
-    color: rgb(165, 62, 62); 
-    position: relative;
+  position: relative;
+  background-color: lightgray;
+  color: #cb2431;
+  white-space: pre-wrap;
+}
+
+.ValidationError-wrapper {
+  margin-top: 5px;
+
 }

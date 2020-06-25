@@ -7,6 +7,7 @@
 * {
   box-sizing: border-box;
   list-style: none;
+  
 }
 
 a {
@@ -31,9 +32,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6, .heading {
+h1, h2, h3, h4, h5, h6, .heading, label {
     font-family: 'Fira Sans', sans-serif;
 }
+
+.btn {
+  
+}
+
+.delete-button{
+  color: #cb2431;
+  }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

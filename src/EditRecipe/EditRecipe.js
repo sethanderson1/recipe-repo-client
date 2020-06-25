@@ -2,14 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import RecipesContext from '../RecipesContext'
 import config from '../config';
 
-// import './AddRecipe.css';
+import './EditRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
-
-//TO FIX: refresh edit page causes error
-// ×
-// TypeError: Cannot read property 'category_id' of undefined
-// EditRecipe
-// C:/Users/me/projects/recipe-repo-client/src/EditRecipe/EditRecipe.js:14
 
 function EditRecipe(props) {
     const context = useContext(RecipesContext)
@@ -83,20 +77,27 @@ function EditRecipe(props) {
     // console.log('recipes', recipes)
 
     return (
-        <div className='AddRecipe__add-recipe-container'>
-            <h2>Edit Recipe</h2>
+        <div className='EditRecipe__add-recipe-container
+                        default-primary-color'>
+            <h2 className='EditRecipe__heading
+             text-primary-color'>Edit Recipe</h2>
             <form
                 onSubmit={handleSubmit}
-                id='AddRecipe__add-recipe'>
-                <label htmlFor='recipe_title'>
+                id='EditRecipe__add-recipe'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='recipe_title'>
                     Recipe Name</label>
-                <input type='text'
+                <input
+                    type='text'
                     name='title'
                     id='recipe_title'
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
-                <label htmlFor='description'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='description'>
                     Description</label>
                 <textarea
                     name='description'
@@ -104,7 +105,9 @@ function EditRecipe(props) {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                 />
-                <label htmlFor='ingredients'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='ingredients'>
                     Ingredients</label>
                 <TextareaAutosize
                     minRows={10}
@@ -114,7 +117,9 @@ function EditRecipe(props) {
                     value={ingredients}
                     onChange={e => setIngredients(e.target.value)}
                 />
-                <label htmlFor='directions'>
+                <label
+                    className='text-primary-color'
+                    htmlFor='directions'>
                     Instructions</label>
                 <TextareaAutosize
                     minRows={10}
@@ -124,11 +129,13 @@ function EditRecipe(props) {
                     value={directions}
                     onChange={e => setDirections(e.target.value)}
                 />
-                <div id='AddRecipe__buttons-wrapper'>
+                <div className='EditRecipe__buttons-wrapper'>
                     <button
+                        className='edit-button'
                         type="button"
                         onClick={handleCancel}>Cancel</button>
                     <button
+                        className='edit-button'
                         type="submit"
                     >Save</button>
                 </div>

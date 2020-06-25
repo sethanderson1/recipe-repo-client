@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import RecipesContext from '../RecipesContext';
 import './Categories.css'
 import BackButton from '../BackButton/BackButton';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 export default function Categories(props) {
 
 
@@ -74,7 +75,11 @@ export default function Categories(props) {
                             }
                         }}
                     >
-                        Delete</button>
+                        <FontAwesomeIcon
+                            className='fontawesome-delete'
+                            icon={faTrashAlt} />
+
+                    </button>
                 </li>
             })}
             <button
