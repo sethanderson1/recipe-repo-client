@@ -43,9 +43,9 @@
     padding-bottom: 4rem;
   }
 
-
-  .EditRecipe__buttons-wrapper .edit-button {
-    background: #CFD8DC;
+  .EditRecipe__edit-recipe {
+      color: rgba(16, 16, 16, 0.3);
+    background: #8b9fa9;
     padding: 0.4375em 1.5em 0.5em;
     border: 1px solid gray;
     border: 0;
@@ -54,13 +54,25 @@
     transition-duration: 0.2s;
   }
   
-  .EditRecipe__buttons-wrapper .edit-button:hover,
-  .EditRecipe__buttons-wrapper .edit-button:active {
+  .EditRecipe__buttons-wrapper .allowHover {
+    background: #CFD8DC;
+    padding: 0.4375em 1.5em 0.5em;
+    border: 1px solid gray;
+    border: 0;
+    border-radius: 1.5rem;
+    font-size: 18px;
+    transition-duration: 0.2s;
+    color:black;
+  }
+  
+  .EditRecipe__buttons-wrapper .allowHover:hover {
     cursor: pointer;
     background: #455a64;
     color: #ffffff;
   }
-
+  
+  
+  
   
 
 

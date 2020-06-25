@@ -4,6 +4,7 @@ import config from '../config';
 
 import './EditRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
+import ValidationError from '../ValidationError/ValidationError';
 
 function EditRecipe(props) {
     const context = useContext(RecipesContext)
@@ -48,7 +49,18 @@ function EditRecipe(props) {
             directions,
         })
     }
+    function validateName() {
+        const recipeName = title && title.trim()
+        console.log('recipeName', recipeName)
 
+        if (title !== undefined) {
+            console.log('recipeName', recipeName)
+
+            if (recipeName.length === 0) {
+                return ` *name is required `
+            }
+        }
+    }
     async function patchRecipe(fields) {
         // console.log('fields', fields)
         // console.log('recipe.category_id', recipe.category_id)
@@ -73,8 +85,23 @@ function EditRecipe(props) {
         }
     }
 
-    // todo: maybe change css names
-    // console.log('recipes', recipes)
+    function toggleHoverClass() {
+        if (title && title.length !== 0) {
+            return ['EditRecipe__edit-recipe', 'allowHover'].join(' ')
+        } else {
+            return 'EditRecipe__edit-recipe'
+        }
+    }
+
+    function isDisabled() {
+        if (typeof title === 'string') {
+            if (title.length === 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
 
     return (
         <div className='EditRecipe__add-recipe-container
@@ -94,6 +121,11 @@ function EditRecipe(props) {
                     id='recipe_title'
                     value={title}
                     onChange={e => setTitle(e.target.value)}
+                />
+                <ValidationError
+                    className='accent-color'
+                    message={validateName()}
+                    errorPosition={'relative'}
                 />
                 <label
                     className='text-primary-color'
@@ -131,12 +163,13 @@ function EditRecipe(props) {
                 />
                 <div className='EditRecipe__buttons-wrapper'>
                     <button
-                        className='edit-button'
+                        className='edit-button allowHover'
                         type="button"
                         onClick={handleCancel}>Cancel</button>
                     <button
-                        className='edit-button'
+                        className={toggleHoverClass()}
                         type="submit"
+                        disabled={isDisabled()}
                     >Save</button>
                 </div>
             </form>
