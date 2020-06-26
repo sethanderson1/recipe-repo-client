@@ -10,6 +10,13 @@
   
 }
 
+/* why aren't things like this by default ??? */
+html,body,#root,.App,main {     
+  height:100%;
+}
+
+
+
 a {
   text-decoration: none;
   color: blue;

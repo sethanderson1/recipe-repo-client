@@ -1,4 +1,6 @@
 .RecipeCardList__container {
+    height: 100%;
+background: #455A64;
 }
 
 .RecipeCardList__container h2 {
@@ -13,7 +15,7 @@
 
 .RecipeCardList__category-title {
   margin: 0 0 0px 0;
-
+    font-weight:300;
   /* padding: 55px 0 30px 30px; */
   /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4); */
 }
