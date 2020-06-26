@@ -1,6 +1,6 @@
 .RecipeCardList__container {
-    height: 100%;
-background: #455A64;
+  height: 100%;
+  background: #455a64;
 }
 
 .RecipeCardList__container h2 {
@@ -15,11 +15,36 @@ background: #455A64;
 
 .RecipeCardList__category-title {
   margin: 0 0 0px 0;
-    font-weight:300;
-  /* padding: 55px 0 30px 30px; */
-  /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4); */
+  font-weight: 300;
 }
 
 .RecipeCardList__list-container {
   padding-top: 10px;
+  margin:0 10px;
 }
+
+RecipeCardList__add-recipe-btn {
+    
+}
+
+.RecipeCardList__add-recipe-btn:hover {
+    
+}
+
+.RecipeCardList__add-recipe-btn {
+    background: #CFD8DC;
+    padding: 0.4375em 1.5em 0.5em;
+    border: 2px solid #CFD8DC;
+    /* border: 0; */
+    border-radius: 1.5rem;
+    font-size: 18px;
+    transition-duration: 0.2s;
+    color:black;
+  }
+  
+  .RecipeCardList__add-recipe-btn:hover {
+    cursor: pointer;
+    background: #455a64;
+    color: #ffffff;
+    border: 2px solid white;
+  }

@@ -57,7 +57,10 @@ export default function RecipeCardList(props) {
                     }
                     )}
                 </ul>
-                <button onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
+                <button 
+                className='RecipeCardList__add-recipe-btn 
+                            '
+                onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
 
             </section>
         </section>
