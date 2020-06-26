@@ -1,25 +1,92 @@
-.Categories__categories {
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-    padding:10px;
+.Categories__categories-container {
+  height: 100%;
+  background: #455a64;
+}
 
+.Categories__categories-container li {
+  /* margin:0; */
+}
+
+.Categories__heading {
+  margin: 0;
+  padding: 55px 0 30px 30px;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.Categories__list-container {
+  margin: 15px;
+}
+
+.Categories__categories {
+  /* border: 3px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 0.5rem;
+}
+
+.Categories__categories:hover,
+.Categories__categories:focus {
+  cursor: pointer;
+  background: rgba(96, 125, 139, 0.74);
+}
+
+.Categories__categories-name {
+  /* justify-self: flex-end; */
+  align-self: center;
+}
+
+.btn-wrapper {
 }
 
 .Categories__categories .delete-button {
-    background: rgba(0,0,0,0);
-    border:0;
-    border-radius: 30%;
-    transition-duration: 0.2s;
+    color:black;
+  background:rgba(255, 255, 255, 0.048);
+  border: 0;
+  /* border:2px solid rgba(255, 255, 255, 0.082); */
+  /* border-radius: 30%; */
+  transition-duration: 0.2s;
+  /* position: absolute; */
+  /* z-index: -1; */
 }
 
-.Categories__categories .delete-button:hover {
-    background: #cb2431;
-    color:white;
-    cursor: pointer;
+.Categories__categories .delete-button:hover,
+.Categories__categories .delete-button:focus {
+  background: #cb2431;
+  color: white;
+  cursor: pointer;
 }
 
 .Categories__categories .fontawesome-delete {
-    font-size: 1rem;
+  font-size: 1rem;
+}
+
+.Categories__add-category-btn {
+  background: #cfd8dc;
+  padding: 0.4375em 1.5em 0.5em;
+  border: 2px solid #cfd8dc;
+  /* border: 0; */
+  border-radius: 1.5rem;
+  font-size: 18px;
+  transition-duration: 0.2s;
+  color: black;
+}
+
+.Categories__add-category-btn:hover,
+.Categories__add-category-btn:focus {
+  cursor: pointer;
+  background: #455a64;
+  color: #ffffff;
+  border: 2px solid white;
+}
+
+.unclickable-area {
+  color: blue;
+  height: 20px;
+  width: 33px;
+  /* opacity: 0; */
 }

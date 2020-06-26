@@ -44,7 +44,12 @@ RecipeCardList__add-recipe-btn {
   
   .RecipeCardList__add-recipe-btn:hover {
     cursor: pointer;
-    background: #455a64;
+    /* background: #455a64; */
+    background: rgba(96, 125, 139, 0.74);
+    
     color: #ffffff;
     border: 2px solid white;
   }
+
+
+  

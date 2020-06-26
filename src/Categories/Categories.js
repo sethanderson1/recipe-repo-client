@@ -22,6 +22,8 @@ export default function Categories(props) {
     }
 
     async function handleDeleteCategory(categoryId) {
+        console.log('handleDeleteCategory) ran')
+
         try {
             const authToken = localStorage.getItem('authToken')
             // console.log('authToken', authToken)
@@ -39,34 +41,59 @@ export default function Categories(props) {
     }
 
     return (
-        <div>
+        <div className='Categories__categories-container'>
             <BackButton handleClickBack={handleClickBack} />
-            <li key={'asdf'}
-                className={'Categories__categories heading'}
-            >
-                <NavLink
-                    to={`/categories/0`}
-                    onClick={() => context.onChangeCurrentCategoryId(0)}
-                >
-                    All categories
-                </NavLink>
-                {/* maybe can make delete button invisible so 
-                css is easier to deal with */}
-                {/* <button onClick={handleClickDelete}>Delete</button> */}
+            <div className='Categories__title-container
+                            default-primary-color'>
+                <h1 className='Categories__heading 
+                            text-primary-color '>Categories</h1>
+            </div>
+            <section className='Categories__list-container'>
+            <div className='Categories__categories default-primary-color'>
+                    <NavLink
+                        to={`/categories/0`}
+                        onClick={() => context.onChangeCurrentCategoryId(0)}
+                    >
+                        <li key={'asdf'}
+                            className={'list-div text-primary-color   heading'}>
+                            <div className='Categories__categories-name'>
+                                 <h2>All Recipes</h2>
+                            </div>
+                        </li>
+                    </NavLink>
+                
+                    <div className='btn-wrapper'>
+                        <button
+                            className='btn delete-button'>
+                            <FontAwesomeIcon
+                                className='fontawesome-delete'
+                                icon={faTrashAlt} />
 
-            </li>
+                        </button>
+                    </div>
+                </div>
             {categories.map(category => {
                 // console.log('category', category)
 
-                return <li key={category.id}
-                    className={'Categories__categories heading'}
-                >
+                            {/* maybe can make delete button invisible so 
+                            css is easier to deal with */}
+                            {/* <button onClick={handleClickDelete}>Delete</button> */}
+                return <>
+                <div className='Categories__categories default-primary-color'>
                     <NavLink
-                        to={`/categories/${category.id}`}
-                        onClick={() => context.onChangeCurrentCategoryId(category.id)}
-                    >
-                        {category.category_name}
+                    className='Categories__navlink navlink-div'
+                    to={`/categories/${category.id}`}
+                    onClick={() => context.onChangeCurrentCategoryId(category.id)}>
+                        <li key={category.id}
+                            className={'list-div text-primary-color   heading'}>
+                            <div className='Categories__categories-name'>
+                                 <h2>{category.category_name} </h2>
+                            </div>
+                        </li>
                     </NavLink>
+                
+                <div className='btn-wrapper'>
+
                     <button
                         className='btn delete-button'
                         onClick={() => {
@@ -80,10 +107,17 @@ export default function Categories(props) {
                             icon={faTrashAlt} />
 
                     </button>
-                </li>
+                </div>
+
+                </div>
+                
+            </>
             })}
             <button
+            className='Categories__add-category-btn'
                 onClick={handleAddCategory}>Add Category</button>
+            </section>
+            
         </div>
     )
 }
