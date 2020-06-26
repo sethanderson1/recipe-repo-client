@@ -1,9 +1,31 @@
+
+.RecipeCard__container {
+    padding:10px 20px;
+    border:0;
+    border-radius: 0.5rem;
+    margin:10px;
+    transition-duration: 0.2s;
+}
+
+.RecipeCard__container:hover,
+.RecipeCard__container:focus
+/* .RecipeCard__container:active  */{
+    background: rgba(96, 125, 139, 0.74);
+}
+
+.RecipeCard__title {
+    margin:0;
+    
+}
+
+
 .RecipeCard__description{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 4; /* number of lines to show */
     -webkit-box-orient: vertical;
+    font-size: 18px;
 }
 
 

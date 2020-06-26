@@ -1,13 +1,8 @@
 import React, { useContext } from 'react'
 import RecipeCard from '../RecipeCard/RecipeCard'
-// import recipes from '../dummyStore';
-// import { categories } from '../dummyStore';
 import RecipesContext from '../RecipesContext'
 import './RecipeCardList.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import BackButton from '../BackButton/BackButton';
-
 
 export default function RecipeCardList(props) {
     const context = useContext(RecipesContext)
@@ -38,25 +33,33 @@ export default function RecipeCardList(props) {
     // console.log('recipesFromCategory', recipesFromCategory)
 
     return (
-        <section className='RecipeCardList'>
+        <section className='RecipeCardList__container 
+        '>
             <BackButton handleClickBack={handleClickBack} />
-            <h3>{category_name}</h3>
-            <ul>
-                {recipesFromCategory.map(recipeCard => {
-                    const { id, title, description } = recipeCard
+            <div className='RecipeCardList__category-title-container
+            default-primary-color'>
+                <h1 className='RecipeCardList__category-title 
+            text-primary-color '>{category_name}</h1>
+            </div>
+            <section className='RecipeCardList__list-container 
+            dark-primary-color  '>
+                <ul>
+                    {recipesFromCategory.map(recipeCard => {
+                        const { id, title, description } = recipeCard
+                        return <li key={recipeCard.id}>
+                            <RecipeCard
+                                id={id}
+                                title={title}
+                                description={description}
+                                category_id={category_id}
+                            />
+                        </li>
+                    }
+                    )}
+                </ul>
+                <button onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
 
-                    return <li key={recipeCard.id}>
-                        <RecipeCard
-                            id={id}
-                            title={title}
-                            description={description}
-                            category_id={category_id}
-                        />
-                    </li>
-                }
-                )}
-            </ul>
-            <button onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
+            </section>
         </section>
 
     )

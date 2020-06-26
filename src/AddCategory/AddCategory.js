@@ -60,7 +60,7 @@ export default function AddCategory(props) {
                 },
                 body: JSON.stringify(categoryName)
             })
-            const postedCategory = await res.json()
+            await res.json()
             // console.log('postedCategory', postedCategory)
             context.handleGetCategories()
             props.history.push(`/categories`)

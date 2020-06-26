@@ -13,7 +13,7 @@
   position: absolute;
   background: rgba(161, 161, 161, 0);
   /* color: rgb(44, 34, 87); */
-
+z-index: 2;
   transition-duration: 0.2s;
 }
 
