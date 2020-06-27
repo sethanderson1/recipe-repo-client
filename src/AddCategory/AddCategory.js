@@ -31,11 +31,11 @@ export default function AddCategory(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        const {category_name}= e.target
+        const { category_name } = e.target
         // console.log('category_name.value', category_name.value)
         postCategory({
             category_name: category_name.value,
-            
+
         })
     }
 
@@ -69,29 +69,51 @@ export default function AddCategory(props) {
         }
     }
 
-    return (
-        <div className='AddCategory__add-category-container'>
-            <h2>Add Category</h2>
+    function toggleHoverClass() {
+        if (name.length !== 0) {
+            return ['AddCategory__submit', 'allowHover'].join(' ')
+        } else {
+            return 'AddCategory__submit'
 
-            <form onSubmit={handleSubmit}>
-                <label className='category_name'
-                    htmlFor='category_name'>Category Name </label>
-                <input
-                    type='text'
-                    id='category_name'
-                    onChange={e => setName(e.target.value)} />
-                <ValidationError
-                    message={validateName()}
-                    errorPosition={'absolute'} />
-                <div className='AddCategory__buttons-wrapper'>
-                    <button onClick={handleCancel}>Cancel</button>
-                    <button
-                        type='submit'
-                        disabled={name.length === 0}
-                        aria-label="Add Category"
-                    >Save</button>
-                </div>
-            </form>
+        }
+    }
+
+    return (
+        <div className='AddCategory__outermost-wrapper
+        default-primary-color'>
+
+            <div className='AddCategory__add-category-container
+            default-primary-color'>
+                <h2 className='AddCategory__heading 
+            text-primary-color'>Add Category</h2>
+
+                <form
+                    className='AddCategory__add-category'
+                    onSubmit={handleSubmit}>
+                    <label
+                        className='text-primary-color'
+                        htmlFor='category_name'>Category Name </label>
+                    <input
+                        type='text'
+                        id='category_name'
+                        onChange={e => setName(e.target.value)} />
+                    <ValidationError
+                        message={validateName()}
+                        errorPosition={'absolute'} />
+                    <div className='AddCategory__buttons-wrapper'>
+                        <button
+                            className='AddCategory__cancel-button 
+                        allowHover'
+                            onClick={handleCancel}>Cancel</button>
+                        <button
+                            className={toggleHoverClass()}
+                            type='submit'
+                            disabled={name.length === 0}
+                            aria-label="Add Category"
+                        >Save</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
