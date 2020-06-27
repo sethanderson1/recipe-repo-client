@@ -49,44 +49,46 @@ export default function Categories(props) {
                             text-primary-color '>Categories</h1>
             </div>
             <section className='Categories__list-container'>
-                <div className='Categories__categories
+                {/* <div className='Categories__categories-wrapper'> */}
+
+                    <div className='Categories__categories
                 link-and-delete-btn-wrapper  default-primary-color'>
-                    <NavLink
-                        className='Categories__link-to-category 
+                        <NavLink
+                            className='Categories__link-to-category 
                         Categories__navlink navlink-div'
-                        to={`/categories/0`}
-                        onClick={() => context.onChangeCurrentCategoryId(0)}
-                    >
-                        <li key={'asdf'}
-                            className={'list-div text-primary-color   heading'}>
-                            <div className=''>
-                                <h2 className='Categories__categories-name'>All Recipes</h2>
-                            </div>
-                        </li>
-                    </NavLink>
+                            to={`/categories/0`}
+                            onClick={() => context.onChangeCurrentCategoryId(0)}
+                        >
+                            <li key={'asdf'}
+                                className={'list-div text-primary-color   heading'}>
+                                <div className=''>
+                                    <h2 className='Categories__categories-name'>All Recipes</h2>
+                                </div>
+                            </li>
+                        </NavLink>
 
-                    <div className='btn-wrapper'>
-                    <NavLink
-                        className=''
-                        to={`/categories/0`}
-                        onClick={() => context.onChangeCurrentCategoryId(0)}
-                    >
-                        <button
-                            className='btn delete-button invisible-btn'>
-                            <FontAwesomeIcon
-                                className='fontawesome-delete'
-                                icon={faTrashAlt} />
+                        <div className='btn-wrapper'>
+                            <NavLink
+                                className=''
+                                to={`/categories/0`}
+                                onClick={() => context.onChangeCurrentCategoryId(0)}
+                            >
+                                <button
+                                    className='btn delete-button invisible-btn'>
+                                    <FontAwesomeIcon
+                                        className='fontawesome-delete'
+                                        icon={faTrashAlt} />
 
-                        </button>
-                    </NavLink>
+                                </button>
+                            </NavLink>
 
+                        </div>
                     </div>
-                </div>
-                {categories.map(category => {
+                    {categories.map(category => {
 
-                    return <>
-
-                        <div className='Categories__categories 
+                        return <div
+                            key={category.id}
+                            className='Categories__categories 
                 default-primary-color
                 link-and-delete-btn-wrapper'>
 
@@ -98,7 +100,7 @@ export default function Categories(props) {
                                 to={`/categories/${category.id}`}
                                 onClick={() => context.onChangeCurrentCategoryId(category.id)}>
 
-                                <li key={category.id}
+                                <li
 
                                     className={'list-div text-primary-color   heading'}>
 
@@ -132,16 +134,16 @@ export default function Categories(props) {
 
                         </div>
 
-                    </>
-                })}
-                <button
-                    className='Categories__add-category-btn'
-                    onClick={handleAddCategory}>Add Category</button>
+
+                    })}
+                    <button
+                        className='Categories__add-category-btn'
+                        onClick={handleAddCategory}>Add Category</button>
             </section>
             <div className='testdiv'>
 
             </div>
 
-        </div>
+        </div >
     )
 }

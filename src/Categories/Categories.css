@@ -18,9 +18,13 @@
 }
 
 .Categories__list-container {
-  margin-top: 15px;
-  padding:0 10px 50px 10px;
-  background: #455a64;
+    align-items: center;
+    /* justify-content: center; */
+    margin-top: 15px;
+    padding: 0 10px 50px 10px;
+    background: #455a64;
+    display: flex;
+    flex-direction: column;
 }
 
 .Categories__link-to-category {
@@ -101,6 +105,7 @@
   font-size: 18px;
   transition-duration: 0.2s;
   color: black;
+  margin:10px
 }
 
 .Categories__add-category-btn:hover,
@@ -122,11 +127,21 @@
 
 
 .link-and-delete-btn-wrapper {
+    /* margin: 8px auto; */
     display: flex;
     justify-content: space-between;
     max-width: 600px;
+    width: 100%;
+    margin: 3px;
+
 }
 
 .invisible-btn {
     opacity: 0;
 }
+
+.Categories__categories-wrapper {
+
+    
+}
+

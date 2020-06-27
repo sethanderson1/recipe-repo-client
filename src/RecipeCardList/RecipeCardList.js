@@ -57,10 +57,10 @@ export default function RecipeCardList(props) {
                     }
                     )}
                 </ul>
-                <button 
-                className='RecipeCardList__add-recipe-btn 
+                <button
+                    className='RecipeCardList__add-recipe-btn 
                             '
-                onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
+                    onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
 
             </section>
         </section>
