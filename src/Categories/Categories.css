@@ -13,37 +13,59 @@
   z-index: 1;
   position: relative;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+  font-weight: 100;
 }
 
 .Categories__list-container {
-  margin: 15px;
+  margin-top: 15px;
+  padding:0 10px 50px 10px;
+  background: #455a64;
+}
+
+.Categories__link-to-category {
+    width: 100%;
 }
 
 .Categories__categories {
   /* border: 3px solid black; */
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
   align-items: center;
-  margin: 10px;
-  padding: 10px;
+  margin: 10px 0;
+  /* padding: 10px; */
   border-radius: 0.5rem;
+
 }
 
 .Categories__categories:hover,
 .Categories__categories:focus {
-  cursor: pointer;
+  /* cursor: pointer; */
   background: rgba(96, 125, 139, 0.74);
 }
 
 .Categories__categories-name {
   /* justify-self: flex-end; */
   align-self: center;
+  font-weight: 300;
+  padding:0 20px;
+  max-width: 80%;
+  overflow: hidden;
+  /* border:1px solid black; */
+  max-width: 240px;
+  text-overflow: ellipsis;
+
 }
 
 .btn-wrapper {
+    align-self: stretch;
+    /* border-end-end-radius: 0.5rem; */
+
 }
 
 .Categories__categories .delete-button {
+    border-radius: 0 0.5rem 0.5rem 0;
+    
+    height: 100%;
     color:black;
   background:rgba(255, 255, 255, 0.048);
   border: 0;
@@ -52,10 +74,12 @@
   transition-duration: 0.2s;
   /* position: absolute; */
   /* z-index: -1; */
+  /* border-end-end-radius: 0.5rem; */
+
 }
 
-.Categories__categories .delete-button:hover,
-.Categories__categories .delete-button:focus {
+.Categories__categories .delete-button:hover
+{
   background: #cb2431;
   color: white;
   cursor: pointer;
@@ -89,4 +113,16 @@
   height: 20px;
   width: 33px;
   /* opacity: 0; */
+}
+
+
+
+.link-and-delete-btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+}
+
+.invisible-btn {
+    opacity: 0;
 }

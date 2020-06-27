@@ -5,6 +5,8 @@
     border-radius: 0.5rem;
     margin:10px 0;
     transition-duration: 0.2s;
+    max-width:600px
+
 }
 
 .RecipeCard__container:hover,
@@ -16,6 +18,9 @@
 .RecipeCard__title {
     /* margin:0; */
     font-weight: 300;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

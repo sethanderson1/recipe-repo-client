@@ -4,7 +4,7 @@
   padding:0 20px;
   margin:0;
   font-size: 18px;
-  /* max-width: 640px; */
+  max-width: 640px;
 }
 
 .AddRecipe__heading {
@@ -69,6 +69,10 @@
   cursor: pointer;
   background: #455a64;
   color: #ffffff;
+}
+
+.select-category {
+  max-width:240px;
 }
 
 

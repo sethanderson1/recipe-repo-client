@@ -16,6 +16,9 @@
 .RecipeCardList__category-title {
   margin: 0 0 0px 0;
   font-weight: 300;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .RecipeCardList__list-container {
