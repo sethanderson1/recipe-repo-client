@@ -39,7 +39,7 @@ export default function RecipeCardList(props) {
             <div className='RecipeCardList__category-title-container
             default-primary-color'>
                 <h1 className='RecipeCardList__category-title 
-            text-primary-color '>{category_name}</h1>
+             '>{category_name}</h1>
             </div>
             <section className='RecipeCardList__list-container 
             dark-primary-color  '>

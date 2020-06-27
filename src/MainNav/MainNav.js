@@ -13,19 +13,27 @@ function MainNav() {
 
         if (!loggedInStatus) {
             return (
-                <>
-                    <Link to={'/signup'}>SignUp</Link>
-                    <Link to={'/login'}>Login</Link>
-                </>
+                <div className='last-two-wrapper'>
+                    <Link className='nav-link text-primary-color'
+
+                        to={'/signup'}>SignUp</Link>
+                    <Link className='nav-link text-primary-color'
+
+                        to={'/login'}>Login</Link>
+                </div>
             )
         } else {
             return (
-                <>
-                    <Link to={'/categories'}>My Recipes</Link>
+                <div className='last-two-wrapper'>
                     <Link
+                        className='nav-link text-primary-color'
+                        to={'/categories'}>My Recipes</Link>
+                    <Link
+                        className='nav-link text-primary-color'
+
                         onClick={context.handleLogout}
                         to={'/'}>Logout</Link>
-                </>
+                </div>
             )
         }
     }
@@ -35,7 +43,12 @@ function MainNav() {
     return (
         <nav className="MainNav__nav">
             {/* todo: find cooking logo to use as link */}
-            <Link to={'/'}>Recipe Repo</Link>
+            <Link
+                    className='text-primary-color'
+
+                to={'/'}>
+                Recipe Repo
+                </Link>
             {renderLogInOrOut()}
         </nav>
     )

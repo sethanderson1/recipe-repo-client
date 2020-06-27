@@ -19,6 +19,7 @@
   max-width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
+  color:#CFD8DC;
 }
 
 .RecipeCardList__list-container {
@@ -48,8 +49,8 @@ RecipeCardList__add-recipe-btn {
   .RecipeCardList__add-recipe-btn:hover {
     cursor: pointer;
     /* background: #455a64; */
-    background: rgba(96, 125, 139, 0.74);
-    
+    /* background: rgba(96, 125, 139, 0.74); */
+    background: #243035;
     color: #ffffff;
     border: 2px solid white;
   }

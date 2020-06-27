@@ -1,4 +1,28 @@
 .MainNav__nav {
     display:flex;
     justify-content: space-between;
+    padding:10px;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.MainNav__nav a:hover {
+    color: #CFD8DC;
+}
+
+.nav-link {
+
+    padding-left: 20px;
+    transition-duration: 0.4s;
+
+}
+
+.nav-link:hover {
+
+    padding-left: 20px;
+}
+
+.last-two-wrapper {
+
 }
