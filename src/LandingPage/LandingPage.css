@@ -22,7 +22,7 @@
   max-width: 1200px;
   /* align-items: center; */
   text-align: center;
-  /* min-width: 320px; */
+  padding: 0 5px;
 }
 
 .LandingPage-main-container h2 {

@@ -1,15 +1,16 @@
 .error-absolute {
   position: absolute;
-  background-color: lightgray;
-  color: #cb2431;
-  white-space: pre-wrap;
 }
 
 .error-relative {
   position: relative;
-  background-color: lightgray;
-  color: #cb2431;
-  white-space: pre-wrap;
+}
+
+.error-absolute,
+.error-relative {
+    background: lightgray;
+    color: #cb2431;
+    white-space: pre-wrap;
 }
 
 .ValidationError-wrapper {

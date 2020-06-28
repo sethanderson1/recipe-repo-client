@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './ValidationError.css'
 
 export default function ValidationError(props) {
@@ -12,13 +11,9 @@ export default function ValidationError(props) {
             <div className='ValidationError-wrapper'>
                 <span
                     className={[errorPosition, colorClass].join(' ')}
-                >{props.message} </span>
+                >{props.message}</span>
             </div>
         )
     }
     return <></>
-}
-
-ValidationError.propTypes = {
-    message: PropTypes.string
 }

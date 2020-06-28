@@ -103,7 +103,7 @@ export default function AddCategory(props) {
                     <div className='AddCategory__buttons-wrapper'>
                         <button
                             className='AddCategory__cancel-button 
-                        allowHover'
+                                       allowHover'
                             onClick={handleCancel}>Cancel</button>
                         <button
                             className={toggleHoverClass()}

@@ -3,6 +3,7 @@ import './SignUp.css';
 import config from '../config'
 import RecipesContext from '../RecipesContext'
 import ValidationError from '../ValidationError/ValidationError';
+import BackButton from '../BackButton/BackButton';
 
 export default function SignUp(props) {
     // const [error, setError] = useState(null)
@@ -49,15 +50,19 @@ export default function SignUp(props) {
 
     const PASSWORD_REGEX = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_@#$%^&])[\S]+/;
     const EMAIL_REGEX = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+    let usernameTrue = false
+    let passwordTrue = false
+    let confirmPasswordTrue = false
 
     function validateUsername() {
         if (name.length === 0 && touched) {
-            return `Must be a Username`
+            return `*Must have an Email`
         }
         if (!EMAIL_REGEX.test(name) && touched) {
-            return `Must be a valid email address`
+            return `*Must be a valid email address`
         }
-        return true
+        usernameTrue = true
+        return false
     }
 
 
@@ -67,28 +72,31 @@ export default function SignUp(props) {
             return null
         }
         if (password.length < 8) {
-            return `Password must be at least 8 characters`
+            return `*Password must be at least 8 characters`
         }
         if (password.length > 72) {
-            return `Password must be no more than 72 characters`
+            return `*Password must be no more than 72 characters`
         }
         if (password.startsWith(' ') || password.endsWith(' ')) {
-            return `Password cannot start or end with empty spaces`;
+            return `*Password cannot start or end with empty spaces`;
         }
         if (!PASSWORD_REGEX.test(password)) {
-            // setError(`Password must contain at least one each of: upper case, lower case, number, and special character`)
-            return `Password must contain at least one each of: upper case, lower case, number, and special character`
+            return `*Password must contain at least one each of: upper case, lower case, number, and special character`
         }
-        return true
+        passwordTrue=true
+        return false
     }
+
+    
 
     function validateConfirmPassword() {
         if (confirmPassword.length === 0) {
             return null
         }
         if (confirmPassword !== password) {
-            return `Passwords must match`
+            return `*Passwords must match`
         }
+        confirmPasswordTrue= true
         return true
     }
 
@@ -103,66 +111,84 @@ export default function SignUp(props) {
         updateTouched()
     }
 
+    console.log('checkIfValid()', checkIfValid())
     function checkIfValid() {
-        // console.log('validatePassword()', validatePassword())
-        // console.log('validateConfirmPassword()', validateConfirmPassword())
-        // console.log('validateUsername()', validateUsername())
+        
         if (
-            validatePassword() === true
-            && validateConfirmPassword() === true
-            && validateUsername() === true
+            !usernameTrue || !passwordTrue || !confirmPasswordTrue
         ) {
             return true
+        }
+        return false
+    }
+
+    function handleClickBack() {
+        props.history.push('/')
+    }
+
+    function toggleHoverClass() {
+        if (!checkIfValid()) {
+            return ['SignUp__submit', 'allowHover'].join(' ')
+        } else {
+            return 'SignUp__submit'
+
         }
     }
 
     return (
-        <div className='SignUp__signup-form-container'>
-            <form
-                onSubmit={handleSubmit}
-                className='SignUp__signup-form'>
-                <div>
-                    <label htmlFor="user_name">Username: </label>
-                    <input placeholder='username' type="text"
-                        name='user_name' id='user_name'
-                        value={name}
-                        onChange={updateName}
-                        required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password: </label>
-                    <input placeholder='password' type="password"
-                        name='password' id='password'
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        required />
-
-                    <div>
-                        <label htmlFor="confirm_password">Password: </label>
-                        <input placeholder='password' type="password"
-                            name='confirm_password' id='confirm_password'
-                            value={confirmPassword}
-                            onChange={e => setConfirmPassword(e.target.value)}
+        <div className='SignUp__signup-form-container-wrapper'>
+            <BackButton handleClickBack={handleClickBack} />
+            <h1 className='SignUp__signup-title'>Sign up</h1>
+            <div className='SignUp__signup-form-container'>
+                <form onSubmit={handleSubmit}
+                    className='SignUp__signup-form'>
+                    <div className='SignUp__label-input-wrapper'>
+                        <label htmlFor="SignUp__user_name">Email </label>
+                        <input placeholder='Email' type="text"
+                            name='user_name' id='SignUp__user_name'
+                            value={name}
+                            onChange={updateName}
                             required />
                     </div>
-                    <ValidationError
-                        message={validateUsername()}
-                        errorPosition={'relative'} />
-                    <ValidationError
-                        message={validatePassword()}
-                        errorPosition={'relative'} />
-                    <ValidationError
-                        message={validateConfirmPassword()}
-                        errorPosition={'relative'} />
-                </div>
-                <button
-                    type="button"
-                    onClick={handleCancel}>Cancel</button>
-                <button
-                    type="submit"
-                    disabled={!checkIfValid()}
-                >Submit</button>
-            </form>
+                    <div className='SignUp__label-input-wrapper'>
+                        <label htmlFor="password">Password </label>
+                        <input placeholder='password' type="password"
+                            name='password' id='password'
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required />
+
+                        <div className='SignUp__label-input-wrapper'>
+                            <label className='confirm-password-label' htmlFor="confirm_password">Confirm Password </label>
+                            <input placeholder='password' type="password"
+                                name='confirm_password' id='confirm_password'
+                                value={confirmPassword}
+                                onChange={e => setConfirmPassword(e.target.value)}
+                                required />
+                        </div>
+                        <ValidationError
+                            message={validateUsername()}
+                            errorPosition={'relative'} />
+                        <ValidationError
+                            message={validatePassword()}
+                            errorPosition={'relative'} />
+                        <ValidationError
+                            message={validateConfirmPassword()}
+                            errorPosition={'relative'} />
+                    </div>
+                    <div className='signup-form-buttons-wrapper'>
+                        <button
+                            className='allowHover'
+                            type="button"
+                            onClick={handleCancel}>Cancel</button>
+                        <button
+                            className={toggleHoverClass()}
+                            type="submit"
+                            disabled={checkIfValid()}
+                        >Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
