@@ -140,8 +140,8 @@ export default function Categories(props) {
                         className='Categories__add-category-btn'
                         onClick={handleAddCategory}>Add Category</button>
             </section>
-            <div className='testdiv'>
-
+            <div className='bottom-color-area 
+                       default-primary-color'>
             </div>
 
         </div >

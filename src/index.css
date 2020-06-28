@@ -43,6 +43,14 @@ h1, h2, h3, h4, h5, h6, .heading, label {
     font-family: 'Fira Sans', sans-serif;
 }
 
+.bottom-color-area  {
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+}
+
 .btn {
   
 }

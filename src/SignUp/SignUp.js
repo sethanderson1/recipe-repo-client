@@ -42,6 +42,7 @@ export default function SignUp(props) {
                 props.history.push('/login')
             })
             .catch(err => {
+                // put error somewhere on page
                 console.log('err', err)
             })
     }

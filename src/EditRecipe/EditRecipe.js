@@ -104,80 +104,90 @@ function EditRecipe(props) {
     }
 
     return (
-        <div className='EditRecipe__outermost-wrapper
+        <>
+            <div className='EditRecipe__outermost-wrapper
         default-primary-color'>
 
-            <div className='EditRecipe__edit-recipe-container
+                <div className='EditRecipe__edit-recipe-container
                         default-primary-color'>
-                <h2 className='EditRecipe__heading
+
+                    <div className="EditRecipe__heading-form-wrapper
+                default-primary-color">
+                        <h2 className='EditRecipe__heading
              text-primary-color'>Edit Recipe</h2>
-                <form
-                    onSubmit={handleSubmit}
-                    id='EditRecipe__edit-recipe'>
-                    <label
-                        className='text-primary-color'
-                        htmlFor='recipe_title'>
-                        Recipe Name</label>
-                    <input
-                        type='text'
-                        name='title'
-                        id='recipe_title'
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
-                    <ValidationError
-                        className='accent-color'
-                        message={validateName()}
-                        errorPosition={'relative'}
-                    />
-                    <label
-                        className='text-primary-color'
-                        htmlFor='description'>
-                        Description</label>
-                    <textarea
-                        name='description'
-                        id='description'
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                    />
-                    <label
-                        className='text-primary-color'
-                        htmlFor='ingredients'>
-                        Ingredients</label>
-                    <TextareaAutosize
-                        minRows={10}
-                        maxRows={100}
-                        name='ingredients'
-                        id='ingredients'
-                        value={ingredients}
-                        onChange={e => setIngredients(e.target.value)}
-                    />
-                    <label
-                        className='text-primary-color'
-                        htmlFor='directions'>
-                        Instructions</label>
-                    <TextareaAutosize
-                        minRows={10}
-                        maxRows={100}
-                        name='directions'
-                        id='directions'
-                        value={directions}
-                        onChange={e => setDirections(e.target.value)}
-                    />
-                    <div className='EditRecipe__buttons-wrapper'>
-                        <button
-                            className='edit-button allowHover'
-                            type="button"
-                            onClick={handleCancel}>Cancel</button>
-                        <button
-                            className={toggleHoverClass()}
-                            type="submit"
-                            disabled={isDisabled()}
-                        >Save</button>
+                        <form
+                            onSubmit={handleSubmit}
+                            id='EditRecipe__edit-recipe'>
+                            <label
+                                className='text-primary-color'
+                                htmlFor='recipe_title'>
+                                Recipe Name</label>
+                            <input
+                                type='text'
+                                name='title'
+                                id='recipe_title'
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                            />
+                            <ValidationError
+                                className='accent-color'
+                                message={validateName()}
+                                errorPosition={'relative'}
+                            />
+                            <label
+                                className='text-primary-color'
+                                htmlFor='description'>
+                                Description</label>
+                            <textarea
+                                name='description'
+                                id='description'
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                            />
+                            <label
+                                className='text-primary-color'
+                                htmlFor='ingredients'>
+                                Ingredients</label>
+                            <TextareaAutosize
+                                minRows={10}
+                                maxRows={100}
+                                name='ingredients'
+                                id='ingredients'
+                                value={ingredients}
+                                onChange={e => setIngredients(e.target.value)}
+                            />
+                            <label
+                                className='text-primary-color'
+                                htmlFor='directions'>
+                                Instructions</label>
+                            <TextareaAutosize
+                                minRows={10}
+                                maxRows={100}
+                                name='directions'
+                                id='directions'
+                                value={directions}
+                                onChange={e => setDirections(e.target.value)}
+                            />
+                            <div className='EditRecipe__buttons-wrapper'>
+                                <button
+                                    className='edit-button allowHover'
+                                    type="button"
+                                    onClick={handleCancel}>Cancel</button>
+                                <button
+                                    className={toggleHoverClass()}
+                                    type="submit"
+                                    disabled={isDisabled()}
+                                >Save</button>
+                            </div>
+                        </form>
+
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+            <div className='bottom-color-area 
+                       default-primary-color'>
+            </div>
+        </>
     )
 }
 
