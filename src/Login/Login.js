@@ -4,6 +4,7 @@ import './Login.css';
 import config from '../config'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
+import BackButton from '../BackButton/BackButton';
 
 
 export default function SignUp(props) {
@@ -61,53 +62,67 @@ export default function SignUp(props) {
         context.handleChangeIsLoggedIn(true)
     }
 
+    function handleClickBack() {
+        props.history.push('/')
+    }
+
     return (
-        <div className='Login__login-form-container'>
-            <form id='login-form' onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="user_name">Username: </label>
-                    <input placeholder='username' type="text"
-                        name='user_name' id='user_name'
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                        required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password: </label>
-                    <input placeholder='password' type="password"
-                        name='password' id='password'
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        required />
-                </div>
-                {error}
-                <div className='login-form-buttons-wrapper'>
-                    <button type='button' onClick={handleCancel}>Cancel</button>
-                    <button type='submit'>Log In</button>
-                </div>
-            </form>
-            <div className='demo-credentials'>
-                Demo:
+        <div className='Login__login-form-container-wrapper'>
+            <BackButton handleClickBack={handleClickBack} />
+            <h1 className='Login__login-title'>Login</h1>
+            <div className='Login__login-form-container'>
+                <form id='login-form' onSubmit={handleSubmit}>
+                    <div className='Login__label-input-wrapper'>
+                        <label htmlFor="user_name">Email </label>
+                        <input placeholder='Email' type="text"
+                            name='user_name' id='user_name'
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                            required />
+                    </div>
+                    <div className='Login__label-input-wrapper'>
+                        <label htmlFor="password">Password </label>
+                        <input placeholder='password' type="password"
+                            name='password' id='password'
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required />
+                    </div>
+                    {error}
+                    <div className='login-form-buttons-wrapper'>
+                        <button type='button' onClick={handleCancel}>Cancel</button>
+                        <button type='submit'>Log In</button>
+                    </div>
+                </form>
+                <div className='demo-credentials'>
+                    Demo:
                 <div className='credential-wrapper'>
-                    <p>Username: user1@gmail.com</p>
-                    <button className="copy-to-clipboard"
-                        onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
+                        <p className='credential'>
+                            Username:
+                            <span className='credential-bold'>  user1@gmail.com</span>
+                        </p>
+                        <button className="copy-to-clipboard"
+                            onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
 
-                    >
-                        <FontAwesomeIcon icon={faClipboardList} size="2x" />
-                    </button>
-                </div>
-                <div className='credential-wrapper'>
+                        >
+                            <FontAwesomeIcon icon={faClipboardList} size="2x" />
+                        </button>
+                    </div>
+                    <div className='credential-wrapper'>
 
-                    <p>Password: Password1!  </p>
-                    <button className="copy-to-clipboard"
-                        onClick={() => navigator.clipboard.writeText(`Password1!`)}
-                    >
-                        <FontAwesomeIcon icon={faClipboardList} size="2x" />
-                    </button>
+                        <p className='credential'>
+                            Password:
+                            <span className='credential-bold'>  Password1!</span>
+                        </p>
+                        <button className="copy-to-clipboard"
+                            onClick={() => navigator.clipboard.writeText(`Password1!`)}
+                        >
+                            <FontAwesomeIcon icon={faClipboardList} size="2x" />
+                        </button>
+                    </div>
                 </div>
+
             </div>
-
         </div>
     )
 }

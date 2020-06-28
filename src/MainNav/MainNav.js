@@ -47,7 +47,7 @@ function MainNav() {
                     className='text-primary-color'
 
                 to={'/'}>
-                Recipe Repo
+                    Recipe Repo
                 </Link>
             {renderLogInOrOut()}
         </nav>
