@@ -61,7 +61,9 @@ export default function RecipeCardList(props) {
                     className='RecipeCardList__add-recipe-btn 
                             '
                     onClick={() => props.history.push('/add-recipe')}>Add Recipe</button>
-
+                <div className='bottom-color-area 
+                       default-primary-color'>
+                </div>
             </section>
         </section>
 
