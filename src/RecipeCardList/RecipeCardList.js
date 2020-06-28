@@ -3,6 +3,7 @@ import RecipeCard from '../RecipeCard/RecipeCard'
 import RecipesContext from '../RecipesContext'
 import './RecipeCardList.css'
 import BackButton from '../BackButton/BackButton';
+import MainNav from '../MainNav/MainNav';
 
 export default function RecipeCardList(props) {
     const context = useContext(RecipesContext)
@@ -36,6 +37,7 @@ export default function RecipeCardList(props) {
         <section className='RecipeCardList__container 
         '>
             <BackButton handleClickBack={handleClickBack} />
+            <MainNav/>
             <div className='RecipeCardList__category-title-container
             default-primary-color'>
                 <h1 className='RecipeCardList__category-title 

@@ -4,6 +4,7 @@ import config from '../config';
 import './RecipePageMain.css'
 import '../palette.css'
 import BackButton from '../BackButton/BackButton';
+import MainNav from '../MainNav/MainNav';
 
 export default function RecipePageMain(props) {
 
@@ -58,6 +59,7 @@ export default function RecipePageMain(props) {
                 <div className='RecipePageMain__container 
                                 primary-text-color'>
                     <BackButton handleClickBack={handleClickBack} />
+                    <MainNav/>
                     <div className='RecipePageMain__header
                     default-primary-color'>
                         <h1 className='RecipePageMain__recipe-title

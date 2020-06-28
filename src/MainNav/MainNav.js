@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MainNav.css'
 import RecipesContext from '../RecipesContext';
 
@@ -41,13 +41,11 @@ function MainNav() {
 
 
     return (
-        <nav className="MainNav__nav">
-            {/* todo: find cooking logo to use as link */}
+        <nav className="MainNav__nav ">
             <Link
                     className='text-primary-color'
 
                 to={'/'}>
-                    Recipe Repo
                 </Link>
             {renderLogInOrOut()}
         </nav>

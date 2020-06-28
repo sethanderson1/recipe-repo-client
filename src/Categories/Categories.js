@@ -6,6 +6,7 @@ import './Categories.css'
 import BackButton from '../BackButton/BackButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import MainNav from '../MainNav/MainNav';
 export default function Categories(props) {
 
 
@@ -43,6 +44,7 @@ export default function Categories(props) {
     return (
         <div className='Categories__categories-container'>
             <BackButton handleClickBack={handleClickBack} />
+            <MainNav />
             <div className='Categories__title-container
                             default-primary-color'>
                 <h1 className='Categories__heading 
