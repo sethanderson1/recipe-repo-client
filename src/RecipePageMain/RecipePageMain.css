@@ -14,16 +14,21 @@
   max-width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+    margin: 0 auto;
 }
 
 .RecipePageMain__description-content {
   max-width: 400px;
+  margin: 15px auto;
+
 }
 
 .RecipePageMain__container h1 {
   font-size: 1.8rem;
   font-weight: 100;
-  margin: 0;
+  margin: 0 auto;
+
 }
 
 .RecipePageMain__container h2 {
@@ -32,23 +37,24 @@
 }
 
 .RecipePageMain__container p {
-  margin-bottom: 40px;
+  /* margin: 15px auto 10px; */
 }
 
 .RecipePageMain__content-container {
-  margin: 0 16px;
+  margin: 0 auto;
   max-width: 640px;
+  padding:0 10px;
 }
 
 .RecipePageMain__ingredients-title {
   margin-top: 0;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .RecipePageMain__directions-title {
   border-top: 2px solid rgba(0, 0, 0, 0.15);
   margin-top: 0;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .RecipePageMain__directions-content,
@@ -58,6 +64,7 @@
   line-height: 28px;
   font-weight: 400;
   letter-spacing: 0;
+  margin-bottom: 40px;
 }
 
 .RecipePageMain__btn-container {
@@ -107,4 +114,17 @@
   cursor: pointer;
   background: #455a64;
   color: #ffffff;
+}
+
+
+@media only screen and (min-width: 640px) {
+
+  .RecipePageMain__container h1 {
+    font-size: 2.5rem;
+  }
+
+  .RecipePageMain__container p {
+    font-size: 1.15rem;
+  }
+  
 }
