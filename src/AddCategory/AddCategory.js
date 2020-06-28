@@ -114,6 +114,9 @@ export default function AddCategory(props) {
                     </div>
                 </form>
             </div>
+            <div className='bottom-color-area 
+                       default-primary-color'>
+            </div>
         </div>
     )
 }
