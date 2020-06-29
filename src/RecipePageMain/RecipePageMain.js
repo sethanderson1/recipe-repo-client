@@ -14,7 +14,8 @@ export default function RecipePageMain(props) {
     const selectedRecipe = recipes.filter(recipe => recipe.id == recipeId)
     const recipe = selectedRecipe
         && selectedRecipe[0]
-    let currentCategoryId = recipe && recipe.category_id
+    // let currentCategoryId = recipe && recipe.category_id
+    const currentCategoryId = sessionStorage.getItem('currentCategoryId')
 
     // todo: add folder name that can be clicked to go back to folder (or should make a back button to go back to folder??)
     // todo: add folder hamburger menu
@@ -24,9 +25,9 @@ export default function RecipePageMain(props) {
 
 
     function handleClickBack() {
-
-        // props.history.push(`/categories/${currentCategoryId}`)
-        props.history.goBack()
+        
+        props.history.push(`/categories/${currentCategoryId}`)
+        // props.history.goBack()
     }
 
     async function handleDeleteRecipe() {

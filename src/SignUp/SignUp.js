@@ -149,7 +149,8 @@ export default function SignUp(props) {
                             name='user_name' id='SignUp__user_name'
                             value={name}
                             onChange={updateName}
-                            required />
+                            required 
+                            autoFocus />
                     </div>
                     <div className='SignUp__label-input-wrapper'>
                         <label htmlFor="password">Password </label>

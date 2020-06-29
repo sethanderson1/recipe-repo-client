@@ -29,6 +29,7 @@ export default class App extends Component {
   handleLogout = () => {
     // console.log('handleLogout ran')
     localStorage.removeItem('authToken')
+    sessionStorage.removeItem('currentCategoryId')
     this.setState({
       isLoggedIn: false
     })
@@ -45,6 +46,7 @@ export default class App extends Component {
     this.checkLoggedInStatus()
     this.handleGetCategories()
     this.handleGetRecipes()
+    sessionStorage.setItem('currentCategoryId', '0')
   }
 
 

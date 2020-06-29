@@ -129,7 +129,7 @@
 .link-and-delete-btn-wrapper {
     /* margin: 8px auto; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     max-width: 600px;
     width: 100%;
     margin: 3px;

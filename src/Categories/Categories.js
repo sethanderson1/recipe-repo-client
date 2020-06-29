@@ -36,6 +36,7 @@ export default function Categories(props) {
                 },
             })
             context.handleGetCategories()
+            context.handleGetRecipes()
         } catch (err) {
             console.log('err', err)
         }

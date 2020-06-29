@@ -53,10 +53,19 @@ function AddRecipe(props) {
                 },
                 body: JSON.stringify(fields)
             })
-            await res.json()
+            const postedRecipe = await res.json()
+            console.log('postedRecipe', postedRecipe)
+
+            // switch current category id to the one the user
+            // selected so that when they get to the recipe page, 
+            // they can click back to go to the correct category
+            // ie the category which the new recipe belongs to
+            sessionStorage.setItem('currentCategoryId',`${postedRecipe.category_id}`)
+            console.log('postedRecipe.category_id', postedRecipe.category_id)
             context.handleGetRecipes()
             // props.history.push(`/categories/${postedRecipe.category_id}`)
-            props.history.goBack()
+            props.history.push(`/recipe/${postedRecipe.id}`)
+            // props.history.goBack()
         } catch (err) {
             console.log('err', err)
         }
@@ -114,6 +123,7 @@ function AddRecipe(props) {
                         id='recipe_name'
                         value={name}
                         onChange={e => setName(e.target.value)}
+                        autoFocus 
                     />
                     <ValidationError
                         className='accent-color'

@@ -96,7 +96,9 @@ export default function AddCategory(props) {
                     <input
                         type='text'
                         id='category_name'
-                        onChange={e => setName(e.target.value)} />
+                        onChange={e => setName(e.target.value)} 
+                        autoFocus />
+                        
                     <ValidationError
                         message={validateName()}
                         errorPosition={'absolute'} />

@@ -3,8 +3,9 @@
     padding:10px 20px;
     border:0;
     border-radius: 0.5rem;
-    margin-top:5px;
-    margin-bottom:8px;
+    /* margin-top:5px; */
+    /* margin-bottom:8px; */
+    margin: 5px auto 8px auto;
     transition-duration: 0.2s;
     max-width:600px
 

@@ -45,6 +45,7 @@ export default function SignUp(props) {
                 await storeToken(authToken)
                 await context.handleGetCategories()
                 await context.handleGetRecipes()
+                sessionStorage.setItem('currentCategoryId', '0')
                 props.history.push('/categories')
             })
             .catch(err => {
@@ -78,7 +79,8 @@ export default function SignUp(props) {
                             name='user_name' id='user_name'
                             value={username}
                             onChange={e => setUsername(e.target.value)}
-                            required />
+                            required 
+                            autoFocus />
                     </div>
                     <div className='Login__label-input-wrapper'>
                         <label htmlFor="password">Password </label>
