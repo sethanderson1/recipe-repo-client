@@ -21,7 +21,7 @@
 .RecipePageMain__description-content {
   max-width: 400px;
   margin: 15px auto;
-
+  text-align: center;
 }
 
 .RecipePageMain__container h1 {
