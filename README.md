@@ -4,8 +4,7 @@
 https://recipe-repo-client.now.sh/
 
 ## Summary
-
-## Documentation
+Use Recipe Repo to store your recipes and organize them by category
 
 ## Screenshots
 
