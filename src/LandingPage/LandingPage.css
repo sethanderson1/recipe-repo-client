@@ -57,7 +57,7 @@
 
 }
 
-.get-started-content span a {
+.get-started-content span {
   color:#455a64;
   /* font-size: 1.7rem; */
   text-decoration: underline;
@@ -65,8 +65,9 @@
   font-weight: bold;
 }
 
-.get-started-content span a:hover {
+.get-started-content span:hover {
   color: #607D8B;
+  cursor: pointer;
 }
 
 .LandingPage-main-container img {

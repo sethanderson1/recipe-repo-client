@@ -17,7 +17,7 @@ export default function SignUp(props) {
         props.history.push(`/`)
     }
 
-    const handleSubmit = e => {
+    const handleSubmit =  e => {
         e.preventDefault()
         postSignUpUser({
             user_name: name,
@@ -39,13 +39,81 @@ export default function SignUp(props) {
                     : res.json();
             })
             .then((res) => {
-                props.history.push('/login')
+                console.log('res', res)
+
+
+                
+                // props.history.push('/login')
+
+                // postLoginUser
+                postLoginUser({
+                    user_name: name,
+                    password,
+                })
+                
             })
             .catch(err => {
                 // put error somewhere on page
                 console.log('err', err)
             })
     }
+
+
+
+
+
+
+
+
+
+
+
+    function postLoginUser(credentials) {
+        // todo: change to config....
+        // return fetch(`${config.API_ENDPOINT}/auth/login`, {
+        return fetch(`${config.API_ENDPOINT}/auth/login`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        })
+            .then((res) => {
+                return !res.ok
+                    ? res.json().then((e) => Promise.reject(e))
+                    : res.json();
+            })
+            .then(async (res) => {
+                const { authToken } = res
+                await storeToken(authToken)
+                await context.handleGetCategories()
+                await context.handleGetRecipes()
+                sessionStorage.setItem('currentCategoryId', '0')
+                props.history.push('/categories')
+            })
+            .catch(err => {
+                // setError(
+                //     <div className="login-error">
+                //         Incorrect username or password</div>
+                // )
+                console.log('err', err)
+            })
+    }
+
+
+    async function storeToken(authToken) {
+        await localStorage.setItem('authToken', authToken);
+        context.handleChangeIsLoggedIn(true)
+    }
+
+
+
+
+
+
+
+
+
 
 
 
