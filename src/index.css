@@ -19,8 +19,12 @@ html,body,#root,.App,main {
 
 a {
   text-decoration: none;
-  color: blue;
+  /* color: blue; */
 }
+
+/* a:visited {
+  text-decoration: none;
+} */
 
 ul {
   margin:0;

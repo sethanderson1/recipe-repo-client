@@ -6,9 +6,8 @@
 }
 
 .LandingPage-container p {
-    font-size: 18px;
-    max-width: 640px;
-    margin:0 auto;
+
+  margin: 3vh auto 8vh auto;
 }
 
 .LandingPage-nav {
@@ -22,11 +21,20 @@
   max-width: 1200px;
   /* align-items: center; */
   text-align: center;
-  padding: 0 5px;
+  padding: 0 10px;
+  font-size: 1.2rem;
+
 }
 
 .LandingPage-main-container h2 {
-  font-weight: 300;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.LandingPage-main-container p {
+  /* margin: 2vh 0 10vh 0; */
+
 }
 
 .LandingPage-app-title {
@@ -36,12 +44,44 @@
   margin-bottom: 0;
 }
 
+ .app-description-content {
+  max-width: 640px;
+  /* margin:40px auto; */
+}
+
+.get-started-content {
+}
+
+.get-started-content span {
+ 
+
+}
+
+.get-started-content span a {
+  color:#455a64;
+  /* font-size: 1.7rem; */
+  text-decoration: underline;
+  transition-duration: 0.3s;
+  font-weight: bold;
+}
+
+.get-started-content span a:hover {
+  color: #607D8B;
+}
+
 .LandingPage-main-container img {
-  /* margin-top: 20px; */
+  margin-bottom: 20px;
   width: 150px;
 }
 
 @media only screen and (min-width: 640px) {
+
+  .LandingPage-main-container {
+
+    font-size: 1.4rem;
+  
+  }
+
   .LandingPage-main-container img {
     /* margin-top: 20px; */
     width: 300px;
@@ -55,4 +95,6 @@
   .LandingPage-main-container h2 {
     font-size: 2.25rem;
   }
+
+  
 }

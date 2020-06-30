@@ -97,10 +97,10 @@ export default function SignUp(props) {
                     </div>
                 </form>
                 <div className='demo-credentials'>
-                    Demo:
+                    Demo user credentials:
                 <div className='credential-wrapper'>
                         <p className='credential'>
-                            Username:
+                            Email:
                             <span className='credential-bold'>  user1@gmail.com</span>
                         </p>
                         <button className="copy-to-clipboard"

@@ -3,33 +3,36 @@ import React from 'react';
 import MainNav from '../MainNav/MainNav';
 import './LandingPage.css';
 import recipe_repo_logo from './../images/recipe_repo_logo2.png';
+import { Link } from 'react-router-dom';
 
 
 function LandingPage() {
     return (
-        <div className='LandingPage-container '>
+        <section className='LandingPage-container '>
             <header
                 className='LandingPage-nav
              default-primary-color'>
                 <MainNav />
             </header>
-            <section className='LandingPage-main-container'>
+            <div className='LandingPage-main-container'>
                 <h1 className='LandingPage-app-title'>
                     Recipe Repo
                 </h1>
                     <img src={recipe_repo_logo} alt='Recipe Repo Logo' className='LandingPage-logo' />
-                <h2>Info about the app</h2>
-                <p>description of app here</p>
-                <h2>Screenshots</h2>
-                <p>cool screenshots and maybe animated gif of site in action
+                <h2>About Recipe Repo</h2>
+                <p className='app-description-content'>
+                    
+                Use Recipe Repo to store your recipes and organize them by category
 
-
-                cool screenshots and maybe animated gif of site in actioncool screenshots and maybe animated gif of site in action
-                cool screenshots and maybe animated gif of site in actioncool screenshots and maybe animated gif of site in action
 
                 </p>
-            </section>
-        </div>
+                <h2>Get Started</h2>
+                <p className='get-started-content primary-text-color'>
+                   
+                    Sign up <span><Link to={'/signup'}>here</Link></span> or try out the demo <span><Link to={'/login'}>here</Link></span> to get started!
+                </p>
+            </div>
+        </section>
     )
 }
 
