@@ -12,12 +12,15 @@ export default function SignUp(props) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [touched, setTouched] = useState(false)
+    const [nameTaken, setNameTaken] = useState(false)
+    // let errorMessage = false;
+    // let nameTaken = null;
 
     function handleCancel() {
         props.history.push(`/`)
     }
 
-    const handleSubmit =  e => {
+    const handleSubmit = e => {
         e.preventDefault()
         postSignUpUser({
             user_name: name,
@@ -42,7 +45,7 @@ export default function SignUp(props) {
                 console.log('res', res)
 
 
-                
+
                 // props.history.push('/login')
 
                 // postLoginUser
@@ -50,14 +53,28 @@ export default function SignUp(props) {
                     user_name: name,
                     password,
                 })
-                
+
             })
             .catch(err => {
                 // put error somewhere on page
+                if (err.error.message === 'Username already taken') {
+                    console.log('err in if statement', err)
+
+                    // nameTaken = true
+                    setNameTaken(true)
+                } 
                 console.log('err', err)
             })
     }
 
+
+
+    function errorMessage() {
+        if (nameTaken) {
+            console.log('nameTaken', nameTaken)
+            return '*Username already taken'
+        }
+    }
 
 
 
@@ -97,6 +114,7 @@ export default function SignUp(props) {
                 //         Incorrect username or password</div>
                 // )
                 console.log('err', err)
+
             })
     }
 
@@ -152,11 +170,11 @@ export default function SignUp(props) {
         if (!PASSWORD_REGEX.test(password)) {
             return `*Password must contain at least one each of: upper case, lower case, number, and special character`
         }
-        passwordTrue=true
+        passwordTrue = true
         return false
     }
 
-    
+
 
     function validateConfirmPassword() {
         if (confirmPassword.length === 0) {
@@ -165,7 +183,7 @@ export default function SignUp(props) {
         if (confirmPassword !== password) {
             return `*Passwords must match`
         }
-        confirmPasswordTrue= true
+        confirmPasswordTrue = true
         return true
     }
 
@@ -182,7 +200,7 @@ export default function SignUp(props) {
 
     console.log('checkIfValid()', checkIfValid())
     function checkIfValid() {
-        
+
         if (
             !usernameTrue || !passwordTrue || !confirmPasswordTrue
         ) {
@@ -204,6 +222,8 @@ export default function SignUp(props) {
         }
     }
 
+
+
     return (
         <div className='SignUp__signup-form-container-wrapper'>
             <BackButton handleClickBack={handleClickBack} />
@@ -217,7 +237,7 @@ export default function SignUp(props) {
                             name='user_name' id='SignUp__user_name'
                             value={name}
                             onChange={updateName}
-                            required 
+                            required
                             autoFocus />
                     </div>
                     <div className='SignUp__label-input-wrapper'>
@@ -244,6 +264,9 @@ export default function SignUp(props) {
                             errorPosition={'relative'} />
                         <ValidationError
                             message={validateConfirmPassword()}
+                            errorPosition={'relative'} />
+                        <ValidationError
+                            message={errorMessage()}
                             errorPosition={'relative'} />
                     </div>
                     <div className='signup-form-buttons-wrapper'>
