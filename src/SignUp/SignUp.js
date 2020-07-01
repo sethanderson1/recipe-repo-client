@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import config from '../config';
 import RecipesContext from '../RecipesContext';
 import ValidationError from '../ValidationError/ValidationError';
@@ -12,7 +12,7 @@ export default function SignUp(props) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [touched, setTouched] = useState(false);
     const [nameTaken, setNameTaken] = useState(false);
-
+    // let nameTaken = false;
     function handleCancel() {
         props.history.push(`/`);
     };
@@ -25,7 +25,7 @@ export default function SignUp(props) {
         });
     };
 
-   
+
 
     function postLoginUser(credentials) {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
@@ -157,21 +157,16 @@ export default function SignUp(props) {
                     password,
                 });
             })
-            .catch(err => {
-                console.log('err', err)
-                console.log('err.error', err.error)
-                console.log('err.error.message', err.error.message)
-                if (err.error.message === 'Username already taken') {
+            .catch(async (err) => {
+                if (err.error.message === '*Email already in use') {
                     setNameTaken(true);
                 };
             });
     };
 
     function errorMessage() {
-        console.log('nameTaken', nameTaken)
-
         if (nameTaken) {
-            return '*Username already taken';
+            return '*Email already in use';
         };
     };
 
