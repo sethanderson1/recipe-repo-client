@@ -75,22 +75,28 @@ Use Recipe Repo to store your recipes and organize them by category
 - Login Page
 
 - Categories Page
+
 ![m-categories1](https://user-images.githubusercontent.com/58465744/86298874-b2b57d00-bbb3-11ea-87a0-79aa3477fe1c.jpg)
 
 - Add Categories Page
+
 ![m-add-category](https://user-images.githubusercontent.com/58465744/86298884-b3e6aa00-bbb3-11ea-9c29-de366135e6eb.jpg)
 
 - Recipes List Page
+
 ![m-recipes-list1](https://user-images.githubusercontent.com/58465744/86298882-b34e1380-bbb3-11ea-88ba-b03a601d765f.jpg)
 
 - Add Recipes Page
+
 ![m-add-recipe1](https://user-images.githubusercontent.com/58465744/86298872-b21ce680-bbb3-11ea-9fb0-b24a9bbba4b0.jpg)
 
 - Recipe Page
+
 ![m-recipe1](https://user-images.githubusercontent.com/58465744/86298879-b34e1380-bbb3-11ea-9cb6-94332962eeb3.jpg)
 ![m-recipe2](https://user-images.githubusercontent.com/58465744/86298881-b34e1380-bbb3-11ea-9fdc-bed9d7d01804.jpg)
 
 - Edit Recipe Page
+
 ![m-edit-recipe1](https://user-images.githubusercontent.com/58465744/86298875-b2b57d00-bbb3-11ea-9b07-e611a3242660.jpg)
 ![m-edit-recipe2](https://user-images.githubusercontent.com/58465744/86298877-b2b57d00-bbb3-11ea-9754-68bbde1c6da2.jpg)
 
