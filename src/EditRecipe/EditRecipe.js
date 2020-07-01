@@ -154,10 +154,12 @@ function EditRecipe(props) {
                                 <button
                                     className='edit-button allowHover'
                                     type="button"
+                                    aria-label='Cancel'
                                     onClick={handleCancel}>Cancel</button>
                                 <button
                                     className={toggleHoverClass()}
                                     type="submit"
+                                    aria-label='submit'
                                     disabled={isDisabled()}
                                 >Save</button>
                             </div>

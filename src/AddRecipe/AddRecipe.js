@@ -98,7 +98,8 @@ function AddRecipe(props) {
                     <select
                         className='select-category'
                         name='select_category'
-                        id='select_category'>
+                        id='select_category'
+                        aria-label='select_category'>
                         {renderOptions()}
                     </select>
                     <label
@@ -108,6 +109,7 @@ function AddRecipe(props) {
                     <input type='text'
                         name='recipe_name'
                         id='recipe_name'
+                        aria-label='recipe_name'
                         value={name}
                         onChange={e => setName(e.target.value)}
                         autoFocus
@@ -124,6 +126,7 @@ function AddRecipe(props) {
                     <textarea
                         name='description'
                         id='description'
+                        aria-label='description'
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
@@ -136,6 +139,7 @@ function AddRecipe(props) {
                         maxRows={100}
                         name='ingredients'
                         id='ingredients'
+                        aria-label='ingredients'
                         value={ingredients}
                         onChange={e => setIngredients(e.target.value)}
                     />
@@ -148,6 +152,7 @@ function AddRecipe(props) {
                         maxRows={100}
                         name='directions'
                         id='directions'
+                        aria-label='directions'
                         value={directions}
                         onChange={e => setDirections(e.target.value)}
                     />
@@ -156,10 +161,12 @@ function AddRecipe(props) {
                             className='AddRecipe__cancel-button 
                         allowHover'
                             type="button"
+                            aria-label='Cancel'
                             onClick={handleCancel}>Cancel</button>
                         <button
                             className={toggleHoverClass()}
                             type="submit"
+                            aria-label='submit'
                             disabled={name.length === 0}
                         >Save</button>
                     </div>

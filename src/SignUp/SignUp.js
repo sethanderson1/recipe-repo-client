@@ -45,13 +45,9 @@ export default function SignUp(props) {
                 });
             })
             .catch(err => {
-                console.log('err', err)
-                console.log('err.error', err.error)
-                console.log('err.error.message', err.error.message)
                 if (err.error.message === 'Username already taken') {
                     setNameTaken(true);
                 };
-                
             });
     };
 
@@ -220,10 +216,12 @@ export default function SignUp(props) {
                         <button
                             className='allowHover'
                             type="button"
+                            aria-label='Cancel'
                             onClick={handleCancel}>Cancel</button>
                         <button
                             className={toggleHoverClass()}
                             type="submit"
+                            aria-label='submit'
                             disabled={checkIfValid()}
                         >Submit</button>
                     </div>

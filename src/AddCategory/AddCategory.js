@@ -70,6 +70,7 @@ export default function AddCategory(props) {
                     <input
                         type='text'
                         id='category_name'
+                        aria-label='category_name'
                         onChange={e => setName(e.target.value)} 
                         autoFocus />
                         

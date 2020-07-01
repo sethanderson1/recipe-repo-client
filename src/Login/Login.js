@@ -100,6 +100,7 @@ export default function SignUp(props) {
                             <span className='credential-bold'>  user1@gmail.com</span>
                         </p>
                         <button className="copy-to-clipboard"
+                            aria-label='copy-to-clipboard'
                             onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
                         >
                             <FontAwesomeIcon icon={faClipboardList} size="2x" />
@@ -111,6 +112,7 @@ export default function SignUp(props) {
                             <span className='credential-bold'>  Password1!</span>
                         </p>
                         <button className="copy-to-clipboard"
+                            aria-label='copy-to-clipboard'
                             onClick={() => navigator.clipboard.writeText(`Password1!`)}
                         >
                             <FontAwesomeIcon icon={faClipboardList} size="2x" />

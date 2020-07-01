@@ -31,7 +31,7 @@ export default function RecipePageMain(props) {
             context.handleGetRecipes();
             props.history.push(`/categories/${currentCategoryId}`);
         } catch (err) {
-            
+
         };
     };
 
@@ -70,11 +70,13 @@ export default function RecipePageMain(props) {
                                 <button
                                     className='btn edit-button
                                 text-primary-color '
+                                    aria-label='edit-button'
                                     onClick={handleEditRecipe}>
                                     Edit
                                 </button>
                                 <button
                                     className='btn delete-button'
+                                    aria-label='delete-button'
                                     onClick={() => {
                                         if (window.confirm('Are you sure you wish to delete this item?')) {
                                             handleDeleteRecipe()
