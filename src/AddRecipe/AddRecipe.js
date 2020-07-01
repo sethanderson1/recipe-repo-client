@@ -64,7 +64,7 @@ function AddRecipe(props) {
             console.log('postedRecipe.category_id', postedRecipe.category_id)
             context.handleGetRecipes()
             // props.history.push(`/categories/${postedRecipe.category_id}`)
-            props.history.push(`/recipe/${postedRecipe.id}`)
+            props.history.push(`/recipes/${postedRecipe.id}`)
             // props.history.goBack()
         } catch (err) {
             console.log('err', err)

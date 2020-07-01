@@ -127,9 +127,6 @@ export default function Categories(props) {
 
                         </NavLink>
 
-                        {/* </div> */}
-
-
                         <div className='btn-wrapper'>
 
                             <button

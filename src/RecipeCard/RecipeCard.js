@@ -6,7 +6,7 @@ function RecipeCard(props) {
     return (
         <Link
             to={{
-                pathname: `/recipe/${props.id}`,
+                pathname: `/recipes/${props.id}`,
                 RecipeCardProps: {
                     category_id: props.category_id
                 }

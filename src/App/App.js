@@ -49,11 +49,7 @@ export default class App extends Component {
     sessionStorage.setItem('currentCategoryId', '0')
   }
 
-
-  // next steps fiugre o  ut how to prevent red scary error when 
-  // user not logged in but goes to /categories or /recipe
   checkBeforeAnything = () => {
-    // console.log('checkBeforeAnything ran')
     const authToken = localStorage.getItem('authToken')
     if (!authToken) {
       return (
@@ -67,57 +63,54 @@ export default class App extends Component {
     const loggedInStatus = authToken ? true : false
     this.setState({
       isLoggedIn: loggedInStatus
-    })
-  }
+    });
+  };
 
   handleCurrentCategoryId = (currentCategoryId) => {
-    sessionStorage.setItem('currentCategoryId', `${currentCategoryId}`)
+    sessionStorage.setItem('currentCategoryId', `${currentCategoryId}`);
     this.setState({
       currentCategoryId
-    })
-  }
+    });
+  };
 
   handleGetCategories = async () => {
     try {
-      const authToken = localStorage.getItem('authToken')
-      // console.log('authToken', authToken)
-      // console.log('config.API_ENDPOINT', config.API_ENDPOINT)
+      const authToken = localStorage.getItem('authToken');
       const res = await fetch(`${config.API_ENDPOINT}/categories`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
           "authorization": `bearer ${authToken}`
         },
-      })
-      const ownedCategories = await res.json()
+      });
+      const ownedCategories = await res.json();
       this.setState({
         categories: ownedCategories
-      })
+      });
     } catch (err) {
-      console.log('err', err)
-    }
-  }
+      console.log('err', err);
+    };
+  };
 
   handleGetRecipes = async () => {
     try {
-      const authToken = localStorage.getItem('authToken')
-      // console.log('authToken', authToken)
+      const authToken = localStorage.getItem('authToken');
       const res = await fetch(`${config.API_ENDPOINT}/recipes`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
           "authorization": `bearer ${authToken}`
         },
-      })
-      const ownedRecipes = await res.json()
+      });
+      const ownedRecipes = await res.json();
       // console.log('ownedRecipes', ownedRecipes)
       this.setState({
         recipes: ownedRecipes
-      })
+      });
     } catch (err) {
-      console.log('err', err)
-    }
-  }
+      console.log('err', err);
+    };
+  };
 
   render() {
 
@@ -133,7 +126,7 @@ export default class App extends Component {
       handleLogout: this.handleLogout,
       handleChangeIsLoggedIn: this.handleChangeIsLoggedIn,
       checkBeforeAnything: this.checkBeforeAnything
-    }
+    };
 
     return (
       <RecipesContext.Provider value={value}>
@@ -166,7 +159,7 @@ export default class App extends Component {
               component={RecipeCardList}
             />
             <Route
-              path={'/recipe/:recipeId'}
+              path={'/recipes/:recipeId'}
               component={RecipePageMain}
             />
             <Route
@@ -178,7 +171,7 @@ export default class App extends Component {
               component={AddRecipe}
             />
             <Route
-              path={'/edit/recipe/:recipeId'}
+              path={'/edit/recipes/:recipeId'}
               component={EditRecipe}
             />
           </main>

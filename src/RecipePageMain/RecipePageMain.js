@@ -51,7 +51,7 @@ export default function RecipePageMain(props) {
     }
 
     function handleEditRecipe() {
-        props.history.push(`/edit/recipe/${recipe.id}`)
+        props.history.push(`/edit/recipes/${recipe.id}`)
     }
 
     function recipeNotEmpty(recipe) {

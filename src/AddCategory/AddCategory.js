@@ -1,24 +1,15 @@
 import React, { useContext, useState } from 'react';
-// import { Route, NavLink } from 'react-router-dom';
 import ValidationError from '../ValidationError/ValidationError';
 import './AddCategory.css'
 import RecipesContext from '../RecipesContext';
 import config from '../config';
 
-
-
-// account for when user enters already taken username
-
 export default function AddCategory(props) {
-    // console.log('props', props)
     const [name, setName] = useState('');
 
     const context = useContext(RecipesContext)
-    // console.log('context', context)
-
 
     function handleCancel() {
-        // go to categories page
         props.history.push('/categories')
     }
 
@@ -32,26 +23,14 @@ export default function AddCategory(props) {
     function handleSubmit(e) {
         e.preventDefault()
         const { category_name } = e.target
-        // console.log('category_name.value', category_name.value)
         postCategory({
             category_name: category_name.value,
-
         })
     }
 
-    // function postCategory() {
-    //     // POST fetch
-    //     // add to state
-    //     props.history.push('/categories')
-
-
-    // }
-
     async function postCategory(categoryName) {
-        // console.log('categoryName', categoryName.cate)
         try {
             const authToken = localStorage.getItem('authToken')
-            // console.log('authToken', authToken)
             const res = await fetch(`${config.API_ENDPOINT}/categories`, {
                 method: "POST",
                 headers: {
@@ -61,7 +40,6 @@ export default function AddCategory(props) {
                 body: JSON.stringify(categoryName)
             })
             await res.json()
-            // console.log('postedCategory', postedCategory)
             context.handleGetCategories()
             props.history.push(`/categories`)
         } catch (err) {
@@ -74,19 +52,16 @@ export default function AddCategory(props) {
             return ['AddCategory__submit', 'allowHover'].join(' ')
         } else {
             return 'AddCategory__submit'
-
         }
     }
 
     return (
         <div className='AddCategory__outermost-wrapper
         default-primary-color'>
-
             <div className='AddCategory__add-category-container
             default-primary-color'>
                 <h2 className='AddCategory__heading 
             text-primary-color'>Add Category</h2>
-
                 <form
                     className='AddCategory__add-category'
                     onSubmit={handleSubmit}>
@@ -106,7 +81,9 @@ export default function AddCategory(props) {
                         <button
                             className='AddCategory__cancel-button 
                                        allowHover'
-                            onClick={handleCancel}>Cancel</button>
+                            onClick={handleCancel}
+                            aria-label="Cancel"
+                            >Cancel</button>
                         <button
                             className={toggleHoverClass()}
                             type='submit'
