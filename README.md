@@ -8,12 +8,10 @@ Use Recipe Repo to store your recipes and organize them by category
 
 ## Screenshots
 
-
 ### Desktop View
 
 - Landing Page
 ![landing_page_desktop2](https://user-images.githubusercontent.com/58465744/86298870-b21ce680-bbb3-11ea-825b-f38c692fb408.png)
-
 
 - SignUp Page
 ![d-signup](https://user-images.githubusercontent.com/58465744/86298885-b3e6aa00-bbb3-11ea-8e3d-54bdebd99fdd.png)
@@ -24,17 +22,20 @@ Use Recipe Repo to store your recipes and organize them by category
 - Categories Page
 ![d-categoriesPage](https://user-images.githubusercontent.com/58465744/86298887-b47f4080-bbb3-11ea-85a2-2e46c1ac4841.png)
 
-
 - Add Categories Page
+
 ![d-addcategory](https://user-images.githubusercontent.com/58465744/86298886-b47f4080-bbb3-11ea-8583-13b4ab0bcc71.png)
+
 - Recipes List Page
+
 ![recipe_list_desktop](https://user-images.githubusercontent.com/58465744/86298883-b3e6aa00-bbb3-11ea-9e77-c8fce9ea4a17.png)
 
 - Add Recipes Page
 
-
+![2020-07-01 16_06_11-Recipe Repo](https://user-images.githubusercontent.com/58465744/86299327-d2997080-bbb4-11ea-9737-be9c92b40a31.png)
 
 - Recipe Page
+
 ![d-recipe1](https://user-images.githubusercontent.com/58465744/86298865-b1845000-bbb3-11ea-97c7-1349940c85a0.png)
 ![d-recipe2](https://user-images.githubusercontent.com/58465744/86298869-b1845000-bbb3-11ea-934a-51a608d6b309.png)
 
@@ -44,27 +45,7 @@ Use Recipe Repo to store your recipes and organize them by category
 ![d-edit-recipe2](https://user-images.githubusercontent.com/58465744/86298889-b517d700-bbb3-11ea-8938-7018a5e894d5.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Mobile View
-
-
 
 - Landing Page
 
@@ -72,7 +53,12 @@ Use Recipe Repo to store your recipes and organize them by category
 
 - SignUp Page
 
+![2020-07-01 16_08_54-Recipe Repo](https://user-images.githubusercontent.com/58465744/86299514-52273f80-bbb5-11ea-95b7-ce168029b554.png)
+
 - Login Page
+
+![2020-07-01 16_08_54-Recipe Repo](https://user-images.githubusercontent.com/58465744/86299514-52273f80-bbb5-11ea-95b7-ce168029b554.png)
+
 
 - Categories Page
 
@@ -99,16 +85,6 @@ Use Recipe Repo to store your recipes and organize them by category
 
 ![m-edit-recipe1](https://user-images.githubusercontent.com/58465744/86298875-b2b57d00-bbb3-11ea-9b07-e611a3242660.jpg)
 ![m-edit-recipe2](https://user-images.githubusercontent.com/58465744/86298877-b2b57d00-bbb3-11ea-9754-68bbde1c6da2.jpg)
-
-
-
-
-
-
-
-
-
-
 
 
 ## Technology Used
