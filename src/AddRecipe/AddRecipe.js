@@ -56,7 +56,7 @@ function AddRecipe(props) {
             context.handleGetRecipes();
             props.history.push(`/recipes/${postedRecipe.id}`);
         } catch (err) {
-            console.log('err', err);
+            
         };
     };
 

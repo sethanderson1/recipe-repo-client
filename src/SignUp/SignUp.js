@@ -48,7 +48,7 @@ export default function SignUp(props) {
                 if (err.error.message === 'Username already taken') {
                     setNameTaken(true);
                 };
-                console.log('err', err);
+                
             });
     };
 
@@ -80,7 +80,7 @@ export default function SignUp(props) {
                 props.history.push('/categories')
             })
             .catch(err => {
-                console.log('err', err);
+                
             });
     };
 

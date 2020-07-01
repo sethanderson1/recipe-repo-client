@@ -65,7 +65,7 @@ function EditRecipe(props) {
             context.handleGetRecipes();
             props.history.goBack();
         } catch (err) {
-            console.log('err', err);
+            
         };
     };
 

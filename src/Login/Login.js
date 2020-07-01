@@ -50,7 +50,7 @@ export default function SignUp(props) {
                     <div className="login-error">
                         Incorrect username or password</div>
                 )
-                console.log('err', err)
+                // console.log('err', err);'err', err)
             });
     };
 

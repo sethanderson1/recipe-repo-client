@@ -83,7 +83,7 @@ export default class App extends Component {
         categories: ownedCategories
       });
     } catch (err) {
-      console.log('err', err);
+      
     };
   };
 
@@ -102,7 +102,7 @@ export default class App extends Component {
         recipes: ownedRecipes
       });
     } catch (err) {
-      console.log('err', err);
+      
     };
   };
 

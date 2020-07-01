@@ -31,7 +31,7 @@ export default function RecipePageMain(props) {
             context.handleGetRecipes();
             props.history.push(`/categories/${currentCategoryId}`);
         } catch (err) {
-            console.log('err', err);
+            
         };
     };
 

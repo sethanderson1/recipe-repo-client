@@ -42,7 +42,7 @@ export default function AddCategory(props) {
             context.handleGetCategories();
             props.history.push(`/categories`);
         } catch (err) {
-            console.log('err', err);
+            
         };
     };
 
