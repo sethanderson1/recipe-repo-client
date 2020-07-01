@@ -1,33 +1,30 @@
-import React, { useContext, useState } from 'react'
-import RecipesContext from '../RecipesContext'
+import React, { useContext, useState } from 'react';
+import RecipesContext from '../RecipesContext';
 import './Login.css';
-import config from '../config'
+import config from '../config';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
 import BackButton from '../BackButton/BackButton';
 
-
 export default function SignUp(props) {
-    const [error, setError] = useState(null)
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const context = useContext(RecipesContext)
+    const [error, setError] = useState(null);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const context = useContext(RecipesContext);
 
     function handleCancel() {
-        props.history.push(`/`)
-    }
+        props.history.push(`/`);
+    };
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         postLoginUser({
             user_name: username,
             password,
-        })
-    }
+        });
+    };
 
     function postLoginUser(credentials) {
-        // todo: change to config....
-        // return fetch(`${config.API_ENDPOINT}/auth/login`, {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: "POST",
             headers: {
@@ -54,18 +51,17 @@ export default function SignUp(props) {
                         Incorrect username or password</div>
                 )
                 console.log('err', err)
-            })
-    }
-
+            });
+    };
 
     async function storeToken(authToken) {
         await localStorage.setItem('authToken', authToken);
-        context.handleChangeIsLoggedIn(true)
-    }
+        context.handleChangeIsLoggedIn(true);
+    };
 
     function handleClickBack() {
-        props.history.push('/')
-    }
+        props.history.push('/');
+    };
 
     return (
         <div className='Login__login-form-container-wrapper'>
@@ -79,7 +75,7 @@ export default function SignUp(props) {
                             name='user_name' id='user_name'
                             value={username}
                             onChange={e => setUsername(e.target.value)}
-                            required 
+                            required
                             autoFocus />
                     </div>
                     <div className='Login__label-input-wrapper'>
@@ -105,13 +101,11 @@ export default function SignUp(props) {
                         </p>
                         <button className="copy-to-clipboard"
                             onClick={() => navigator.clipboard.writeText(`user1@gmail.com`)}
-
                         >
                             <FontAwesomeIcon icon={faClipboardList} size="2x" />
                         </button>
                     </div>
                     <div className='credential-wrapper'>
-
                         <p className='credential'>
                             Password:
                             <span className='credential-bold'>  Password1!</span>
@@ -123,8 +117,7 @@ export default function SignUp(props) {
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
-    )
-}
+    );
+};

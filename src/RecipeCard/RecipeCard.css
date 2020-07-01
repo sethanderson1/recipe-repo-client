@@ -1,40 +1,30 @@
-
 .RecipeCard__container {
-    padding:10px 20px;
-    border:0;
-    border-radius: 0.5rem;
-    /* margin-top:5px; */
-    /* margin-bottom:8px; */
-    margin: 5px auto 8px auto;
-    transition-duration: 0.2s;
-    max-width:600px
-
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 0.5rem;
+  margin: 5px auto 8px auto;
+  transition-duration: 0.2s;
+  max-width: 600px;
 }
 
 .RecipeCard__container:hover,
-.RecipeCard__container:focus
-/* .RecipeCard__container:active  */{
-    background: rgba(96, 125, 139, 0.74);
+.RecipeCard__container:focus {
+  background: rgba(96, 125, 139, 0.74);
 }
 
 .RecipeCard__title {
-    /* margin:0; */
-    font-weight: 300;
-    max-width: 240px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-weight: 300;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-
-.RecipeCard__description{
-    margin-bottom: 1rem;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4; /* number of lines to show */
-    -webkit-box-orient: vertical;
-    font-size: 18px;
+.RecipeCard__description {
+  margin-bottom: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  font-size: 18px;
 }
-
-

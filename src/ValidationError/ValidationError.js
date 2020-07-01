@@ -1,21 +1,19 @@
 import React from 'react';
-import './ValidationError.css'
+import './ValidationError.css';
 
 export default function ValidationError(props) {
-    const colorClass = ''
+    const colorClass = '';
     if (props.message) {
-        console.log('props.message', props.message)
-
         const errorPosition = props.errorPosition === 'absolute'
             ? 'error-absolute'
-            : 'error-relative'
+            : 'error-relative';
         return (
             <div className='ValidationError-wrapper'>
                 <span
                     className={[errorPosition, colorClass].join(' ')}
                 >{props.message}</span>
             </div>
-        )
-    }
+        );
+    };
     return <></>
-}
+};

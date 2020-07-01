@@ -1,11 +1,4 @@
-/* .RecipePageMain__container {
-    margin:auto;
-    width:95%;
-    white-space: pre-line;
-} */
-
 .back-button {
-
   margin: 5px 0px 0px 0px;
   height: 30px;
   width: 30px;
@@ -13,14 +6,12 @@
   border: 0;
   position: absolute;
   background: rgba(161, 161, 161, 0);
-  /* color: rgb(44, 34, 87); */
 z-index: 5;
   transition-duration: 0.2s;
 }
 
 .back-button:hover {
   background: rgba(161, 161, 161, 0);
-
   color: #212121;
   cursor: pointer;
 }
@@ -31,7 +22,4 @@ z-index: 5;
 
 .fontawesome-back {
   font-size: 1.4rem;
-  /* position: absolute;
-    left:8px;
-    top:4px; */
 }

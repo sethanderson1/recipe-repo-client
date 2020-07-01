@@ -3,8 +3,6 @@
 }
 
 .AddRecipe__add-recipe-container {
-  /* margin: auto;  */
-  /* width: 90%; */
   padding:0 10px;
   margin:0 auto;
   font-size: 18px;
@@ -47,9 +45,7 @@
   padding-bottom: 4rem;
 }
 
-
 .AddRecipe__buttons-wrapper button {
-  /* background: #CFD8DC; */
   padding: 0.4375em 1.5em 0.5em;
   border: 1px solid gray;
   border: 0;
@@ -68,7 +64,6 @@
   transition-duration: 0.2s;
 }
 
-
 .AddRecipe__buttons-wrapper .allowHover:hover {
   cursor: pointer;
   background: #455a64;
@@ -78,7 +73,3 @@
 .select-category {
   max-width:240px;
 }
-
-
-
-

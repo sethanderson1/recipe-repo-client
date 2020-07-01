@@ -1,13 +1,8 @@
-.Login__login-form-container-wrapper {
-  /* padding-top: 20px; */
-}
-
 .Login__login-title {
     text-align: center;
     font-weight: 300;
     padding:20px;
     margin:0;
-
 }
 
 .Login__login-form-container {
@@ -48,8 +43,6 @@
   justify-content: space-between;
 }
 
-
-
 .login-form-buttons-wrapper button {
     background: #CFD8DC;
     padding: 0.4375em 1.5em 0.5em;
@@ -67,14 +60,12 @@
 }
 
 .demo-credentials {
-  /* border:1px solid black; */
   margin-top: 10px;
 }
 
 .credential-wrapper {
   display: flex;
   justify-content: space-between;
-  /* border:1px solid red; */
   margin-bottom: 4px;
   align-items: center;
 
@@ -85,12 +76,10 @@
 
 }
 
-
 .credential-bold {
     font-weight: bold;
     white-space: pre-wrap;
 }
-
 
 .copy-to-clipboard {
     background: white;
@@ -99,7 +88,6 @@
     transition-duration: 0.2s;
 }
 
-
 .copy-to-clipboard:hover {
     background: black;
     color: white;
@@ -107,10 +95,8 @@
     cursor: pointer;
 }
 
-
 @media only screen and (min-width: 640px) {
     .Login__login-title {
         font-size: 3rem;
-
     }
 }

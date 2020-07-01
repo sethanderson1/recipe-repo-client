@@ -16,17 +16,10 @@
 }
 
 .nav-link {
-
     padding-left: 20px;
     transition-duration: 0.4s;
-
 }
 
 .nav-link:hover {
-
     padding-left: 20px;
-}
-
-.last-two-wrapper {
-
 }

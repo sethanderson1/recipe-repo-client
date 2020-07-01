@@ -1,32 +1,29 @@
-import React, { useContext, useState } from 'react'
-import './SignUp.css';
-import config from '../config'
-import RecipesContext from '../RecipesContext'
+import React, { useContext, useState } from 'react';
+import config from '../config';
+import RecipesContext from '../RecipesContext';
 import ValidationError from '../ValidationError/ValidationError';
 import BackButton from '../BackButton/BackButton';
+import './SignUp.css';
 
 export default function SignUp(props) {
-    // const [error, setError] = useState(null)
-    const context = useContext(RecipesContext)
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [touched, setTouched] = useState(false)
-    const [nameTaken, setNameTaken] = useState(false)
-    // let errorMessage = false;
-    // let nameTaken = null;
+    const context = useContext(RecipesContext);
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [touched, setTouched] = useState(false);
+    const [nameTaken, setNameTaken] = useState(false);
 
     function handleCancel() {
-        props.history.push(`/`)
-    }
+        props.history.push(`/`);
+    };
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         postSignUpUser({
             user_name: name,
             password,
-        })
-    }
+        });
+    };
 
     function postSignUpUser(signUpFields) {
         return fetch(`${config.API_ENDPOINT}/users`, {
@@ -42,52 +39,26 @@ export default function SignUp(props) {
                     : res.json();
             })
             .then((res) => {
-                console.log('res', res)
-
-
-
-                // props.history.push('/login')
-
-                // postLoginUser
                 postLoginUser({
                     user_name: name,
                     password,
-                })
-
+                });
             })
             .catch(err => {
-                // put error somewhere on page
                 if (err.error.message === 'Username already taken') {
-                    console.log('err in if statement', err)
-
-                    // nameTaken = true
-                    setNameTaken(true)
-                } 
-                console.log('err', err)
-            })
-    }
-
-
+                    setNameTaken(true);
+                };
+                console.log('err', err);
+            });
+    };
 
     function errorMessage() {
         if (nameTaken) {
-            console.log('nameTaken', nameTaken)
             return '*Username already taken'
-        }
-    }
-
-
-
-
-
-
-
-
-
+        };
+    };
 
     function postLoginUser(credentials) {
-        // todo: change to config....
-        // return fetch(`${config.API_ENDPOINT}/auth/login`, {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: "POST",
             headers: {
@@ -109,120 +80,94 @@ export default function SignUp(props) {
                 props.history.push('/categories')
             })
             .catch(err => {
-                // setError(
-                //     <div className="login-error">
-                //         Incorrect username or password</div>
-                // )
-                console.log('err', err)
-
-            })
-    }
-
+                console.log('err', err);
+            });
+    };
 
     async function storeToken(authToken) {
         await localStorage.setItem('authToken', authToken);
-        context.handleChangeIsLoggedIn(true)
-    }
-
-
-
-
-
-
-
-
-
-
-
+        context.handleChangeIsLoggedIn(true);
+    };
 
     const PASSWORD_REGEX = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_@#$%^&])[\S]+/;
-    const EMAIL_REGEX = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
-    let usernameTrue = false
-    let passwordTrue = false
-    let confirmPasswordTrue = false
+    const EMAIL_REGEX = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+    let usernameTrue = false;
+    let passwordTrue = false;
+    let confirmPasswordTrue = false;
 
     function validateUsername() {
         if (name.length === 0 && touched) {
             return `*Must have an Email`
-        }
+        };
         if (!EMAIL_REGEX.test(name) && touched) {
             return `*Must be a valid email address`
-        }
-        usernameTrue = true
-        return false
-    }
-
-
+        };
+        usernameTrue = true;
+        return false;
+    };
 
     function validatePassword() {
         if (password.length === 0) {
-            return null
+            return null;
         }
         if (password.length < 8) {
-            return `*Password must be at least 8 characters`
+            return `*Password must be at least 8 characters`;
         }
         if (password.length > 72) {
-            return `*Password must be no more than 72 characters`
-        }
+            return `*Password must be no more than 72 characters`;
+        };
         if (password.startsWith(' ') || password.endsWith(' ')) {
-            return `*Password cannot start or end with empty spaces`;
-        }
+            return `*Password cannot start or end with empty spaces`
+        };
         if (!PASSWORD_REGEX.test(password)) {
-            return `*Password must contain at least one each of: upper case, lower case, number, and special character`
-        }
-        passwordTrue = true
-        return false
-    }
-
-
+            return `*Password must contain at least one each of: upper case, lower case, number, and special character`;
+        };
+        passwordTrue = true;
+        return false;
+    };
 
     function validateConfirmPassword() {
         if (confirmPassword.length === 0) {
-            return null
+            return null;
         }
         if (confirmPassword !== password) {
-            return `*Passwords must match`
-        }
-        confirmPasswordTrue = true
-        return true
-    }
+            return `*Passwords must match`;
+        };
+        confirmPasswordTrue = true;
+        return true;
+    };
 
     const updateTouched = () => {
         if (!touched) {
-            return setTouched(true)
-        }
-    }
+            return setTouched(true);
+        };
+    };
 
     const updateName = (e) => {
-        setName(e.target.value)
-        updateTouched()
-    }
+        setName(e.target.value);
+        updateTouched();
+    };
 
-    console.log('checkIfValid()', checkIfValid())
     function checkIfValid() {
-
         if (
             !usernameTrue || !passwordTrue || !confirmPasswordTrue
         ) {
-            return true
-        }
-        return false
-    }
+            return true;
+        };
+        return false;
+    };
 
     function handleClickBack() {
-        props.history.push('/')
-    }
+        props.history.push('/');
+    };
 
     function toggleHoverClass() {
         if (!checkIfValid()) {
             return ['SignUp__submit', 'allowHover'].join(' ')
         } else {
             return 'SignUp__submit'
-
-        }
-    }
-
-
+        };
+    };
 
     return (
         <div className='SignUp__signup-form-container-wrapper'>
@@ -283,5 +228,5 @@ export default function SignUp(props) {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};

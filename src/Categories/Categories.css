@@ -4,7 +4,6 @@
 }
 
 .Categories__categories-container li {
-  /* margin:0; */
 }
 
 .Categories__heading {
@@ -19,7 +18,6 @@
 
 .Categories__list-container {
     align-items: center;
-    /* justify-content: center; */
     margin-top: 15px;
     padding: 0 10px 50px 10px;
     background: #455a64;
@@ -32,12 +30,8 @@
 }
 
 .Categories__categories {
-  /* border: 3px solid black; */
-  /* display: flex; */
-  /* justify-content: space-between; */
   align-items: center;
   margin: 10px 0;
-  /* padding: 10px; */
   border-radius: 0.5rem;
   transition-duration: 0.2s;
 
@@ -45,48 +39,34 @@
 
 .Categories__categories:hover,
 .Categories__categories:focus {
-  /* cursor: pointer; */
   background: rgba(96, 125, 139, 0.74);
-
 }
 
 .Categories__categories-name {
-  /* justify-self: flex-end; */
   align-self: center;
   font-weight: 300;
   padding:0 20px;
   max-width: 80%;
   overflow: hidden;
-  /* border:1px solid black; */
   max-width: 240px;
   text-overflow: ellipsis;
-
 }
 
 .btn-wrapper {
     align-self: stretch;
-    /* border-end-end-radius: 0.5rem; */
-
 }
 
 .Categories__categories .delete-button {
     border-radius: 0 0.5rem 0.5rem 0;
-    
     height: 100%;
     color:black;
   background:rgba(255, 255, 255, 0.048);
   border: 0;
-  /* border:2px solid rgba(255, 255, 255, 0.082); */
-  /* border-radius: 30%; */
   transition-duration: 0.2s;
-  /* position: absolute; */
-  /* z-index: -1; */
-  /* border-end-end-radius: 0.5rem; */
 
 }
 
-.Categories__categories .delete-button:hover
-{
+.Categories__categories .delete-button:hover{
   background: #cb2431;
   color: white;
   cursor: pointer;
@@ -100,7 +80,6 @@
   background: #cfd8dc;
   padding: 0.4375em 1.5em 0.5em;
   border: 2px solid #cfd8dc;
-  /* border: 0; */
   border-radius: 1.5rem;
   font-size: 18px;
   transition-duration: 0.2s;
@@ -112,7 +91,6 @@
 .Categories__add-category-btn:focus {
   cursor: pointer;
   background: #243035;
-  /* background: rgba(96, 125, 139, 0.74); */
   color: #ffffff;
   border: 2px solid white;
 }
@@ -121,27 +99,15 @@
   color: blue;
   height: 20px;
   width: 33px;
-  /* opacity: 0; */
 }
 
-
-
 .link-and-delete-btn-wrapper {
-    /* margin: 8px auto; */
     display: flex;
-    /* justify-content: space-between; */
     max-width: 600px;
     width: 100%;
     margin: 3px;
-
 }
 
 .invisible-btn {
     opacity: 0;
 }
-
-.Categories__categories-wrapper {
-
-    
-}
-

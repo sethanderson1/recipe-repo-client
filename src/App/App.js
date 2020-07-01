@@ -13,7 +13,6 @@ import AddRecipe from '../AddRecipe/AddRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
 import config from '../config';
 export default class App extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -21,43 +20,42 @@ export default class App extends Component {
       recipes: [],
       currentCategoryId: 0,
       isLoggedIn: true
-    }
-  }
+    };
+  };
 
   handleLogout = () => {
-    localStorage.removeItem('authToken')
-    sessionStorage.removeItem('currentCategoryId')
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('currentCategoryId');
     this.setState({
-      isLoggedIn: false
-    })
-  }
+    isLoggedIn: false
+    });
+  };
 
   handleChangeIsLoggedIn = (status) => {
     this.setState({
       isLoggedIn: status
-    })
-  }
+    });
+  };
 
   componentDidMount() {
-    // console.log('componentDidMount ran')
-    this.checkLoggedInStatus()
-    this.handleGetCategories()
-    this.handleGetRecipes()
-    sessionStorage.setItem('currentCategoryId', '0')
-  }
+    this.checkLoggedInStatus();
+    this.handleGetCategories();
+    this.handleGetRecipes();
+    sessionStorage.setItem('currentCategoryId', '0');
+  };
 
   checkBeforeAnything = () => {
-    const authToken = localStorage.getItem('authToken')
+    const authToken = localStorage.getItem('authToken');
     if (!authToken) {
       return (
         <Redirect to={'/'} />
       )
-    }
-  }
+    };
+  };
 
   checkLoggedInStatus = () => {
-    const authToken = localStorage.getItem('authToken')
-    const loggedInStatus = authToken ? true : false
+    const authToken = localStorage.getItem('authToken');
+    const loggedInStatus = authToken ? true : false;
     this.setState({
       isLoggedIn: loggedInStatus
     });
@@ -100,7 +98,6 @@ export default class App extends Component {
         },
       });
       const ownedRecipes = await res.json();
-      // console.log('ownedRecipes', ownedRecipes)
       this.setState({
         recipes: ownedRecipes
       });
@@ -182,5 +179,5 @@ export default class App extends Component {
         </div>
       </RecipesContext.Provider>
     );
-  }
-}
+  };
+};

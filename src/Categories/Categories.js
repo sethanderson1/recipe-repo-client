@@ -2,46 +2,40 @@ import React, { useContext } from 'react';
 import config from '../config';
 import { NavLink } from 'react-router-dom';
 import RecipesContext from '../RecipesContext';
-import './Categories.css'
+import './Categories.css';
 import BackButton from '../BackButton/BackButton';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import MainNav from '../MainNav/MainNav';
+
 export default function Categories(props) {
-
-
-    const context = useContext(RecipesContext)
-
-    const { categories } = context
-    console.log('categories', categories)
+    const context = useContext(RecipesContext);
+    const { categories } = context;
 
     function handleClickBack() {
-        props.history.push('/')
-    }
+        props.history.push('/');
+    };
 
     function handleAddCategory() {
-        props.history.push('/add-category')
-    }
+        props.history.push('/add-category');
+    };
 
     async function handleDeleteCategory(categoryId) {
-        console.log('handleDeleteCategory) ran')
-
         try {
-            const authToken = localStorage.getItem('authToken')
-            // console.log('authToken', authToken)
+            const authToken = localStorage.getItem('authToken');
             await fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",
                     "authorization": `bearer ${authToken}`
                 },
-            })
-            context.handleGetCategories()
-            context.handleGetRecipes()
+            });
+            context.handleGetCategories();
+            context.handleGetRecipes();
         } catch (err) {
-            console.log('err', err)
-        }
-    }
+            console.log('err', err);
+        };
+    };
 
     function renderAllRecipesCategory() {
         if (categories.length > 0) {
@@ -61,7 +55,6 @@ export default function Categories(props) {
                             </div>
                         </li>
                     </NavLink>
-
                     <div className='btn-wrapper'>
                         <NavLink
                             className=''
@@ -76,15 +69,13 @@ export default function Categories(props) {
 
                             </button>
                         </NavLink>
-
                     </div>
                 </div>
-
             )
         } else {
             return null
-        }
-    }
+        };
+    };
 
     return (
         <div className='Categories__categories-container'>
@@ -96,39 +87,26 @@ export default function Categories(props) {
                             text-primary-color '>Categories</h1>
             </div>
             <section className='Categories__list-container'>
-                {/* <div className='Categories__categories-wrapper'> */}
-
                 {renderAllRecipesCategory()}
                 {categories.map(category => {
-
                     return <div
                         key={category.id}
                         className='Categories__categories 
                 default-primary-color
                 link-and-delete-btn-wrapper'>
-
-                        {/* <div className='Categories__link-to-category default-primary-color'> */}
-
                         <NavLink
                             className='Categories__link-to-category 
                                 Categories__navlink navlink-div'
                             to={`/categories/${category.id}`}
                             onClick={() => context.onChangeCurrentCategoryId(category.id)}>
-
                             <li
-
                                 className={'list-div text-primary-color   heading'}>
-
                                 <div className='Categories__categories-name-wrapper'>
                                     <h2 className='Categories__categories-name'>{category.category_name} </h2>
                                 </div>
-
                             </li>
-
                         </NavLink>
-
                         <div className='btn-wrapper'>
-
                             <button
                                 className='btn delete-button'
                                 onClick={() => {
@@ -139,14 +117,9 @@ export default function Categories(props) {
                                 <FontAwesomeIcon
                                     className='fontawesome-delete'
                                     icon={faTrashAlt} />
-
                             </button>
-
                         </div>
-
                     </div>
-
-
                 })}
                 <button
                     className='Categories__add-category-btn'
@@ -155,7 +128,6 @@ export default function Categories(props) {
             <div className='bottom-color-area 
                        default-primary-color'>
             </div>
-
         </div >
-    )
-}
+    );
+};

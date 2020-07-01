@@ -1,36 +1,35 @@
 import React, { useContext, useState } from 'react';
 import ValidationError from '../ValidationError/ValidationError';
-import './AddCategory.css'
 import RecipesContext from '../RecipesContext';
 import config from '../config';
+import './AddCategory.css';
 
 export default function AddCategory(props) {
     const [name, setName] = useState('');
-
-    const context = useContext(RecipesContext)
+    const context = useContext(RecipesContext);
 
     function handleCancel() {
-        props.history.push('/categories')
-    }
+        props.history.push('/categories');
+    };
 
     function validateName() {
-        const categoryName = name.trim()
+        const categoryName = name.trim();
         if (categoryName.length === 0) {
             return '*name is required'
-        }
-    }
+        };
+    };
 
     function handleSubmit(e) {
-        e.preventDefault()
-        const { category_name } = e.target
+        e.preventDefault();
+        const { category_name } = e.target;
         postCategory({
             category_name: category_name.value,
-        })
-    }
+        });
+    };
 
     async function postCategory(categoryName) {
         try {
-            const authToken = localStorage.getItem('authToken')
+            const authToken = localStorage.getItem('authToken');
             const res = await fetch(`${config.API_ENDPOINT}/categories`, {
                 method: "POST",
                 headers: {
@@ -38,14 +37,14 @@ export default function AddCategory(props) {
                     "authorization": `bearer ${authToken}`
                 },
                 body: JSON.stringify(categoryName)
-            })
-            await res.json()
-            context.handleGetCategories()
-            props.history.push(`/categories`)
+            });
+            await res.json();
+            context.handleGetCategories();
+            props.history.push(`/categories`);
         } catch (err) {
-            console.log('err', err)
-        }
-    }
+            console.log('err', err);
+        };
+    };
 
     function toggleHoverClass() {
         if (name.length !== 0) {
@@ -53,7 +52,7 @@ export default function AddCategory(props) {
         } else {
             return 'AddCategory__submit'
         }
-    }
+    };
 
     return (
         <div className='AddCategory__outermost-wrapper
@@ -98,4 +97,4 @@ export default function AddCategory(props) {
             </div>
         </div>
     )
-}
+};

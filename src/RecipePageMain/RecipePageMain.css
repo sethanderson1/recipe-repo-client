@@ -1,7 +1,5 @@
 .RecipePageMain__container {
-  /* margin:auto; */
   white-space: pre-line;
-  /* font-family: 'Fira Sans', sans-serif !important; */
 }
 
 .RecipePageMain__header {
@@ -10,12 +8,11 @@
 }
 
 .RecipePageMain__recipe-title {
-  /* text-align: center; */
   max-width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .RecipePageMain__description-content {
@@ -28,7 +25,6 @@
   font-size: 1.8rem;
   font-weight: 100;
   margin: 0 auto;
-
 }
 
 .RecipePageMain__container h2 {
@@ -36,14 +32,10 @@
   font-weight: 500;
 }
 
-.RecipePageMain__container p {
-  /* margin: 15px auto 10px; */
-}
-
 .RecipePageMain__content-container {
   margin: 0 auto;
   max-width: 640px;
-  padding:0 10px;
+  padding: 0 10px;
 }
 
 .RecipePageMain__ingredients-title {
@@ -59,7 +51,6 @@
 
 .RecipePageMain__directions-content,
 .RecipePageMain__ingedients-content {
-  /* font-family: "Source Sans Pro",Times,serif; */
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
@@ -81,11 +72,8 @@
 .RecipePageMain__btn-container .delete-button {
   margin-top: 10px;
   background: rgba(0, 0, 0, 0);
-  /* border: 1px solid gray; */
   border: 0;
-  /* border-radius: 5%; */
   font-size: 14px;
-  /* transition-duration: 0.2s; */
 }
 
 .RecipePageMain__flex-wrapper {
@@ -95,8 +83,6 @@
 
 .RecipePageMain__btn-container .delete-button:hover {
   cursor: pointer;
-  /* background: rgba(0, 0, 0, 0.05); */
-  /* border: 1px solid lightgray; */
 }
 
 .RecipePageMain__btn-container .edit-button {
@@ -116,9 +102,7 @@
   color: #ffffff;
 }
 
-
 @media only screen and (min-width: 640px) {
-
   .RecipePageMain__container h1 {
     font-size: 2.5rem;
   }
@@ -126,5 +110,4 @@
   .RecipePageMain__container p {
     font-size: 1.15rem;
   }
-  
 }

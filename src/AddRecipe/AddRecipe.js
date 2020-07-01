@@ -1,50 +1,44 @@
 import React, { useContext, useState } from 'react';
 import config from '../config';
-import RecipesContext from '../RecipesContext'
+import RecipesContext from '../RecipesContext';
 import './AddRecipe.css';
 import TextareaAutosize from 'react-textarea-autosize';
 import ValidationError from '../ValidationError/ValidationError';
 
 function AddRecipe(props) {
-    // console.log('useContext(RecipesContext)', useContext(RecipesContext))
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [directions, setDirections] = useState('');
-    const context = useContext(RecipesContext)
-    // console.log('context', context)
-    const { categories } = context
+    const context = useContext(RecipesContext);
+    const { categories } = context;
 
     function handleCancel() {
-        props.history.goBack()
-        // props.history.push(`/categories/${currentCategoryId}`)
+        props.history.goBack();
     }
-    // console.log('props.history', props.history)
 
     function validateName() {
-        const recipeName = name.trim()
+        const recipeName = name.trim();
         if (recipeName.length === 0) {
             return ` *name is required `
-        }
-    }
+        };
+    };
 
     function handleSubmit(e) {
-        e.preventDefault()
-        const { select_category } = e.target
+        e.preventDefault();
+        const { select_category } = e.target;
         postRecipe({
             category_id: select_category.value,
             title: name,
             description,
             ingredients,
             directions,
-        })
-    }
+        });
+    };
 
     async function postRecipe(fields) {
-        // console.log('fields', fields)
         try {
-            const authToken = localStorage.getItem('authToken')
-            // console.log('authToken', authToken)
+            const authToken = localStorage.getItem('authToken');
             const res = await fetch(`${config.API_ENDPOINT}/recipes`, {
                 method: "POST",
                 headers: {
@@ -53,23 +47,18 @@ function AddRecipe(props) {
                 },
                 body: JSON.stringify(fields)
             })
-            const postedRecipe = await res.json()
-            console.log('postedRecipe', postedRecipe)
-
+            const postedRecipe = await res.json();
             // switch current category id to the one the user
             // selected so that when they get to the recipe page, 
             // they can click back to go to the correct category
             // ie the category which the new recipe belongs to
-            sessionStorage.setItem('currentCategoryId',`${postedRecipe.category_id}`)
-            console.log('postedRecipe.category_id', postedRecipe.category_id)
-            context.handleGetRecipes()
-            // props.history.push(`/categories/${postedRecipe.category_id}`)
-            props.history.push(`/recipes/${postedRecipe.id}`)
-            // props.history.goBack()
+            sessionStorage.setItem('currentCategoryId', `${postedRecipe.category_id}`);
+            context.handleGetRecipes();
+            props.history.push(`/recipes/${postedRecipe.id}`);
         } catch (err) {
-            console.log('err', err)
-        }
-    }
+            console.log('err', err);
+        };
+    };
 
     function renderOptions() {
         return categories.map(category => (
@@ -81,22 +70,20 @@ function AddRecipe(props) {
                 {category.category_name}
             </option>
         ))
-    }
+    };
 
-    console.log('toggleHoverClass()', toggleHoverClass())
     function toggleHoverClass() {
         if (name.length !== 0) {
             return ['AddRecipe__submit', 'allowHover'].join(' ')
         } else {
             return 'AddRecipe__submit'
 
-        }
-    }
+        };
+    };
 
     return (
         <div className='AddRecipe__outermost-wrapper
         default-primary-color'>
-
             <div className='AddRecipe__add-recipe-container
         default-primary-color'>
                 <h2 className='AddRecipe__heading 
@@ -123,7 +110,7 @@ function AddRecipe(props) {
                         id='recipe_name'
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        autoFocus 
+                        autoFocus
                     />
                     <ValidationError
                         className='accent-color'
@@ -183,6 +170,6 @@ function AddRecipe(props) {
             </div>
         </div>
     )
-}
+};
 
 export default AddRecipe
