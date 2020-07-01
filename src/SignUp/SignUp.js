@@ -159,6 +159,8 @@ export default function SignUp(props) {
             })
             .catch(err => {
                 console.log('err', err)
+                console.log('err.error', err.error)
+                console.log('err.error.message', err.error.message)
                 if (err.error.message === 'Username already taken') {
                     setNameTaken(true);
                 };
