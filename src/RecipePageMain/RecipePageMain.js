@@ -14,7 +14,6 @@ export default function RecipePageMain(props) {
     const selectedRecipe = recipes.filter(recipe => recipe.id == recipeId)
     const recipe = selectedRecipe
         && selectedRecipe[0]
-    // let currentCategoryId = recipe && recipe.category_id
     const currentCategoryId = sessionStorage.getItem('currentCategoryId')
 
     // todo: add folder name that can be clicked to go back to folder (or should make a back button to go back to folder??)
@@ -25,16 +24,12 @@ export default function RecipePageMain(props) {
 
 
     function handleClickBack() {
-        
         props.history.push(`/categories/${currentCategoryId}`)
-        // props.history.goBack()
     }
 
     async function handleDeleteRecipe() {
-        // console.log('recipeId', recipeId)
         try {
             const authToken = localStorage.getItem('authToken')
-            // console.log('authToken', authToken)
             await fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
                 method: "DELETE",
                 headers: {
@@ -42,7 +37,6 @@ export default function RecipePageMain(props) {
                     "authorization": `bearer ${authToken}`
                 },
             })
-            // todo: ensure category page not displayed until recipes fetched 
             context.handleGetRecipes()
             props.history.push(`/categories/${currentCategoryId}`)
         } catch (err) {
@@ -60,7 +54,7 @@ export default function RecipePageMain(props) {
                 <div className='RecipePageMain__container 
                                 primary-text-color'>
                     <BackButton handleClickBack={handleClickBack} />
-                    <MainNav/>
+                    <MainNav />
                     <div className='RecipePageMain__header
                     default-primary-color'>
                         <h1 className='RecipePageMain__recipe-title
@@ -98,7 +92,6 @@ export default function RecipePageMain(props) {
                                 >
                                     Delete Recipe
                         </button>
-
                             </div>
                         </div>
                     </div>

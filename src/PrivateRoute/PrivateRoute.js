@@ -8,11 +8,10 @@ export default function PrivateRoute({ children, ...rest }) {
         <Route
             {...rest}
             render={() => 
-                // if is logged on
                 loggedInStatus
                 ? (children)
                 : (<Redirect to={'/'} />)
             }
         />
     );
-}
+}   

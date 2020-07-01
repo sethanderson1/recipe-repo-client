@@ -24,10 +24,7 @@ export default class App extends Component {
     }
   }
 
-
-
   handleLogout = () => {
-    // console.log('handleLogout ran')
     localStorage.removeItem('authToken')
     sessionStorage.removeItem('currentCategoryId')
     this.setState({
@@ -130,7 +127,6 @@ export default class App extends Component {
 
     return (
       <RecipesContext.Provider value={value}>
-        {/* {console.log('value', value)} */}
         <div className="App">
           <main>
             <Route
@@ -158,22 +154,30 @@ export default class App extends Component {
               path={'/categories/:categoryId'}
               component={RecipeCardList}
             />
-            <Route
-              path={'/recipes/:recipeId'}
-              component={RecipePageMain}
-            />
-            <Route
-              path={'/add-category'}
-              component={AddCategory}
-            />
-            <Route
-              path={'/add-recipe'}
-              component={AddRecipe}
-            />
-            <Route
-              path={'/edit/recipes/:recipeId'}
-              component={EditRecipe}
-            />
+            <PrivateRoute>
+              <Route
+                path={'/recipes/:recipeId'}
+                component={RecipePageMain}
+              />
+            </PrivateRoute>
+            <PrivateRoute>
+              <Route
+                path={'/add-category'}
+                component={AddCategory}
+              />
+            </PrivateRoute>
+            <PrivateRoute>
+              <Route
+                path={'/add-recipe'}
+                component={AddRecipe}
+              />
+            </PrivateRoute>
+            <PrivateRoute>
+              <Route
+                path={'/edit/recipes/:recipeId'}
+                component={EditRecipe}
+              />
+            </PrivateRoute>
           </main>
         </div>
       </RecipesContext.Provider>
