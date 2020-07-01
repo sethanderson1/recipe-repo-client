@@ -25,37 +25,7 @@ export default function SignUp(props) {
         });
     };
 
-    function postSignUpUser(signUpFields) {
-        return fetch(`${config.API_ENDPOINT}/users`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(signUpFields),
-        })
-            .then((res) => {
-                return !res.ok
-                    ? res.json().then((e) => Promise.reject(e))
-                    : res.json();
-            })
-            .then((res) => {
-                postLoginUser({
-                    user_name: name,
-                    password,
-                });
-            })
-            .catch(err => {
-                if (err.error.message === 'Username already taken') {
-                    setNameTaken(true);
-                };
-            });
-    };
-
-    function errorMessage() {
-        if (nameTaken) {
-            return '*Username already taken';
-        };
-    };
+   
 
     function postLoginUser(credentials) {
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
@@ -164,6 +134,42 @@ export default function SignUp(props) {
             return ['SignUp__submit', 'allowHover'].join(' ')
         } else {
             return 'SignUp__submit'
+        };
+    };
+
+
+    function postSignUpUser(signUpFields) {
+        return fetch(`${config.API_ENDPOINT}/users`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(signUpFields),
+        })
+            .then((res) => {
+                return !res.ok
+                    ? res.json().then((e) => Promise.reject(e))
+                    : res.json();
+            })
+            .then((res) => {
+                postLoginUser({
+                    user_name: name,
+                    password,
+                });
+            })
+            .catch(err => {
+                console.log('err', err)
+                if (err.error.message === 'Username already taken') {
+                    setNameTaken(true);
+                };
+            });
+    };
+
+    function errorMessage() {
+        console.log('nameTaken', nameTaken)
+
+        if (nameTaken) {
+            return '*Username already taken';
         };
     };
 
