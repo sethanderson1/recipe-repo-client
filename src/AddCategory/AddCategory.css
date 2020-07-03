@@ -18,6 +18,7 @@
 .AddCategory__add-category-container label {
   font-size: 1.2rem;
   margin: 1rem 0 0.3rem 0;
+  color:black;
 }
 
 .AddCategory__add-category-container input,

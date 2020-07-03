@@ -52,8 +52,7 @@ export default function RecipePageMain(props) {
                                            text-primary-color'>
                             {recipe && recipe.title}
                         </h1>
-                        <p className='RecipePageMain__description-content
-                        light-primary-color '>
+                        <p className='RecipePageMain__description-content '>
                             {recipe && recipe.description}</p>
                     </div>
                     <div className='RecipePageMain__content-container'>

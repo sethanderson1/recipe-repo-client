@@ -26,7 +26,9 @@ export default function RecipeCardList(props) {
 
     return (
         <section className='RecipeCardList__container'>
-            <BackButton handleClickBack={handleClickBack} />
+            <BackButton 
+            value='back-button'
+            handleClickBack={handleClickBack} />
             <MainNav />
             <div className='RecipeCardList__category-title-container
             default-primary-color'>

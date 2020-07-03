@@ -33,7 +33,7 @@ export default function Categories(props) {
             context.handleGetCategories();
             context.handleGetRecipes();
         } catch (err) {
-            
+
         };
     };
 
@@ -48,6 +48,7 @@ export default function Categories(props) {
                         to={`/categories/0`}
                         onClick={() => context.onChangeCurrentCategoryId(0)}
                     >
+
                         <li key={'asdf'}
                             className={'list-div text-primary-color   heading'}>
                             <div className=''>
@@ -57,11 +58,13 @@ export default function Categories(props) {
                     </NavLink>
                     <div className='btn-wrapper'>
                         <NavLink
+                        aria-label='all recipes'
                             className=''
                             to={`/categories/0`}
                             onClick={() => context.onChangeCurrentCategoryId(0)}
                         >
                             <button
+                                aria-label='delete'
                                 className='btn delete-button invisible-btn'>
                                 <FontAwesomeIcon
                                     className='fontawesome-delete'
@@ -108,6 +111,7 @@ export default function Categories(props) {
                         </NavLink>
                         <div className='btn-wrapper'>
                             <button
+                                aria-label='delete'
                                 className='btn delete-button'
                                 onClick={() => {
                                     if (window.confirm('Are you sure you wish to delete this item?')) {

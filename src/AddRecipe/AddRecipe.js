@@ -92,7 +92,6 @@ function AddRecipe(props) {
                     onSubmit={handleSubmit}
                     className='AddRecipe__add-recipe'>
                     <label
-                        className='text-primary-color'
                         htmlFor='select_category'>
                         Select Category</label>
                     <select
@@ -103,7 +102,6 @@ function AddRecipe(props) {
                         {renderOptions()}
                     </select>
                     <label
-                        className='text-primary-color'
                         htmlFor='recipe_name'>
                         Recipe Name</label>
                     <input type='text'
@@ -120,7 +118,6 @@ function AddRecipe(props) {
                         errorPosition={'relative'}
                     />
                     <label
-                        className='text-primary-color'
                         htmlFor='description'>
                         Description</label>
                     <textarea
@@ -131,7 +128,6 @@ function AddRecipe(props) {
                         onChange={e => setDescription(e.target.value)}
                     />
                     <label
-                        className='text-primary-color'
                         htmlFor='ingredients'>
                         Ingredients</label>
                     <TextareaAutosize
@@ -144,7 +140,6 @@ function AddRecipe(props) {
                         onChange={e => setIngredients(e.target.value)}
                     />
                     <label
-                        className='text-primary-color'
                         htmlFor='directions'>
                         Directions</label>
                     <TextareaAutosize

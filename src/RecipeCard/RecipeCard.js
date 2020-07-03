@@ -16,8 +16,8 @@ function RecipeCard(props) {
                         default-primary-color'>
                 <h2 className='RecipeCard__title
                 text-primary-color'>{props.title}</h2>
-                <p className='RecipeCard__description 
-                          light-primary-color'>{props.description}</p>
+                <p className='RecipeCard__description '>
+                    {props.description}</p>
             </div>
         </Link>
     );
