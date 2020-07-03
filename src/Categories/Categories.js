@@ -77,7 +77,7 @@ export default function Categories(props) {
             )
         } else {
             return null
-        };
+        }
     };
 
     return (

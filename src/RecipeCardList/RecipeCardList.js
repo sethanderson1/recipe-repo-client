@@ -36,8 +36,7 @@ export default function RecipeCardList(props) {
                     {category_name}
                 </h1>
             </div>
-            <section className='RecipeCardList__list-container 
-            dark-primary-color  '>
+            <section className='RecipeCardList__list-container '>
                 <ul>
                     {recipesFromCategory.map(recipeCard => {
                         const { id, title, description } = recipeCard
@@ -49,7 +48,7 @@ export default function RecipeCardList(props) {
                                 category_id={category_id}
                             />
                         </li>
-                    })};
+                    })}
                 </ul>
                 <button
                     className='RecipeCardList__add-recipe-btn'

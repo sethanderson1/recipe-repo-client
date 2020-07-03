@@ -1,6 +1,6 @@
 .RecipeCardList__container {
   height: 100%;
-  background: #455a64;
+  background: white;
 }
 
 .RecipeCardList__container ul {
@@ -28,6 +28,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: white;
+
 }
 
 .RecipeCardList__add-recipe-btn {

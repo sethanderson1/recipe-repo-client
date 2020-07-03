@@ -9,7 +9,7 @@
 
 .RecipeCard__container:hover,
 .RecipeCard__container:focus {
-  background: rgba(96, 125, 139, 0.74);
+  background: rgb(53, 98, 125);
 }
 
 .RecipeCard__title {
