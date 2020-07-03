@@ -36,10 +36,6 @@ function MainNav() {
 
     return (
         <nav className="MainNav__nav ">
-            <Link
-                className='text-primary-color'
-                to={'/'}>
-            </Link>
             {renderLogInOrOut()}
         </nav>
     );

@@ -1,6 +1,6 @@
 .MainNav__nav {
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding:10px;
     font-family: 'Fira Sans', sans-serif;
     font-size: 1.2rem;
