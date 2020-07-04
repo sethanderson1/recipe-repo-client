@@ -3,6 +3,9 @@
 ## Live App
 https://recipe-repo-client.now.sh/
 
+## API Interface:
+ [Recipe Repo API](https://github.com/sethanderson1/recipe-repo-api/)
+ 
 ## Summary
 Use Recipe Repo to store your recipes and organize them by category
 
@@ -92,7 +95,3 @@ Use Recipe Repo to store your recipes and organize them by category
 - Node
 - Express
 - Postgres
-
-
-## API Interface:
- [Recipe Repo API](https://github.com/sethanderson1/recipe-repo-api/)
